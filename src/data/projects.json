@@ -1,0 +1,277 @@
+[
+  {
+    "id": "temis",
+    "num": "01",
+    "title": "TEMIS",
+    "subtitle": "Creator Tools & Commerce",
+    "status": "now",
+    "accent": "#ff8a00",
+    "accentSoft": "#ffd16a",
+    "posterLabel": "CREATOR OPS",
+    "liveUrl": "#",
+    "repoUrl": "#",
+    "stack": [
+      { "billing": "lead", "name": "Next.js" },
+      { "billing": "support", "name": "TypeScript" },
+      { "billing": "support", "name": "Supabase" },
+      { "billing": "support", "name": "TanStack Query" },
+      { "billing": "cameo", "name": "Cloudflare R2" }
+    ],
+    "shots": [
+      "일정표 템플릿 편집",
+      "템플릿 상점/구매 요청",
+      "관리자 운영 대시보드",
+      "정산/권한 관리"
+    ],
+    "locale": {
+      "ko": {
+        "role": "풀스택 구현 / 프론트엔드 중심",
+        "period": "2025.12 - 2026.05 (코드 기록 기준)",
+        "tagline": "크리에이터의 일정표 제작, 템플릿 판매, 운영 관리를 한 흐름으로 묶은 웹 서비스.",
+        "description": "Next.js App Router에서 일정표/썸네일 편집, 템플릿 상점, 커스텀 주문, 관리자 운영 화면을 구현했습니다. Supabase 스키마와 API route, React Query hook, R2 업로드, Nodemailer 기반 이메일 토큰 흐름을 연결해 프론트엔드와 데이터/운영 기능을 함께 다뤘습니다."
+      },
+      "en": {
+        "role": "Full-stack Implementation / Frontend-led",
+        "period": "2025.12 - 2026.05 (based on code history)",
+        "tagline": "A creator platform that connects timetable creation, template sales, and operations in one flow.",
+        "description": "Built timetable and thumbnail editors, template commerce, custom orders, and admin operations on Next.js App Router. Connected Supabase schema work, API routes, React Query hooks, R2 uploads, and Nodemailer token email flows across the frontend and operational data layer."
+      },
+      "ja": {
+        "role": "フルスタック実装 / フロントエンド中心",
+        "period": "2025.12 - 2026.05（コード履歴基準）",
+        "tagline": "クリエイターのスケジュール制作、テンプレート販売、運用管理を一つにつないだWebサービス。",
+        "description": "Next.js App Routerでスケジュール・サムネイル編集、テンプレート販売、カスタム注文、管理画面を実装しました。Supabaseスキーマ、API Route、React Query Hook、R2アップロード、Nodemailerのトークンメールフローをつなぎ、フロントエンドと運用データ層を横断して扱いました。"
+      }
+    }
+  },
+  {
+    "id": "vshot-v2",
+    "num": "02",
+    "title": "VSHOT",
+    "subtitle": "WebRTC Photobooth",
+    "status": "now",
+    "accent": "#fc712b",
+    "accentSoft": "#fd9319",
+    "posterLabel": "LIVE PHOTOBOOTH",
+    "liveUrl": "#",
+    "repoUrl": "#",
+    "stack": [
+      { "billing": "lead", "name": "Next.js" },
+      { "billing": "support", "name": "Node.js" },
+      { "billing": "support", "name": "WebRTC" },
+      { "billing": "support", "name": "WebSocket" },
+      { "billing": "support", "name": "Supabase" },
+      { "billing": "cameo", "name": "WebGL" }
+    ],
+    "shots": [
+      "Host 촬영 룸",
+      "Guest 사진 선택",
+      "프레임 관리자",
+      "QR 다운로드 결과"
+    ],
+    "locale": {
+      "ko": {
+        "role": "풀스택 구현 / 실시간 미디어 처리",
+        "period": "2025.12 - 진행중",
+        "tagline": "실시간 영상통화와 고해상도 원본 캡처를 분리한 웹 포토부스.",
+        "description": "Host와 Guest가 WebRTC로 연결되고, 촬영 순간에는 각 클라이언트가 원본 이미지를 캡처해 서버에서 합성하도록 설계했습니다. Next.js 클라이언트, Express/WebSocket 시그널링 서버, Room/Session 관리, R2/Supabase 기반 파일·프레임 관리, WebGL 영상 합성 최적화까지 구현 범위를 분리해 정리했습니다."
+      },
+      "en": {
+        "role": "Full-stack Implementation / Realtime Media",
+        "period": "2025.12 - In progress",
+        "tagline": "A web photobooth that separates realtime video preview from high-resolution source capture.",
+        "description": "Designed a Host/Guest flow where WebRTC handles the live preview while each client captures original-quality images for server-side composition. The implementation spans the Next.js client, Express/WebSocket signaling server, room and session management, R2/Supabase file and frame management, and WebGL video composition optimization."
+      },
+      "ja": {
+        "role": "フルスタック実装 / リアルタイムメディア処理",
+        "period": "2025.12 - 進行中",
+        "tagline": "リアルタイム映像プレビューと高解像度の元画像キャプチャを分離したWebフォトブース。",
+        "description": "HostとGuestをWebRTCで接続し、撮影時には各クライアントが元画質の画像をキャプチャしてサーバーで合成する流れを設計しました。Next.jsクライアント、Express/WebSocketシグナリングサーバー、Room/Session管理、R2/Supabaseのファイル・フレーム管理、WebGL動画合成最適化まで実装範囲を整理しています。"
+      }
+    }
+  },
+  {
+    "id": "lucent",
+    "num": "03",
+    "title": "LUCENT",
+    "subtitle": "Commerce Platform V2",
+    "status": "now",
+    "accent": "#7bc7ff",
+    "accentSoft": "#bde7ff",
+    "posterLabel": "COMMERCE CUTOVER",
+    "liveUrl": "#",
+    "repoUrl": "#",
+    "stack": [
+      { "billing": "lead", "name": "Next.js" },
+      { "billing": "support", "name": "NestJS" },
+      { "billing": "support", "name": "Supabase" },
+      { "billing": "support", "name": "TanStack Query" },
+      { "billing": "support", "name": "Tailwind CSS" },
+      { "billing": "cameo", "name": "Storybook" }
+    ],
+    "shots": [
+      "v2 상점/상품 상세",
+      "장바구니/체크아웃",
+      "v2 카탈로그 관리자",
+      "제작/배송 관리"
+    ],
+    "locale": {
+      "ko": {
+        "role": "풀스택 구현 / 커머스 v2 전환",
+        "period": "2026.03 - 진행중",
+        "tagline": "디지털·실물 상품 쇼핑몰을 v2 커머스 모델로 점진 전환한 프로젝트.",
+        "description": "기존 운영 테이블을 보존하면서 public.v2_* 커머스 모델을 병행 구축하고, 상품/variant, 캠페인·가격, 장바구니·체크아웃, 주문/이행/관리 화면을 단계적으로 전환했습니다. 프론트는 Page -> React Query Hook -> API Service -> Next BFF 경로로 정리하고, 백엔드는 NestJS Controller/Service와 Supabase 타입 기반 쿼리로 구현했습니다."
+      },
+      "en": {
+        "role": "Full-stack Implementation / Commerce V2 Migration",
+        "period": "2026.03 - In progress",
+        "tagline": "A phased migration of a digital and physical goods storefront into a v2 commerce model.",
+        "description": "Built a parallel public.v2_* commerce model while preserving the existing production tables, then migrated products, variants, campaigns, pricing, cart, checkout, orders, fulfillment, and admin screens in stages. The frontend follows a Page -> React Query Hook -> API Service -> Next BFF path, while the backend uses NestJS Controller/Service modules with Supabase typed queries."
+      },
+      "ja": {
+        "role": "フルスタック実装 / コマースv2移行",
+        "period": "2026.03 - 進行中",
+        "tagline": "デジタル・物販ストアをv2コマースモデルへ段階移行したプロジェクト。",
+        "description": "既存の運用テーブルを保ちながらpublic.v2_*のコマースモデルを並行構築し、商品/variant、キャンペーン・価格、カート・チェックアウト、注文・履行・管理画面を段階的に移行しました。フロントエンドはPage -> React Query Hook -> API Service -> Next BFFに整理し、バックエンドはNestJS Controller/ServiceとSupabase型付きクエリで実装しています。"
+      }
+    }
+  },
+  {
+    "id": "zuku",
+    "num": "04",
+    "title": "ZUKU",
+    "subtitle": "Academy Ops Platform",
+    "status": "ended",
+    "accent": "#00b894",
+    "accentSoft": "#8ee7c6",
+    "posterLabel": "ACADEMY OPS",
+    "liveUrl": "#",
+    "repoUrl": "#",
+    "stack": [
+      { "billing": "lead", "name": "Next.js" },
+      { "billing": "support", "name": "TypeScript" },
+      { "billing": "support", "name": "Supabase" },
+      { "billing": "support", "name": "TanStack Query" },
+      { "billing": "support", "name": "Alimtalk API" },
+      { "billing": "cameo", "name": "OMR" }
+    ],
+    "shots": [
+      "학생/수업 관리",
+      "강의실/통합 시간표",
+      "OMR 자동 채점",
+      "주간 리포트 알림톡"
+    ],
+    "locale": {
+      "ko": {
+        "role": "풀스택 구현 / 학원 운영 자동화",
+        "period": "2025.08 - 2026.02 (코드 기록 기준)",
+        "tagline": "학원 학생, 수업, 시간표, 리포트 운영을 한곳에서 관리하는 웹 운영 시스템.",
+        "description": "Next.js App Router와 Supabase를 기반으로 학생/반/강의실 시간표, OMR 채점, 주간 리포트, 알림톡 발송 흐름을 구현했습니다. React Query hook, client/server service, API route, Supabase migration을 연결해 프론트엔드와 운영 데이터 구조를 함께 설계했습니다."
+      },
+      "en": {
+        "role": "Full-stack Implementation / Academy Operations",
+        "period": "2025.08 - 2026.02 (based on code history)",
+        "tagline": "A web operations system for managing students, classes, schedules, and weekly reports in one place.",
+        "description": "Built student, class, classroom schedule, OMR grading, weekly report, and Alimtalk notification flows on Next.js App Router and Supabase. Connected React Query hooks, client/server services, API routes, and Supabase migrations across the frontend and operations data model."
+      },
+      "ja": {
+        "role": "フルスタック実装 / 学院運営自動化",
+        "period": "2025.08 - 2026.02（コード履歴基準）",
+        "tagline": "生徒、授業、時間割、レポート運用を一つにまとめるWeb運営システム。",
+        "description": "Next.js App RouterとSupabaseを基盤に、生徒・クラス・教室時間割、OMR採点、週次レポート、Alimtalk通知フローを実装しました。React Query Hook、client/server service、API Route、Supabase migrationをつなぎ、フロントエンドと運用データ構造を横断して設計しました。"
+      }
+    }
+  },
+  {
+    "id": "ssudam",
+    "num": "05",
+    "title": "SSUDAM",
+    "subtitle": "Mental Care & Support Finder",
+    "status": "ended",
+    "accent": "#3f8cff",
+    "accentSoft": "#a8c7ff",
+    "posterLabel": "CARE ASSIST",
+    "liveUrl": "#",
+    "repoUrl": "#",
+    "stack": [
+      { "billing": "lead", "name": "Next.js" },
+      { "billing": "support", "name": "TypeScript" },
+      { "billing": "support", "name": "TanStack Query" },
+      { "billing": "support", "name": "Kakao Maps" },
+      { "billing": "support", "name": "Storybook" },
+      { "billing": "cameo", "name": "MSW" }
+    ],
+    "shots": [
+      "AI 상담 온보딩",
+      "상담 채팅",
+      "지원사업 정보",
+      "주변 시설 지도"
+    ],
+    "locale": {
+      "ko": {
+        "role": "프론트엔드 구현 / 해커톤 서비스",
+        "period": "2024.11 (Git 기록 기준)",
+        "tagline": "AI 상담, 지원사업 정보, 주변 시설 탐색을 모바일 화면 안에 묶은 해커톤 서비스.",
+        "description": "Next.js 기반 모바일 UI를 구현하고, 인증/상담/지원정보 API 연동을 axios service layer로 분리했습니다. React Query로 지원정보와 상담 응답 상태를 다루고, Kakao Maps, 다음 주소 검색, Storybook, MSW를 활용해 핵심 화면과 컴포넌트를 빠르게 검증했습니다."
+      },
+      "en": {
+        "role": "Frontend Implementation / Hackathon Service",
+        "period": "2024.11 (based on Git history)",
+        "tagline": "A hackathon service combining AI counseling, support-program discovery, and nearby facility search in a mobile UI.",
+        "description": "Implemented a mobile-first Next.js UI and separated authentication, counseling, and support-information API integrations into an axios service layer. Used React Query for support data and chat states, and worked with Kakao Maps, Daum postcode search, Storybook, and MSW to validate core screens and components quickly."
+      },
+      "ja": {
+        "role": "フロントエンド実装 / ハッカソンサービス",
+        "period": "2024.11（Git履歴基準）",
+        "tagline": "AI相談、支援事業情報、周辺施設検索をモバイル画面にまとめたハッカソンサービス。",
+        "description": "Next.jsベースのモバイルUIを実装し、認証・相談・支援情報API連携をaxios service layerに分離しました。React Queryで支援情報とチャット状態を扱い、Kakao Maps、Daum postcode、Storybook、MSWで主要画面とコンポーネントを素早く検証しました。"
+      }
+    }
+  },
+  {
+    "id": "flea-market",
+    "num": "06",
+    "title": "FLEA MARKET",
+    "subtitle": "Settlement System",
+    "status": "now",
+    "accent": "#e3b341",
+    "accentSoft": "#f6df91",
+    "posterLabel": "SETTLEMENT OPS",
+    "liveUrl": "#",
+    "repoUrl": "#",
+    "stack": [
+      { "billing": "lead", "name": "Next.js" },
+      { "billing": "support", "name": "NestJS" },
+      { "billing": "support", "name": "Supabase" },
+      { "billing": "support", "name": "PostgreSQL" },
+      { "billing": "support", "name": "Docker" },
+      { "billing": "cameo", "name": "Decimal.js" }
+    ],
+    "shots": [
+      "마켓/참가자 관리",
+      "현장 영수증 입력",
+      "정산 미리보기",
+      "정산 회차/PDF 출력"
+    ],
+    "locale": {
+      "ko": {
+        "role": "풀스택 구현 / 정산 도메인 설계",
+        "period": "2026.06 - 진행중",
+        "tagline": "엑셀 기반 플리마켓 정산 흐름을 웹 운영 시스템으로 이식한 프로젝트.",
+        "description": "기존 엑셀 정산 파일을 분석해 영수증, 결제수단, 판매 라인, 참가자별 수수료, 정산 스냅샷 도메인으로 분리했습니다. Next.js 프론트, NestJS API, Supabase/PostgreSQL migration, Docker 개발 환경을 구성하고, 인증, 마켓/참가자/상품/영수증, 정산 미리보기/확정/PDF 출력 흐름을 구현했습니다."
+      },
+      "en": {
+        "role": "Full-stack Implementation / Settlement Domain Design",
+        "period": "2026.06 - In progress",
+        "tagline": "A web operations system that moves an Excel-based flea-market settlement workflow into a structured app.",
+        "description": "Analyzed the existing Excel settlement file and split the workflow into receipt, payment split, sale line, participant fee, and settlement snapshot domains. Built the Next.js frontend, NestJS API, Supabase/PostgreSQL migrations, Docker development setup, and flows for auth, markets, participants, products, receipts, settlement preview, confirmation, and PDF export."
+      },
+      "ja": {
+        "role": "フルスタック実装 / 精算ドメイン設計",
+        "period": "2026.06 - 進行中",
+        "tagline": "Excelベースのフリーマーケット精算フローをWeb運営システムへ移行するプロジェクト。",
+        "description": "既存のExcel精算ファイルを分析し、レシート、決済手段、販売ライン、参加者別手数料、精算スナップショットのドメインに分離しました。Next.jsフロントエンド、NestJS API、Supabase/PostgreSQL migration、Docker開発環境を構成し、認証、マーケット/参加者/商品/レシート、精算プレビュー/確定/PDF出力フローを実装しました。"
+      }
+    }
+  }
+]
