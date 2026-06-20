@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "temis",
+    "scope": "Frontend + Backend + DB",
+    "locale": {
+      "ko": {
+        "synopsis": "크리에이터가 반복적으로 만드는 일정표와 썸네일 템플릿을 제작, 판매, 관리까지 연결한 프로젝트입니다. 사용자는 템플릿을 탐색하고 구매 요청을 보낼 수 있고, 운영자는 템플릿, 주문, 파일, 권한, 정산 흐름을 관리자 화면에서 처리할 수 있습니다.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "랜딩, 인증, 일정표 편집기, 템플릿 상점, 커스텀 주문, 마이페이지, 관리자 대시보드 구현",
+              "React Query hook과 service layer로 조회/변경 흐름 분리",
+              "템플릿 입력 구조와 프리뷰, 저장/복원 UI 구성"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": [
+              "Next.js API Route 기반 인증, 템플릿, 구매 요청, 커스텀 주문, 파일 업로드 API 구현",
+              "Nodemailer 기반 이메일 토큰 인증과 비밀번호 재설정 흐름 연결"
+            ]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": [
+              "사용자, 템플릿, 팀, 구매 요청, 판매 통계, 정산/로열티 Supabase migration 구성",
+              "템플릿 접근 권한과 작가 판매 데이터를 분리"
+            ]
+          },
+          {
+            "key": "infra",
+            "lead": true,
+            "items": ["Cloudflare R2 업로드, 파일 조회/삭제, zip 다운로드 흐름 연결"]
+          }
+        ],
+        "features": [
+          {
+            "title": "일정표 템플릿 편집기",
+            "desc": "템플릿별 입력 구조를 통합하고 입력, 프리뷰, 저장/복원 흐름을 연결했습니다."
+          },
+          {
+            "title": "템플릿 상점/구매 요청",
+            "desc": "사용자가 템플릿을 탐색하고 구매 또는 접근 권한을 요청하는 흐름을 구현했습니다."
+          },
+          {
+            "title": "관리자 운영 대시보드",
+            "desc": "템플릿, 사용자, 구매 요청, 커스텀 주문, 파일, 정산 상태를 탭 구조로 관리합니다."
+          },
+          {
+            "title": "파일 업로드/R2 연동",
+            "desc": "업로드 검증, R2 저장, DB record 연결, 삭제 유틸을 분리해 추적 가능하게 구성했습니다."
+          }
+        ],
+        "problems": [
+          {
+            "title": "중복 편집 hook 문제",
+            "desc": "템플릿별로 반복되던 일정표 편집 로직을 설정 주입형 통합 hook으로 정리했습니다."
+          },
+          {
+            "title": "업로드 실패/운영 데이터 연결 문제",
+            "desc": "파일 검증, R2 key 생성, DB record 연결, 삭제 유틸을 분리해 실패 흐름을 추적 가능하게 만들었습니다."
+          },
+          {
+            "title": "구매 권한과 정산 흐름 문제",
+            "desc": "템플릿 접근 권한, 작가 판매, 정산 데이터를 Supabase schema와 관리자 화면으로 분리했습니다."
+          }
+        ],
+        "outcome": "반복 템플릿 제작과 운영 관리를 한 서비스 흐름으로 묶었습니다. 중복 hook 제거와 업로드 흐름 분리로 유지보수 비용을 줄였습니다.",
+        "learned": "제작 도구와 커머스가 결합될 때 데이터 권한과 운영 흐름을 먼저 고정해야 한다는 점을 배웠습니다.",
+        "stack": [
+          { "name": "Next.js", "reason": "App Router 화면과 API Route를 함께 구성" },
+          { "name": "React / TypeScript", "reason": "복잡한 편집 UI와 관리자 화면 구현" },
+          { "name": "Supabase", "reason": "운영 데이터와 migration 관리" },
+          { "name": "TanStack Query", "reason": "서버 상태와 mutation/invalidate 관리" },
+          { "name": "Cloudflare R2", "reason": "주문 파일과 이미지 저장" },
+          { "name": "Nodemailer", "reason": "이메일 인증과 토큰 메일 발송" }
+        ],
+        "stills": [
+          "일정표 편집기: 템플릿 입력 폼과 실시간 미리보기",
+          "템플릿 상점: 목록, 상세, 구매 요청 화면",
+          "관리자 대시보드: 주문/구매 요청/템플릿 관리 탭",
+          "정산/권한 관리: 로열티, 사용자 템플릿 권한 관리 화면"
+        ]
+      },
+      "en": {
+        "synopsis": "TEMIS connects repeatable creator workflows, from timetable and thumbnail template production to sales, access control, file delivery, and admin operations. Visitors can browse templates and request purchases, while operators manage templates, orders, files, permissions, and settlement states from one console.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "Built landing, auth, timetable editor, template shop, custom order, my page, and admin dashboard screens",
+              "Separated read and mutation flows with React Query hooks and a service layer",
+              "Structured template inputs, previews, save, and restore flows"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": [
+              "Implemented API routes for auth, templates, purchase requests, custom orders, and file uploads",
+              "Connected Nodemailer token email flows for verification and password reset"
+            ]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": [
+              "Designed Supabase migrations for users, templates, teams, purchase requests, sales stats, and royalties",
+              "Separated template access permissions from creator sales data"
+            ]
+          },
+          {
+            "key": "infra",
+            "lead": true,
+            "items": ["Connected Cloudflare R2 upload, retrieval, deletion, and zip download flows"]
+          }
+        ],
+        "features": [
+          {
+            "title": "Timetable Template Editor",
+            "desc": "Unified template-specific input structures and connected input, preview, save, and restore states."
+          },
+          {
+            "title": "Template Shop / Purchase Request",
+            "desc": "Built the flow for browsing templates and requesting purchase or access permissions."
+          },
+          {
+            "title": "Admin Operations Dashboard",
+            "desc": "Organized template, user, purchase request, custom order, file, and settlement controls into tabs."
+          },
+          {
+            "title": "R2 File Pipeline",
+            "desc": "Split validation, R2 storage, database records, and deletion utilities for traceable operations."
+          }
+        ],
+        "problems": [
+          {
+            "title": "Repeated editor hooks",
+            "desc": "Reworked repeated timetable editor logic into a configuration-driven shared hook."
+          },
+          {
+            "title": "Upload failure tracing",
+            "desc": "Separated file validation, R2 key generation, database records, and cleanup utilities."
+          },
+          {
+            "title": "Purchase access and royalties",
+            "desc": "Modeled template permissions, creator sales, and settlement data separately in Supabase and admin UI."
+          }
+        ],
+        "outcome": "Bundled template production and operations into a single service flow, reducing maintenance cost through shared hooks and clearer upload boundaries.",
+        "learned": "When creation tools and commerce meet, data permissions and operational states need to be fixed before polishing screens.",
+        "stack": [
+          { "name": "Next.js", "reason": "App Router screens and API routes" },
+          { "name": "React / TypeScript", "reason": "Complex editor and admin UI" },
+          { "name": "Supabase", "reason": "Operational data and migrations" },
+          { "name": "TanStack Query", "reason": "Server state and mutation invalidation" },
+          { "name": "Cloudflare R2", "reason": "Order file and image storage" },
+          { "name": "Nodemailer", "reason": "Token email delivery" }
+        ],
+        "stills": [
+          "Timetable editor: input form and live preview",
+          "Template shop: list, detail, and purchase request",
+          "Admin dashboard: order, request, and template tabs",
+          "Settlement/access: royalty and user permission controls"
+        ]
+      },
+      "ja": {
+        "synopsis": "TEMISは、クリエイターが繰り返し作るスケジュール表やサムネイルテンプレートを、制作、販売、権限、ファイル配布、管理運用までつなげたプロジェクトです。ユーザーはテンプレートを探して購入依頼を送り、運営者は管理画面で注文、ファイル、権限、精算状態を扱えます。",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "ランディング、認証、スケジュール編集、テンプレートショップ、カスタム注文、マイページ、管理画面を実装",
+              "React Query hookとservice layerで取得・変更処理を分離",
+              "テンプレート入力構造、プレビュー、保存・復元UIを構成"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": [
+              "認証、テンプレート、購入依頼、カスタム注文、ファイルアップロードのAPI Routeを実装",
+              "Nodemailerによるメールトークン認証とパスワード再設定を接続"
+            ]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": [
+              "ユーザー、テンプレート、チーム、購入依頼、売上統計、ロイヤリティ関連のSupabase migrationを構成",
+              "テンプレートアクセス権限とクリエイター販売データを分離"
+            ]
+          },
+          {
+            "key": "infra",
+            "lead": true,
+            "items": ["Cloudflare R2のアップロード、取得、削除、zipダウンロードを接続"]
+          }
+        ],
+        "features": [
+          {
+            "title": "スケジュールテンプレート編集",
+            "desc": "テンプレート別の入力構造を統合し、入力、プレビュー、保存、復元をつなげました。"
+          },
+          {
+            "title": "テンプレートショップ/購入依頼",
+            "desc": "テンプレート閲覧から購入またはアクセス権限申請までの流れを実装しました。"
+          },
+          {
+            "title": "管理ダッシュボード",
+            "desc": "テンプレート、ユーザー、購入依頼、カスタム注文、ファイル、精算状態をタブで管理します。"
+          },
+          {
+            "title": "R2ファイル連携",
+            "desc": "検証、R2保存、DB record、削除ユーティリティを分け、追跡しやすくしました。"
+          }
+        ],
+        "problems": [
+          {
+            "title": "編集hookの重複",
+            "desc": "テンプレートごとに重複していた編集ロジックを設定注入型の共通hookに整理しました。"
+          },
+          {
+            "title": "アップロード失敗の追跡",
+            "desc": "ファイル検証、R2 key生成、DB record、削除処理を分離しました。"
+          },
+          {
+            "title": "購入権限と精算",
+            "desc": "テンプレート権限、クリエイター販売、精算データをSupabase schemaと管理画面で分けました。"
+          }
+        ],
+        "outcome": "テンプレート制作と運用管理を一つのサービスフローにまとめ、共通hookとアップロード分離で保守コストを下げました。",
+        "learned": "制作ツールとコマースを組み合わせる時は、画面より先にデータ権限と運用状態を固定する必要があると学びました。",
+        "stack": [
+          { "name": "Next.js", "reason": "App Router画面とAPI Routeを構成" },
+          { "name": "React / TypeScript", "reason": "複雑な編集UIと管理画面を実装" },
+          { "name": "Supabase", "reason": "運用データとmigration管理" },
+          { "name": "TanStack Query", "reason": "サーバー状態とmutation/invalidate管理" },
+          { "name": "Cloudflare R2", "reason": "注文ファイルと画像保存" },
+          { "name": "Nodemailer", "reason": "メール認証とトークン送信" }
+        ],
+        "stills": [
+          "スケジュール編集: 入力フォームとリアルタイムプレビュー",
+          "テンプレートショップ: 一覧、詳細、購入依頼",
+          "管理画面: 注文、購入依頼、テンプレート管理タブ",
+          "精算/権限: ロイヤリティとユーザー権限管理"
+        ]
+      }
+    }
+  },
+  {
+    "id": "vshot-v2",
+    "scope": "Frontend + Backend + DB",
+    "locale": {
+      "ko": {
+        "synopsis": "VSHOT은 WebRTC 실시간 미리보기와 고해상도 원본 캡처를 분리한 웹 포토부스입니다. Host와 Guest는 실시간으로 연결되고, 촬영 순간에는 각 클라이언트가 원본 이미지를 캡처해 서버 합성 흐름으로 넘깁니다.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "Host/Guest 준비 및 촬영 룸, Festa 모드, 다운로드 페이지, 관리자 대시보드 구현",
+              "연결 상태, 카운트다운, 촬영 트리거, QR 다운로드 UI 구성"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": [
+              "Express/WebSocket signaling, ICE config, photo upload/merge, frame CRUD 구현",
+              "Room/Session, host/guest role, 재입장 흐름 분리"
+            ]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": [
+              "files, films, frames, groups, frame_access, users 구조 구성",
+              "파일/필름 record와 R2 object 상태 연결"
+            ]
+          },
+          {
+            "key": "infra",
+            "lead": true,
+            "items": ["Node server, Supabase, Cloudflare R2, TURN/STUN 설정 전제, status endpoint 구성"]
+          }
+        ],
+        "features": [
+          {
+            "title": "Host/Guest 촬영 룸",
+            "desc": "WebRTC 연결, 카운트다운, 촬영 트리거, 연결 상태 UI를 구현했습니다."
+          },
+          {
+            "title": "고해상도 원본 캡처",
+            "desc": "미리보기 영상과 결과물 캡처를 분리해 원본 품질을 보존했습니다."
+          },
+          {
+            "title": "프레임/접근 권한 관리",
+            "desc": "사용자/그룹별 프레임 접근 정책과 관리자 화면을 구현했습니다."
+          },
+          {
+            "title": "WebGL 영상 합성",
+            "desc": "FFmpeg 후처리 병목을 줄이기 위한 클라이언트 합성 구조를 적용했습니다."
+          }
+        ],
+        "problems": [
+          {
+            "title": "품질 저하 문제",
+            "desc": "WebRTC 스트림 캡처 대신 클라이언트 원본 캡처 후 서버 합성 방식으로 변경했습니다."
+          },
+          {
+            "title": "실시간 연결 복잡도 문제",
+            "desc": "WebSocket signaling, room/session, host/guest role을 분리했습니다."
+          },
+          {
+            "title": "프레임 권한 관리 문제",
+            "desc": "프레임 접근 권한을 사용자/그룹 단위로 분리하고 관리자 화면에서 관리했습니다."
+          }
+        ],
+        "outcome": "실시간 미리보기와 고화질 결과물 생성을 분리한 구조를 만들고, 미디어 처리 병목을 개별 캡처/WebGL 구조로 줄이는 방향을 검증했습니다.",
+        "learned": "실시간 서비스에서는 예쁜 화면보다 연결 상태와 실패 복구 흐름이 먼저 설계되어야 한다는 점을 배웠습니다.",
+        "stack": [
+          { "name": "Next.js", "reason": "촬영 화면과 관리자 UI 구성" },
+          { "name": "Node.js / Express", "reason": "이미지 처리와 API 서버 구성" },
+          { "name": "WebRTC / WebSocket", "reason": "실시간 영상 연결과 signaling" },
+          { "name": "Supabase", "reason": "파일, 프레임, 접근 권한 기록" },
+          { "name": "Cloudflare R2", "reason": "결과 파일 저장" },
+          { "name": "WebGL / Sharp / FFmpeg", "reason": "이미지와 영상 합성 처리" }
+        ],
+        "stills": [
+          "Host 촬영 룸: 촬영 제어, 프레임, 카운트다운, 연결 상태",
+          "Guest 사진 선택: 참여자 입장, 촬영, 선택 흐름",
+          "프레임 관리자: 프레임 등록, 그룹/유저 접근 권한 관리",
+          "QR 다운로드 결과: 결과물 확인과 다운로드 화면"
+        ]
+      },
+      "en": {
+        "synopsis": "VSHOT is a web photobooth that separates realtime WebRTC preview from high-resolution source capture. Host and Guest stay connected live, while each client captures original-quality images at the shutter moment and sends them into the server composition flow.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "Built Host/Guest preparation and shooting rooms, Festa mode, download page, and admin dashboard",
+              "Designed connection status, countdown, shutter trigger, and QR download UI"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": [
+              "Implemented Express/WebSocket signaling, ICE config, photo upload/merge, and frame CRUD",
+              "Separated room/session management, host/guest roles, and re-entry flow"
+            ]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": [
+              "Structured files, films, frames, groups, frame_access, and users",
+              "Connected database records with R2 object states"
+            ]
+          },
+          {
+            "key": "infra",
+            "lead": true,
+            "items": ["Prepared Node server, Supabase, Cloudflare R2, TURN/STUN assumptions, and status endpoints"]
+          }
+        ],
+        "features": [
+          {
+            "title": "Host/Guest Shooting Room",
+            "desc": "Implemented WebRTC connection, countdown, shutter trigger, and connection status UI."
+          },
+          {
+            "title": "High-resolution Source Capture",
+            "desc": "Separated live preview from result capture to preserve original image quality."
+          },
+          {
+            "title": "Frame Access Control",
+            "desc": "Built user/group frame permissions and admin management screens."
+          },
+          {
+            "title": "WebGL Composition",
+            "desc": "Applied a client-side composition direction to reduce FFmpeg post-processing bottlenecks."
+          }
+        ],
+        "problems": [
+          {
+            "title": "Quality loss",
+            "desc": "Moved away from WebRTC stream capture and used client-side source capture followed by server composition."
+          },
+          {
+            "title": "Realtime connection complexity",
+            "desc": "Separated WebSocket signaling, room/session state, and host/guest roles."
+          },
+          {
+            "title": "Frame permission management",
+            "desc": "Modeled frame access by user and group, then exposed it through admin UI."
+          }
+        ],
+        "outcome": "Validated a structure where live preview and high-quality result generation are separate, reducing media bottlenecks with source capture and WebGL-oriented composition.",
+        "learned": "For realtime services, connection state and recovery flows need to be designed before the visual flow feels reliable.",
+        "stack": [
+          { "name": "Next.js", "reason": "Shooting room and admin UI" },
+          { "name": "Node.js / Express", "reason": "Image processing and API server" },
+          { "name": "WebRTC / WebSocket", "reason": "Realtime video and signaling" },
+          { "name": "Supabase", "reason": "File, frame, and access records" },
+          { "name": "Cloudflare R2", "reason": "Result file storage" },
+          { "name": "WebGL / Sharp / FFmpeg", "reason": "Image and video composition" }
+        ],
+        "stills": [
+          "Host room: controls, frame, countdown, connection state",
+          "Guest selection: entry, shooting, and image selection",
+          "Frame admin: frame registration and access control",
+          "QR result: final image preview and download"
+        ]
+      },
+      "ja": {
+        "synopsis": "VSHOTは、WebRTCのリアルタイムプレビューと高解像度の元画像キャプチャを分離したWebフォトブースです。HostとGuestはリアルタイムで接続し、撮影時には各クライアントが元画質の画像を取得してサーバー合成へ渡します。",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "Host/Guestの準備・撮影ルーム、Festaモード、ダウンロードページ、管理画面を実装",
+              "接続状態、カウントダウン、撮影トリガー、QRダウンロードUIを構成"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": [
+              "Express/WebSocket signaling、ICE config、写真upload/merge、frame CRUDを実装",
+              "Room/Session、host/guest role、再入室フローを分離"
+            ]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": [
+              "files、films、frames、groups、frame_access、users構造を設計",
+              "DB recordとR2 object状態を接続"
+            ]
+          },
+          {
+            "key": "infra",
+            "lead": true,
+            "items": ["Node server、Supabase、Cloudflare R2、TURN/STUN前提、status endpointを構成"]
+          }
+        ],
+        "features": [
+          {
+            "title": "Host/Guest撮影ルーム",
+            "desc": "WebRTC接続、カウントダウン、撮影トリガー、接続状態UIを実装しました。"
+          },
+          {
+            "title": "高解像度元画像キャプチャ",
+            "desc": "プレビュー映像と結果物キャプチャを分離し、元画像の品質を保ちました。"
+          },
+          {
+            "title": "フレーム/権限管理",
+            "desc": "ユーザー/グループ別フレーム権限と管理画面を実装しました。"
+          },
+          {
+            "title": "WebGL合成",
+            "desc": "FFmpeg後処理のボトルネックを減らすため、クライアント合成の構造を適用しました。"
+          }
+        ],
+        "problems": [
+          {
+            "title": "画質低下",
+            "desc": "WebRTCストリームのキャプチャではなく、クライアント元画像キャプチャ後にサーバーで合成する方式に変更しました。"
+          },
+          {
+            "title": "リアルタイム接続の複雑さ",
+            "desc": "WebSocket signaling、room/session、host/guest roleを分離しました。"
+          },
+          {
+            "title": "フレーム権限管理",
+            "desc": "フレームアクセス権限をユーザー/グループ単位に分け、管理画面で扱えるようにしました。"
+          }
+        ],
+        "outcome": "リアルタイムプレビューと高画質結果物生成を分けた構造を作り、個別キャプチャ/WebGL方向でメディア処理の負荷を減らす方針を検証しました。",
+        "learned": "リアルタイムサービスでは、見た目より先に接続状態と失敗復旧フローを設計する必要があると学びました。",
+        "stack": [
+          { "name": "Next.js", "reason": "撮影画面と管理UIを構成" },
+          { "name": "Node.js / Express", "reason": "画像処理とAPIサーバーを構成" },
+          { "name": "WebRTC / WebSocket", "reason": "リアルタイム映像接続とsignaling" },
+          { "name": "Supabase", "reason": "ファイル、フレーム、権限記録" },
+          { "name": "Cloudflare R2", "reason": "結果ファイル保存" },
+          { "name": "WebGL / Sharp / FFmpeg", "reason": "画像・映像合成処理" }
+        ],
+        "stills": [
+          "Host撮影ルーム: 制御、フレーム、カウントダウン、接続状態",
+          "Guest写真選択: 入室、撮影、選択フロー",
+          "フレーム管理: 登録とユーザー/グループ権限",
+          "QR結果: 結果確認とダウンロード"
+        ]
+      }
+    }
+  },
+  {
+    "id": "lucent",
+    "scope": "Frontend + Backend + DB",
+    "locale": {
+      "ko": {
+        "synopsis": "LUCENT v2는 운영 중인 커머스 구조를 바로 교체하지 않고 public.v2_* 모델을 병행 구축해 기능 단위로 전환하는 프로젝트입니다. 상품, 가격, 재고, 주문, 배송, 디지털 권한을 분리해 사용자 구매 플로우와 관리자 운영 플로우를 단계적으로 정리했습니다.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "v2 상점 목록/상세, 장바구니, 체크아웃, 주문 완료, 마이페이지 구현",
+              "카탈로그 관리자, 캠페인/가격 관리자, 제작/배송 관리 화면 구현"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": [
+              "v2 shop, catalog admin, checkout, fulfillment, products, orders API 구현",
+              "NestJS Controller/Service와 Supabase 타입 기반 쿼리 구성"
+            ]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": [
+              "v2_projects, products, variants, bundle, campaign, price, cart, order, fulfillment 계열 테이블 구성",
+              "기존 운영 데이터와 v2 모델 병행 관리"
+            ]
+          }
+        ],
+        "features": [
+          {
+            "title": "v2 카탈로그 관리자",
+            "desc": "product, variant, media, bundle, readiness를 관리합니다."
+          },
+          {
+            "title": "v2 상점/체크아웃",
+            "desc": "상품 탐색, 장바구니 수정, 주문 검증, 주문 생성 흐름을 구현했습니다."
+          },
+          {
+            "title": "캠페인/가격/프로모션",
+            "desc": "판매 컨텍스트와 가격 계산 결과를 분리했습니다."
+          },
+          {
+            "title": "제작/배송/디지털 이행",
+            "desc": "실물 배송과 디지털 다운로드 권한을 별도 도메인으로 추적합니다."
+          }
+        ],
+        "problems": [
+          {
+            "title": "v1 교체 리스크 문제",
+            "desc": "기존 운영 테이블을 유지하고 public.v2_* 병행 모델로 점진 전환했습니다."
+          },
+          {
+            "title": "사용자/운영자 플로우 혼재 문제",
+            "desc": "고객 화면은 구매에 집중하고 운영 액션은 관리자/검증 도구로 분리했습니다."
+          },
+          {
+            "title": "혼합 주문 처리 문제",
+            "desc": "order, payment, fulfillment, entitlement를 분리해 실물/디지털 혼합 주문을 추적 가능하게 구성했습니다."
+          }
+        ],
+        "outcome": "운영 중인 커머스 구조를 유지하면서 v2 모델을 병행 구축해 전환 리스크를 낮췄습니다.",
+        "learned": "운영 중인 커머스 리팩토링은 새 모델보다 기존 데이터와 화면의 공존 설계가 중요하다는 점을 배웠습니다.",
+        "stack": [
+          { "name": "Next.js", "reason": "사용자 구매 플로우와 관리자 화면 구성" },
+          { "name": "NestJS", "reason": "커머스 도메인 API 분리" },
+          { "name": "Supabase", "reason": "기존 운영 데이터와 v2 모델 병행 관리" },
+          { "name": "TanStack Query", "reason": "서버 상태와 mutation/invalidate 관리" },
+          { "name": "Cloudflare R2", "reason": "이미지와 파일 저장" }
+        ],
+        "stills": [
+          "v2 상점/상품 상세: 상품 목록, 상세, variant 선택, 가격 표시",
+          "장바구니/체크아웃: 라인 아이템, 주문자/배송 정보, 금액 요약",
+          "v2 카탈로그 관리자: product, variant, media, campaign, pricing 관리",
+          "제작/배송 관리: 제작 배치, 배송 배치, 송장/배송 완료 처리"
+        ]
+      },
+      "en": {
+        "synopsis": "LUCENT v2 migrates a live commerce system without replacing the production tables at once. A parallel public.v2_* model separates products, prices, inventory, orders, fulfillment, and digital entitlements, allowing customer purchase flows and admin operations to move in stages.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "Built v2 shop list/detail, cart, checkout, order completion, and my page flows",
+              "Implemented catalog admin, campaign/pricing admin, and production/fulfillment screens"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": [
+              "Implemented v2 shop, catalog admin, checkout, fulfillment, product, and order APIs",
+              "Structured NestJS Controller/Service modules with Supabase typed queries"
+            ]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": [
+              "Designed v2_projects, products, variants, bundles, campaigns, prices, carts, orders, and fulfillment tables",
+              "Managed existing production data alongside the v2 model"
+            ]
+          }
+        ],
+        "features": [
+          {
+            "title": "v2 Catalog Admin",
+            "desc": "Manages products, variants, media, bundles, and readiness states."
+          },
+          {
+            "title": "v2 Shop / Checkout",
+            "desc": "Built product discovery, cart updates, order validation, and order creation."
+          },
+          {
+            "title": "Campaign / Pricing / Promotion",
+            "desc": "Separated sales context from calculated pricing results."
+          },
+          {
+            "title": "Fulfillment / Digital Entitlement",
+            "desc": "Tracks physical delivery and digital download access as separate domains."
+          }
+        ],
+        "problems": [
+          {
+            "title": "v1 replacement risk",
+            "desc": "Kept existing tables and migrated gradually with a parallel public.v2_* model."
+          },
+          {
+            "title": "Mixed customer/admin flows",
+            "desc": "Kept customer screens focused on purchase while admin tools handled operational actions."
+          },
+          {
+            "title": "Mixed order fulfillment",
+            "desc": "Separated order, payment, fulfillment, and entitlement data for physical/digital mixed orders."
+          }
+        ],
+        "outcome": "Reduced migration risk by building the v2 commerce model alongside the live production system.",
+        "learned": "For live commerce refactors, coexistence with existing data and screens matters as much as the new model.",
+        "stack": [
+          { "name": "Next.js", "reason": "Customer purchase flow and admin screens" },
+          { "name": "NestJS", "reason": "Separated commerce domain APIs" },
+          { "name": "Supabase", "reason": "Production data and v2 model management" },
+          { "name": "TanStack Query", "reason": "Server state and invalidation" },
+          { "name": "Cloudflare R2", "reason": "Image and file storage" }
+        ],
+        "stills": [
+          "v2 shop/detail: product list, detail, variant selection, pricing",
+          "Cart/checkout: line items, customer/shipping info, total summary",
+          "Catalog admin: products, variants, media, campaigns, pricing",
+          "Fulfillment admin: production batch, shipping batch, invoices, completion"
+        ]
+      },
+      "ja": {
+        "synopsis": "LUCENT v2は、運用中のコマース構造を一度に置き換えず、public.v2_*モデルを並行構築して段階的に移行するプロジェクトです。商品、価格、在庫、注文、配送、デジタル権限を分け、購入フローと管理フローを少しずつ整理しました。",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "v2ショップ一覧/詳細、カート、チェックアウト、注文完了、マイページを実装",
+              "カタログ管理、キャンペーン/価格管理、制作/配送管理画面を実装"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": [
+              "v2 shop、catalog admin、checkout、fulfillment、products、orders APIを実装",
+              "NestJS Controller/ServiceとSupabase型付きクエリで構成"
+            ]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": [
+              "v2_projects、products、variants、bundle、campaign、price、cart、order、fulfillment系テーブルを構成",
+              "既存運用データとv2モデルを並行管理"
+            ]
+          }
+        ],
+        "features": [
+          {
+            "title": "v2カタログ管理",
+            "desc": "product、variant、media、bundle、readinessを管理します。"
+          },
+          {
+            "title": "v2ショップ/チェックアウト",
+            "desc": "商品探索、カート修正、注文検証、注文作成フローを実装しました。"
+          },
+          {
+            "title": "キャンペーン/価格/プロモーション",
+            "desc": "販売コンテキストと価格計算結果を分離しました。"
+          },
+          {
+            "title": "制作/配送/デジタル履行",
+            "desc": "物理配送とデジタルダウンロード権限を別ドメインとして追跡します。"
+          }
+        ],
+        "problems": [
+          {
+            "title": "v1置き換えリスク",
+            "desc": "既存テーブルを維持し、public.v2_*並行モデルで段階移行しました。"
+          },
+          {
+            "title": "ユーザー/運営フローの混在",
+            "desc": "顧客画面は購入に集中させ、運用操作は管理/検証ツールに分離しました。"
+          },
+          {
+            "title": "混合注文処理",
+            "desc": "order、payment、fulfillment、entitlementを分け、物理/デジタル混合注文を追跡可能にしました。"
+          }
+        ],
+        "outcome": "運用中のコマース構造を維持しながらv2モデルを並行構築し、移行リスクを下げました。",
+        "learned": "運用中コマースのリファクタリングでは、新モデル以上に既存データと画面の共存設計が重要だと学びました。",
+        "stack": [
+          { "name": "Next.js", "reason": "購入フローと管理画面を構成" },
+          { "name": "NestJS", "reason": "コマースドメインAPIを分離" },
+          { "name": "Supabase", "reason": "既存運用データとv2モデルを並行管理" },
+          { "name": "TanStack Query", "reason": "サーバー状態とmutation/invalidate管理" },
+          { "name": "Cloudflare R2", "reason": "画像とファイル保存" }
+        ],
+        "stills": [
+          "v2ショップ/商品詳細: 一覧、詳細、variant選択、価格表示",
+          "カート/チェックアウト: 明細、注文者/配送情報、金額要約",
+          "v2カタログ管理: product、variant、media、campaign、pricing管理",
+          "制作/配送管理: 制作batch、配送batch、送り状/配送完了"
+        ]
+      }
+    }
+  },
+  {
+    "id": "zuku",
+    "scope": "Frontend + Backend + DB",
+    "locale": {
+      "ko": {
+        "synopsis": "ZUKU는 학생 정보, 반 편성, 강의실 시간표, OMR 채점, 주간 리포트 알림톡을 한 흐름 안에서 관리하는 학원 운영 시스템입니다. 반복 확인과 입력 비용이 큰 운영 업무를 데이터 관계 중심으로 정리했습니다.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "학생 관리, 반 관리, 반 편성, 강의실 시간표, 통합 시간표, OMR 템플릿/채점, 주간 리포트 구현",
+              "React Query hook과 client/server service 연결"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": ["인증/초대, 학생, 반, 시간표, 예외 일정, OMR, 주간 리포트, 알림톡 API Route 구현"]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": ["학생, 수업, 반 편성, OMR template, weekly_reports 관련 Supabase migration 구성"]
+          }
+        ],
+        "features": [
+          {
+            "title": "학생/반/편성 관리",
+            "desc": "학생 등록, 수업 등록, 반 편성 관계를 도메인별로 분리했습니다."
+          },
+          {
+            "title": "강의실/통합 시간표",
+            "desc": "강의실별 수업 배치와 이동/시간 변경 흐름을 구현했습니다."
+          },
+          {
+            "title": "OMR 템플릿 기반 채점",
+            "desc": "OMR 이미지 업로드, 템플릿 좌표, 밝기 기준 채점 결과를 연결했습니다."
+          },
+          {
+            "title": "주간 리포트 알림톡",
+            "desc": "리포트 row 생성 후 발송하고 결과를 로그로 저장합니다."
+          }
+        ],
+        "problems": [
+          {
+            "title": "학생-반편성 관계 문제",
+            "desc": "student_compositions를 추가해 학생 등록과 반 구성 관계를 분리했습니다."
+          },
+          {
+            "title": "OMR 인식 안정성 문제",
+            "desc": "템플릿 좌표와 밝기/차이 임계값으로 마킹 여부를 판정했습니다."
+          },
+          {
+            "title": "리포트 중복 발송 문제",
+            "desc": "리포트 저장과 발송 로그를 분리하고 주차/학생/과목 기준 중복을 방지했습니다."
+          }
+        ],
+        "outcome": "흩어진 학원 운영 업무를 하나의 관리 흐름으로 묶는 구조를 만들었습니다.",
+        "learned": "운영 도구는 기능보다 데이터 관계와 예외 흐름을 먼저 정리해야 유지보수성이 생긴다는 점을 배웠습니다.",
+        "stack": [
+          { "name": "Next.js", "reason": "운영 화면과 API Route 구성" },
+          { "name": "Supabase", "reason": "학생/수업/리포트 데이터 관리" },
+          { "name": "TanStack Query", "reason": "시간표와 리포트 서버 상태 관리" },
+          { "name": "OMR", "reason": "템플릿 기반 이미지 채점" },
+          { "name": "Alimtalk API", "reason": "주간 리포트 발송" }
+        ],
+        "stills": [
+          "학생/수업 관리: 학생 목록, 상세, 수업 등록 상태",
+          "강의실/통합 시간표: 강의실별 시간표, 수업 이동/시간 변경",
+          "OMR 자동 채점: 템플릿 좌표와 채점 결과",
+          "주간 리포트 알림톡: 리포트 작성과 발송 로그"
+        ]
+      },
+      "en": {
+        "synopsis": "ZUKU is an academy operations system that keeps student records, class assignment, classroom schedules, OMR grading, and weekly report Alimtalk messages in one flow. It organizes repetitive operational work around clear data relationships.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "Built student management, class management, composition, classroom schedule, integrated schedule, OMR template/grading, and weekly report screens",
+              "Connected React Query hooks with client/server services"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": ["Implemented API routes for auth/invite, students, classes, schedules, exceptions, OMR, weekly reports, and Alimtalk"]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": ["Created Supabase migrations for students, classes, compositions, OMR templates, and weekly reports"]
+          }
+        ],
+        "features": [
+          {
+            "title": "Student / Class Composition",
+            "desc": "Separated student registration, class registration, and class composition relationships by domain."
+          },
+          {
+            "title": "Classroom / Integrated Schedule",
+            "desc": "Implemented classroom scheduling, movement, and time-change flows."
+          },
+          {
+            "title": "Template-based OMR Grading",
+            "desc": "Connected image uploads, template coordinates, brightness thresholds, and grading results."
+          },
+          {
+            "title": "Weekly Report Alimtalk",
+            "desc": "Created report rows, sent messages, and stored delivery logs."
+          }
+        ],
+        "problems": [
+          {
+            "title": "Student-class relationship",
+            "desc": "Added student_compositions to separate student registration from class composition."
+          },
+          {
+            "title": "OMR recognition stability",
+            "desc": "Used template coordinates and brightness/difference thresholds to determine marks."
+          },
+          {
+            "title": "Duplicate report delivery",
+            "desc": "Separated report storage and delivery logs, then prevented duplicates by week, student, and subject."
+          }
+        ],
+        "outcome": "Brought scattered academy operations into a single manageable flow.",
+        "learned": "Operational tools stay maintainable when data relationships and exception flows are designed before features.",
+        "stack": [
+          { "name": "Next.js", "reason": "Operations screens and API routes" },
+          { "name": "Supabase", "reason": "Student, class, and report data" },
+          { "name": "TanStack Query", "reason": "Schedule and report server state" },
+          { "name": "OMR", "reason": "Template-based image grading" },
+          { "name": "Alimtalk API", "reason": "Weekly report delivery" }
+        ],
+        "stills": [
+          "Student/class management: list, detail, class status",
+          "Classroom schedule: per-room schedule and time changes",
+          "OMR grading: template coordinates and result table",
+          "Weekly report: report editor and delivery logs"
+        ]
+      },
+      "ja": {
+        "synopsis": "ZUKUは、生徒情報、クラス編成、教室時間割、OMR採点、週次レポートのAlimtalk送信を一つの流れで管理する学院運営システムです。繰り返し確認や入力が多い業務を、データ関係を中心に整理しました。",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "生徒管理、クラス管理、クラス編成、教室時間割、統合時間割、OMRテンプレート/採点、週次レポートを実装",
+              "React Query hookとclient/server serviceを接続"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": ["認証/招待、生徒、クラス、時間割、例外日程、OMR、週次レポート、AlimtalkのAPI Routeを実装"]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": ["生徒、授業、クラス編成、OMR template、weekly_reports関連のSupabase migrationを構成"]
+          }
+        ],
+        "features": [
+          {
+            "title": "生徒/クラス/編成管理",
+            "desc": "生徒登録、授業登録、クラス編成の関係をドメインごとに分離しました。"
+          },
+          {
+            "title": "教室/統合時間割",
+            "desc": "教室別授業配置と移動・時間変更フローを実装しました。"
+          },
+          {
+            "title": "OMRテンプレート採点",
+            "desc": "OMR画像アップロード、テンプレート座標、明度基準の採点結果をつなげました。"
+          },
+          {
+            "title": "週次レポートAlimtalk",
+            "desc": "レポートrowを作成して送信し、結果をログとして保存します。"
+          }
+        ],
+        "problems": [
+          {
+            "title": "生徒-クラス編成関係",
+            "desc": "student_compositionsを追加し、生徒登録とクラス構成を分離しました。"
+          },
+          {
+            "title": "OMR認識安定性",
+            "desc": "テンプレート座標と明度/差分しきい値でマーク判定を行いました。"
+          },
+          {
+            "title": "レポート重複送信",
+            "desc": "レポート保存と送信ログを分け、週/生徒/科目単位で重複を防ぎました。"
+          }
+        ],
+        "outcome": "分散していた学院運営業務を一つの管理フローにまとめました。",
+        "learned": "運用ツールは機能より先にデータ関係と例外フローを整理すると保守性が生まれると学びました。",
+        "stack": [
+          { "name": "Next.js", "reason": "運用画面とAPI Routeを構成" },
+          { "name": "Supabase", "reason": "生徒/授業/レポートデータ管理" },
+          { "name": "TanStack Query", "reason": "時間割とレポートのサーバー状態管理" },
+          { "name": "OMR", "reason": "テンプレートベース画像採点" },
+          { "name": "Alimtalk API", "reason": "週次レポート送信" }
+        ],
+        "stills": [
+          "生徒/授業管理: 一覧、詳細、登録状態",
+          "教室/統合時間割: 教室別時間割、授業移動/時間変更",
+          "OMR自動採点: テンプレート座標と採点結果",
+          "週次レポート: 作成画面と送信ログ"
+        ]
+      }
+    }
+  },
+  {
+    "id": "ssudam",
+    "scope": "Frontend only",
+    "locale": {
+      "ko": {
+        "synopsis": "SSUDAM은 AI 상담, 지원사업 정보, 주변 시설 탐색을 모바일 화면 안에 묶은 해커톤 서비스입니다. 백엔드와 DB를 직접 구현한 프로젝트가 아니라 프론트엔드 화면, 외부 API 연동, MSW 목업, 지도/주소 검색 연동을 중심으로 작업했습니다.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "AI 상담 온보딩, 상담 채팅, 지원사업 정보, 주변 시설 지도 화면 구현",
+              "axios service layer와 React Query로 API 연동 분리",
+              "Storybook/MSW로 핵심 화면과 컴포넌트 검증"
+            ]
+          }
+        ],
+        "features": [
+          {
+            "title": "AI 상담 온보딩",
+            "desc": "사용자 상황을 빠르게 입력하고 상담 흐름으로 진입합니다."
+          },
+          {
+            "title": "상담 채팅",
+            "desc": "응답 타입별 UI 분기와 상태 처리를 구성했습니다."
+          },
+          {
+            "title": "지원사업 정보",
+            "desc": "지원정보 조회와 상세 확인 흐름을 React Query로 관리했습니다."
+          },
+          {
+            "title": "주변 시설 지도",
+            "desc": "Kakao Maps와 주소 검색을 클라이언트에서 연동했습니다."
+          }
+        ],
+        "problems": [
+          {
+            "title": "외부 API 의존성 대응",
+            "desc": "MSW 목업과 service layer로 API 준비 상태와 무관하게 UI를 검증했습니다."
+          },
+          {
+            "title": "상담 응답 타입 분기",
+            "desc": "상담 응답 형태에 따라 채팅 UI와 다음 액션을 분리했습니다."
+          }
+        ],
+        "outcome": "짧은 해커톤 기간 안에 핵심 사용자 흐름을 시연 가능한 형태로 연결했습니다.",
+        "learned": "해커톤에서는 기능 수보다 핵심 흐름을 끝까지 연결하는 것이 설득력 있다는 점을 배웠습니다.",
+        "stack": [
+          { "name": "Next.js", "reason": "모바일 중심 화면 구성" },
+          { "name": "TanStack Query", "reason": "지원정보와 상담 응답 상태 관리" },
+          { "name": "Kakao Maps", "reason": "주변 시설 지도 연동" },
+          { "name": "Storybook / MSW", "reason": "컴포넌트와 API 목업 검증" }
+        ],
+        "stills": ["AI 상담 온보딩", "상담 채팅", "지원사업 정보", "주변 시설 지도"]
+      },
+      "en": {
+        "synopsis": "SSUDAM is a hackathon service that combines AI counseling, support-program information, and nearby facility discovery in a mobile interface. The project focused on frontend screens, external API integration, MSW mocks, and map/address search rather than a custom backend or database.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "Built AI counseling onboarding, counseling chat, support-program information, and nearby facility map screens",
+              "Separated API integration with an axios service layer and React Query",
+              "Validated core screens and components with Storybook and MSW"
+            ]
+          }
+        ],
+        "features": [
+          {
+            "title": "AI Counseling Onboarding",
+            "desc": "Lets users enter their situation quickly and move into counseling."
+          },
+          {
+            "title": "Counseling Chat",
+            "desc": "Configured UI branches and states by response type."
+          },
+          {
+            "title": "Support-program Information",
+            "desc": "Managed list/detail data flows with React Query."
+          },
+          {
+            "title": "Nearby Facility Map",
+            "desc": "Integrated Kakao Maps and address search on the client side."
+          }
+        ],
+        "problems": [
+          {
+            "title": "External API dependency",
+            "desc": "Used MSW mocks and a service layer to validate UI before APIs were fully ready."
+          },
+          {
+            "title": "Counseling response branching",
+            "desc": "Separated chat UI and next actions by response shape."
+          }
+        ],
+        "outcome": "Connected the core user journey into a demo-ready flow within a short hackathon timeline.",
+        "learned": "In hackathons, a complete core flow is more persuasive than a large number of disconnected features.",
+        "stack": [
+          { "name": "Next.js", "reason": "Mobile-first screen implementation" },
+          { "name": "TanStack Query", "reason": "Support information and chat state" },
+          { "name": "Kakao Maps", "reason": "Nearby facility map integration" },
+          { "name": "Storybook / MSW", "reason": "Component and API mock validation" }
+        ],
+        "stills": ["AI counseling onboarding", "Counseling chat", "Support-program information", "Nearby facility map"]
+      },
+      "ja": {
+        "synopsis": "SSUDAMは、AI相談、支援事業情報、周辺施設検索をモバイル画面にまとめたハッカソンサービスです。独自バックエンドやDBではなく、フロントエンド画面、外部API連携、MSWモック、地図/住所検索連携を中心に実装しました。",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "AI相談オンボーディング、相談チャット、支援事業情報、周辺施設地図画面を実装",
+              "axios service layerとReact QueryでAPI連携を分離",
+              "Storybook/MSWで主要画面とコンポーネントを検証"
+            ]
+          }
+        ],
+        "features": [
+          {
+            "title": "AI相談オンボーディング",
+            "desc": "ユーザー状況を素早く入力し、相談フローへ入ります。"
+          },
+          {
+            "title": "相談チャット",
+            "desc": "応答タイプごとのUI分岐と状態処理を構成しました。"
+          },
+          {
+            "title": "支援事業情報",
+            "desc": "支援情報の取得と詳細確認をReact Queryで管理しました。"
+          },
+          {
+            "title": "周辺施設地図",
+            "desc": "Kakao Mapsと住所検索をクライアント側で連携しました。"
+          }
+        ],
+        "problems": [
+          {
+            "title": "外部API依存",
+            "desc": "MSWモックとservice layerで、API準備状況に関係なくUIを検証しました。"
+          },
+          {
+            "title": "相談応答タイプ分岐",
+            "desc": "相談応答の形に応じてチャットUIと次アクションを分離しました。"
+          }
+        ],
+        "outcome": "短いハッカソン期間の中で、主要ユーザーフローをデモ可能な形につなげました。",
+        "learned": "ハッカソンでは機能数よりも、核心フローを最後までつなげることが説得力になると学びました。",
+        "stack": [
+          { "name": "Next.js", "reason": "モバイル中心画面を構成" },
+          { "name": "TanStack Query", "reason": "支援情報と相談応答状態を管理" },
+          { "name": "Kakao Maps", "reason": "周辺施設地図連携" },
+          { "name": "Storybook / MSW", "reason": "コンポーネントとAPIモック検証" }
+        ],
+        "stills": ["AI相談オンボーディング", "相談チャット", "支援事業情報", "周辺施設地図"]
+      }
+    }
+  },
+  {
+    "id": "flea-market",
+    "scope": "Frontend + Backend + DB",
+    "locale": {
+      "ko": {
+        "synopsis": "기존 엑셀 정산 파일을 분석해 영수증, 결제수단, 판매 라인, 참가자별 수수료, 정산 스냅샷 도메인으로 분리했습니다. Next.js 프론트, NestJS API, Supabase/PostgreSQL migration, Docker 개발 환경을 구성하고 정산 미리보기/확정/PDF 출력 흐름을 구현했습니다.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "마켓/참가자 관리, 현장 영수증 입력, 정산 미리보기, 정산 회차/PDF 출력 화면 구현",
+              "React Query 기반 정산 preview/confirm 흐름 구성"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": ["NestJS API, 정산 계산기, PDF 출력, Docker 개발 환경 구성"]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": ["영수증, 결제수단, 판매 라인, 수수료, 정산 snapshot/versioning 테이블 구성"]
+          }
+        ],
+        "features": [
+          {
+            "title": "마켓/참가자 관리",
+            "desc": "행사와 참가자별 수수료, 판매 조건을 관리합니다."
+          },
+          {
+            "title": "현장 영수증 입력",
+            "desc": "복합 결제와 판매 라인을 입력하고 검증합니다."
+          },
+          {
+            "title": "정산 미리보기",
+            "desc": "수수료와 결제수단 비례 배분을 계산해 사전 확인합니다."
+          },
+          {
+            "title": "정산 확정/PDF 출력",
+            "desc": "정산 회차를 snapshot으로 고정하고 출력물을 생성합니다."
+          }
+        ],
+        "problems": [
+          {
+            "title": "엑셀 수식 도메인화",
+            "desc": "12개 시트, 30개 Table, 676개 수식을 웹 도메인으로 재구성했습니다."
+          },
+          {
+            "title": "복합 결제 비례 배분",
+            "desc": "현금/카드/이체가 섞인 결제 금액을 판매 라인에 비례 배분했습니다."
+          },
+          {
+            "title": "정산 snapshot/versioning",
+            "desc": "정산 확정 이후 데이터 변경 영향을 막기 위해 회차별 snapshot 구조를 설계했습니다."
+          }
+        ],
+        "outcome": "엑셀 기반 정산 흐름을 웹 운영 시스템으로 옮기기 위한 도메인 모델과 검증 흐름을 만들었습니다.",
+        "learned": "엑셀 자동화 이식은 화면보다 수식의 의미와 변경 가능성을 먼저 해석해야 한다는 점을 배웠습니다.",
+        "stack": [
+          { "name": "Next.js", "reason": "운영 화면 구성" },
+          { "name": "NestJS", "reason": "정산 도메인 API 분리" },
+          { "name": "Supabase PostgreSQL", "reason": "정산 데이터와 snapshot 저장" },
+          { "name": "Decimal.js", "reason": "금액 계산 정밀도 관리" },
+          { "name": "PDFKit", "reason": "정산 출력물 생성" },
+          { "name": "Docker", "reason": "개발 환경 재현" }
+        ],
+        "stills": ["마켓/참가자 관리", "현장 영수증 입력", "정산 미리보기", "정산 회차/PDF 출력"]
+      },
+      "en": {
+        "synopsis": "This project analyzes an Excel-based settlement file and splits it into receipt, payment method, sale line, participant fee, and settlement snapshot domains. It combines a Next.js frontend, NestJS API, Supabase/PostgreSQL migrations, Docker development setup, and preview/confirm/PDF settlement flows.",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "Built market/participant management, on-site receipt entry, settlement preview, settlement round, and PDF output screens",
+              "Structured settlement preview/confirm flows with React Query"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": ["Configured NestJS APIs, settlement calculator, PDF output, and Docker development environment"]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": ["Designed receipt, payment method, sale line, fee, and settlement snapshot/versioning tables"]
+          }
+        ],
+        "features": [
+          {
+            "title": "Market / Participant Management",
+            "desc": "Manages event information, participant fees, and selling conditions."
+          },
+          {
+            "title": "On-site Receipt Entry",
+            "desc": "Inputs and validates mixed payment methods and sale lines."
+          },
+          {
+            "title": "Settlement Preview",
+            "desc": "Calculates fees and proportional payment allocation before confirmation."
+          },
+          {
+            "title": "Confirm / PDF Export",
+            "desc": "Freezes a settlement round as a snapshot and generates output documents."
+          }
+        ],
+        "problems": [
+          {
+            "title": "Turning Excel formulas into domains",
+            "desc": "Reconstructed 12 sheets, 30 tables, and 676 formulas as web application domains."
+          },
+          {
+            "title": "Mixed payment allocation",
+            "desc": "Allocated cash/card/transfer amounts proportionally across sale lines."
+          },
+          {
+            "title": "Settlement snapshot/versioning",
+            "desc": "Designed round-based snapshots to prevent later data changes from affecting confirmed settlements."
+          }
+        ],
+        "outcome": "Created the domain model and validation flow needed to move Excel-based settlements into a web operations system.",
+        "learned": "When migrating Excel automation, the meaning and mutability of formulas matter before the screen design.",
+        "stack": [
+          { "name": "Next.js", "reason": "Operations screens" },
+          { "name": "NestJS", "reason": "Settlement domain APIs" },
+          { "name": "Supabase PostgreSQL", "reason": "Settlement data and snapshots" },
+          { "name": "Decimal.js", "reason": "Money calculation precision" },
+          { "name": "PDFKit", "reason": "Settlement document generation" },
+          { "name": "Docker", "reason": "Reproducible development environment" }
+        ],
+        "stills": ["Market/participant management", "On-site receipt entry", "Settlement preview", "Settlement round/PDF export"]
+      },
+      "ja": {
+        "synopsis": "既存のExcel精算ファイルを分析し、レシート、決済手段、販売ライン、参加者別手数料、精算スナップショットのドメインに分離しました。Next.jsフロント、NestJS API、Supabase/PostgreSQL migration、Docker開発環境を構成し、精算プレビュー/確定/PDF出力を実装しました。",
+        "contribution": [
+          {
+            "key": "fe",
+            "lead": true,
+            "items": [
+              "マーケット/参加者管理、現場レシート入力、精算プレビュー、精算回次/PDF出力画面を実装",
+              "React Queryベースのpreview/confirmフローを構成"
+            ]
+          },
+          {
+            "key": "be",
+            "lead": true,
+            "items": ["NestJS API、精算計算機、PDF出力、Docker開発環境を構成"]
+          },
+          {
+            "key": "db",
+            "lead": true,
+            "items": ["レシート、決済手段、販売ライン、手数料、精算snapshot/versioningテーブルを構成"]
+          }
+        ],
+        "features": [
+          {
+            "title": "マーケット/参加者管理",
+            "desc": "イベントと参加者別手数料、販売条件を管理します。"
+          },
+          {
+            "title": "現場レシート入力",
+            "desc": "複合決済と販売ラインを入力し、検証します。"
+          },
+          {
+            "title": "精算プレビュー",
+            "desc": "手数料と決済手段の比例配分を計算し、事前確認します。"
+          },
+          {
+            "title": "精算確定/PDF出力",
+            "desc": "精算回次をsnapshotとして固定し、出力物を生成します。"
+          }
+        ],
+        "problems": [
+          {
+            "title": "Excel数式のドメイン化",
+            "desc": "12シート、30テーブル、676数式をWebドメインとして再構成しました。"
+          },
+          {
+            "title": "複合決済の比例配分",
+            "desc": "現金/カード/振込が混ざる決済金額を販売ラインに比例配分しました。"
+          },
+          {
+            "title": "精算snapshot/versioning",
+            "desc": "精算確定後のデータ変更影響を防ぐため、回次別snapshot構造を設計しました。"
+          }
+        ],
+        "outcome": "Excelベースの精算フローをWeb運用システムへ移すためのドメインモデルと検証フローを作りました。",
+        "learned": "Excel自動化の移植では、画面より先に数式の意味と変更可能性を解釈する必要があると学びました。",
+        "stack": [
+          { "name": "Next.js", "reason": "運用画面を構成" },
+          { "name": "NestJS", "reason": "精算ドメインAPIを分離" },
+          { "name": "Supabase PostgreSQL", "reason": "精算データとsnapshot保存" },
+          { "name": "Decimal.js", "reason": "金額計算の精度管理" },
+          { "name": "PDFKit", "reason": "精算出力物生成" },
+          { "name": "Docker", "reason": "開発環境再現" }
+        ],
+        "stills": ["マーケット/参加者管理", "現場レシート入力", "精算プレビュー", "精算回次/PDF出力"]
+      }
+    }
+  }
+]
