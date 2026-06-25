@@ -29,7 +29,7 @@ export const ctaButtonVariants = cva(
       size: {
         nav: "gap-2 px-4 py-[9px] text-[13px]",
         hero: "gap-[9px] px-[26px] py-[14px] text-[15px]",
-        heroOutline: "gap-[9px] px-6 py-[11px] text-[15px]",
+        heroOutline: "gap-[9px] px-6 py-[11px] text-base",
         overlay: "gap-2 px-[22px] py-[13px] text-sm",
       },
       shadow: {

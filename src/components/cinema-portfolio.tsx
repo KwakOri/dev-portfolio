@@ -60,7 +60,7 @@ const cardTagsByLanguage: Record<Language, Record<string, string[]>> = {
     lucent: ["주문·제작·배송 관리", "복수 팝업 이벤트", "팝업 평균 200-300만원"],
     ssudam: ["2024 해커톤 수상", "AI 활용 역량 인정", "아이디어 우수성 검증"],
     temis: ["유료 유저 100명 이상", "주간 실사용 200명+", "누적 매출 800만원+"],
-    "vshot-v2": ["2026 일러스타페스", "방송인 콜라보 20명+", "이벤트 성공 마무리"],
+    "vshot-v2": ["2026 일러스타페스", "방송인 콜라보 20명+", "화상 팬미팅 플랫폼"],
   },
   en: {
     "231edu": ["Live academy ops", "~200 enrolled students", "Students·schedules·reports"],
@@ -257,7 +257,7 @@ export function CinemaPortfolio() {
         onOpenProject={openProject}
         projects={localizedProjects}
       />
-      <CinemaFooter copy={copy} />
+      <CinemaFooter />
 
       {selectedProject ? (
         <ProjectOverlay

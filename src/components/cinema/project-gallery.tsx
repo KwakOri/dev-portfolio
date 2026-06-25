@@ -41,7 +41,7 @@ export function ProjectGallery({
               {copy.sectionTitle}
             </h2>
           </div>
-          <div className="max-w-[260px] border-2 border-[#16130C] px-3.5 py-[9px] font-oswald text-sm font-medium tracking-[1px]">
+          <div className="w-fit max-w-full border-2 border-[#16130C] px-3.5 py-[9px] font-oswald text-sm font-medium tracking-[1px] min-[420px]:whitespace-nowrap">
             {copy.sectionDesc}
           </div>
         </div>
@@ -95,7 +95,7 @@ export function ProjectGallery({
                   </div>
 
                   {project.dimmed ? (
-                    <div className="absolute right-[-40px] top-[22px] rotate-[28deg] border-y-2 border-white bg-[#16130C] px-[50px] py-[5px] font-anton text-xs tracking-[2px] text-white">
+                    <div className="absolute right-[-64px] top-[26px] w-[224px] rotate-[28deg] border-y-2 border-white bg-[#16130C] px-5 py-[5px] text-center font-anton text-xs tracking-[2px] text-white">
                       {project.statusLabel}
                     </div>
                   ) : null}

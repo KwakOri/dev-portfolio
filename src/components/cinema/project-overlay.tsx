@@ -15,11 +15,7 @@ import {
   Wrench,
   X,
 } from "lucide-react";
-import {
-  ctaButtonVariants,
-  detailPanelVariants,
-  stillButtonVariants,
-} from "./variants";
+import { detailPanelVariants, stillButtonVariants } from "./variants";
 import { ArchitectureLayer } from "./architecture-layer";
 import type {
   LocalizedProject,
@@ -57,7 +53,11 @@ export function ProjectOverlay({
   shotIndex: number;
 }) {
   const liveEnabled = project.liveUrl !== "#";
-  const repoEnabled = project.repoUrl !== "#";
+  const repoLinks = project.repoLinks?.length
+    ? project.repoLinks
+    : project.repoUrl !== "#"
+      ? [{ label: copy.repo, url: project.repoUrl }]
+      : [];
   const selectedStill = project.detailStills[shotIndex] ?? project.detailStills[0];
   const summaryItems = [
     {
@@ -90,17 +90,66 @@ export function ProjectOverlay({
         className="scf-pop relative flex max-h-[92vh] w-full max-w-[1140px] flex-col overflow-hidden border-4 border-[#FFCE00] bg-[#14110A] shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
         onClick={(event) => event.stopPropagation()}
       >
-        <button
-          aria-label={copy.close}
-          className="absolute right-4 top-4 z-20 flex h-[42px] w-[42px] items-center justify-center border-0 bg-[#FFCE00] text-[#16130C] shadow-[3px_3px_0_rgba(0,0,0,0.4)]"
-          onClick={onClose}
-          type="button"
-        >
-          <X aria-hidden="true" className="h-6 w-6" strokeWidth={3} />
-        </button>
+        <div className="absolute right-4 top-4 z-20 flex items-start gap-2 sm:right-6 sm:top-6 lg:right-8 lg:top-8">
+          <div className="flex max-w-[calc(100vw-5.5rem)] flex-col items-end gap-2">
+            {liveEnabled ? (
+              <ProjectActionLink href={project.liveUrl} tone="live">
+                <ExternalLink
+                  aria-hidden="true"
+                  className="h-4 w-4"
+                  strokeWidth={3}
+                />
+                {copy.live}
+              </ProjectActionLink>
+            ) : (
+              <DisabledLink icon="external">
+                {copy.live} · {copy.linkSoon}
+              </DisabledLink>
+            )}
+            <div className="flex max-w-full flex-wrap justify-end gap-2">
+              {repoLinks.length > 0 ? (
+                repoLinks.map((link) =>
+                  link.url !== "#" ? (
+                    <ProjectActionLink
+                      href={link.url}
+                      key={`${project.id}-${link.label}`}
+                      tone="repo"
+                    >
+                      <GitBranch
+                        aria-hidden="true"
+                        className="h-4 w-4"
+                        strokeWidth={3}
+                      />
+                      {link.label}
+                    </ProjectActionLink>
+                  ) : (
+                    <DisabledLink
+                      icon="repo"
+                      key={`${project.id}-${link.label}`}
+                    >
+                      {link.label} · {copy.linkSoon}
+                    </DisabledLink>
+                  ),
+                )
+              ) : (
+                <DisabledLink icon="repo">
+                  {copy.repo} · {copy.linkSoon}
+                </DisabledLink>
+              )}
+            </div>
+          </div>
+          <button
+            aria-label={copy.close}
+            className="flex h-[42px] w-[42px] shrink-0 items-center justify-center border-0 bg-[#FFCE00] text-[#16130C] shadow-[3px_3px_0_rgba(0,0,0,0.4)]"
+            onClick={onClose}
+            type="button"
+          >
+            <X aria-hidden="true" className="h-6 w-6" strokeWidth={3} />
+          </button>
+        </div>
 
         <div className="scf-overlay-scroll max-h-[92vh] overflow-y-auto">
-          <div className="relative overflow-hidden border-b-[3px] border-[#FFCE00] bg-[#17140E] px-5 py-10 sm:px-12 sm:pb-[34px] sm:pt-[46px]">
+          <div className="relative overflow-hidden border-b-[3px] border-[#FFCE00] bg-[#17140E] px-5 pb-10 pt-[126px] sm:px-12 sm:pb-[34px] sm:pt-[126px] lg:pt-[46px]">
             <div className="absolute inset-0 bg-[repeating-linear-gradient(135deg,#1d1810_0_17px,#17140E_17px_34px)]" />
             <div className="absolute inset-0 bg-[radial-gradient(90%_120%_at_100%_0%,rgba(255,180,0,0.16),transparent_55%)]" />
             <div
@@ -110,7 +159,7 @@ export function ProjectOverlay({
               {project.num}
             </div>
 
-            <div className="relative z-[1] max-w-[760px]">
+            <div className="relative z-[1] max-w-[760px] lg:max-w-[620px] xl:max-w-[720px]">
               <div className="mb-4 flex items-center gap-3">
                 <span className="font-oswald text-[11px] font-bold tracking-[2px] text-white/40">
                   REEL · {project.num}
@@ -489,50 +538,6 @@ export function ProjectOverlay({
                 </div>
               ))}
             </div>
-
-            <div className="flex flex-wrap gap-3">
-              {liveEnabled ? (
-                <a
-                  className={ctaButtonVariants({ size: "overlay", tone: "overlay" })}
-                  href={project.liveUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <ExternalLink
-                    aria-hidden="true"
-                    className="h-4 w-4"
-                    strokeWidth={3}
-                  />
-                  {copy.live}
-                </a>
-              ) : (
-                <DisabledLink icon="external">
-                  {copy.live} · {copy.linkSoon}
-                </DisabledLink>
-              )}
-              {repoEnabled ? (
-                <a
-                  className={ctaButtonVariants({
-                    size: "overlay",
-                    tone: "overlayOutline",
-                  })}
-                  href={project.repoUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <GitBranch
-                    aria-hidden="true"
-                    className="h-4 w-4"
-                    strokeWidth={3}
-                  />
-                  {copy.repo}
-                </a>
-              ) : (
-                <DisabledLink icon="repo">
-                  {copy.repo} · {copy.linkSoon}
-                </DisabledLink>
-              )}
-            </div>
           </div>
         </div>
       </div>
@@ -595,6 +600,32 @@ function ProblemDetail({ label, value }: { label: string; value: string }) {
   );
 }
 
+function ProjectActionLink({
+  children,
+  href,
+  tone,
+}: {
+  children: ReactNode;
+  href: string;
+  tone: "live" | "repo";
+}) {
+  const toneClass =
+    tone === "live"
+      ? "border-[#FFCE00] bg-[#FFCE00] text-[#16130C] shadow-[3px_3px_0_rgba(0,0,0,0.42)] hover:bg-[#ffd936]"
+      : "border-[#FFCE00] bg-[#14110A]/95 text-[#FFCE00] shadow-[3px_3px_0_rgba(0,0,0,0.32)] hover:bg-[#FFCE00] hover:text-[#16130C]";
+
+  return (
+    <a
+      className={`inline-flex min-h-10 items-center gap-2 whitespace-nowrap border-2 px-3.5 py-2 font-oswald text-[12px] font-bold tracking-[1px] transition ${toneClass}`}
+      href={href}
+      rel="noreferrer"
+      target="_blank"
+    >
+      {children}
+    </a>
+  );
+}
+
 function DisabledLink({
   children,
   icon,
@@ -605,7 +636,7 @@ function DisabledLink({
   const Icon = icon === "external" ? ExternalLink : GitBranch;
 
   return (
-    <span className="flex cursor-not-allowed items-center gap-2 border-2 border-dashed border-[#f3e9d2]/30 bg-transparent px-5 py-[11px] font-oswald text-sm font-bold tracking-[1px] text-[#f3e9d2]/40">
+    <span className="inline-flex min-h-10 cursor-not-allowed items-center gap-2 whitespace-nowrap border-2 border-dashed border-[#f3e9d2]/30 bg-[#080603]/45 px-3.5 py-2 font-oswald text-[12px] font-bold tracking-[1px] text-[#f3e9d2]/45">
       <Icon aria-hidden="true" className="h-4 w-4" strokeWidth={3} />
       {children}
     </span>

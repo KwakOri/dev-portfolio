@@ -81,7 +81,7 @@ export type DeveloperProfileLocale = {
   lead: string;
   sub: string;
   projectsCta: string;
-  resumeCta: string;
+  githubCta: string;
   availability: string;
   mainRoleLabel: string;
   backstageLabel: string;
@@ -95,6 +95,7 @@ export type DeveloperProfileLocale = {
 export type DeveloperProfile = {
   imageSrc: string;
   imageAlt: string;
+  githubUrl: string;
   headline: string[];
   stackLines: string[];
   locale: Record<Language, DeveloperProfileLocale>;

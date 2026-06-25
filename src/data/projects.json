@@ -8,8 +8,14 @@
     "accent": "#ff8a00",
     "accentSoft": "#ffd16a",
     "posterLabel": "CREATOR OPS",
-    "liveUrl": "#",
+    "liveUrl": "https://temis.kr",
     "repoUrl": "#",
+    "repoLinks": [
+      {
+        "label": "FRONTEND",
+        "url": "https://github.com/KwakOri/Temis"
+      }
+    ],
     "stack": [
       {
         "billing": "lead",
@@ -71,6 +77,16 @@
     "posterLabel": "LIVE PHOTOBOOTH",
     "liveUrl": "#",
     "repoUrl": "#",
+    "repoLinks": [
+      {
+        "label": "FRONTEND",
+        "url": "https://github.com/KwakOri/vshot-client"
+      },
+      {
+        "label": "BACKEND",
+        "url": "https://github.com/KwakOri/vshot-server"
+      }
+    ],
     "stack": [
       {
         "billing": "lead",
@@ -134,8 +150,18 @@
     "accent": "#7bc7ff",
     "accentSoft": "#bde7ff",
     "posterLabel": "COMMERCE CUTOVER",
-    "liveUrl": "#",
+    "liveUrl": "https://lucentlabel.shop",
     "repoUrl": "#",
+    "repoLinks": [
+      {
+        "label": "FRONTEND",
+        "url": "https://github.com/KwakOri/Lucent"
+      },
+      {
+        "label": "BACKEND",
+        "url": "https://github.com/KwakOri/lucent-server"
+      }
+    ],
     "stack": [
       {
         "billing": "lead",
@@ -201,6 +227,20 @@
     "posterLabel": "ACADEMY OPS",
     "liveUrl": "#",
     "repoUrl": "#",
+    "repoLinks": [
+      {
+        "label": "FRONTEND",
+        "url": "https://github.com/KwakOri/zuku"
+      },
+      {
+        "label": "BACKEND",
+        "url": "https://github.com/KwakOri/231edu-api-node"
+      },
+      {
+        "label": "API(PYTHON)",
+        "url": "https://github.com/KwakOri/python-api-server"
+      }
+    ],
     "stack": [
       {
         "billing": "lead",
@@ -270,6 +310,12 @@
     "posterLabel": "CARE ASSIST",
     "liveUrl": "#",
     "repoUrl": "#",
+    "repoLinks": [
+      {
+        "label": "FRONTEND",
+        "url": "https://github.com/KwakOri/hackathon-ssudam"
+      }
+    ],
     "stack": [
       {
         "billing": "lead",
@@ -335,6 +381,20 @@
     "posterLabel": "SETTLEMENT OPS",
     "liveUrl": "#",
     "repoUrl": "#",
+    "repoLinks": [
+      {
+        "label": "FRONTEND",
+        "url": "https://github.com/KwakOri/flea_market_web"
+      },
+      {
+        "label": "BACKEND",
+        "url": "https://github.com/KwakOri/flea-market-api-node"
+      },
+      {
+        "label": "API(PYTHON)",
+        "url": "https://github.com/KwakOri/python-api-server"
+      }
+    ],
     "stack": [
       {
         "billing": "lead",

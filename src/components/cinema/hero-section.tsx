@@ -70,9 +70,18 @@ export function HeroSection({
                 ctaButtonVariants({ size: "heroOutline", tone: "outline" }),
                 "no-underline",
               )}
-              href="#about"
+              href={profile.githubUrl}
+              rel="noreferrer"
+              target="_blank"
             >
-              {profile.resumeCta}
+              {/* eslint-disable-next-line @next/next/no-img-element -- Project rules prefer native img over next/image. */}
+              <img
+                alt=""
+                aria-hidden="true"
+                className="h-8 w-8 shrink-0 object-contain"
+                src="/icons/github-sign.png"
+              />
+              {profile.githubCta}
             </a>
           </div>
         </div>

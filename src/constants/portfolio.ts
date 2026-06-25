@@ -23,6 +23,10 @@ export type Project = {
   posterLabel: string;
   liveUrl: string;
   repoUrl: string;
+  repoLinks?: {
+    label: string;
+    url: string;
+  }[];
   stack: {
     billing: Billing;
     name: string;
@@ -78,7 +82,7 @@ export const portfolioCopy = {
     dept_db: "데이터베이스",
     dept_infra: "인프라",
     live: "상영관 입장",
-    repo: "필름 원본",
+    repo: "GitHub",
     close: "닫기",
     statusNow: "상영중",
     statusComing: "상영 예정",
@@ -86,7 +90,6 @@ export const portfolioCopy = {
     billLead: "주연",
     billSupport: "조연",
     billCameo: "특별출연",
-    footerNote: "포스터와 스틸컷은 데이터 파일에서 교체할 수 있습니다.",
     ticker: "지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / ",
   },
   en: {
@@ -133,7 +136,7 @@ export const portfolioCopy = {
     dept_db: "DATABASE",
     dept_infra: "INFRA",
     live: "ENTER THEATER",
-    repo: "SOURCE REEL",
+    repo: "GitHub",
     close: "Close",
     statusNow: "NOW SHOWING",
     statusComing: "COMING SOON",
@@ -141,7 +144,6 @@ export const portfolioCopy = {
     billLead: "LEAD",
     billSupport: "SUPPORTING",
     billCameo: "CAMEO",
-    footerNote: "Posters and stills can be replaced in the data file.",
     ticker: "NOW SHOWING / SOLD OUT / ENCORE SCREENING / HELD OVER / ",
   },
   ja: {
@@ -188,7 +190,7 @@ export const portfolioCopy = {
     dept_db: "データベース",
     dept_infra: "インフラ",
     live: "劇場へ入る",
-    repo: "フィルム原本",
+    repo: "GitHub",
     close: "閉じる",
     statusNow: "上映中",
     statusComing: "公開予定",
@@ -196,7 +198,6 @@ export const portfolioCopy = {
     billLead: "主演",
     billSupport: "助演",
     billCameo: "特別出演",
-    footerNote: "ポスターとスチルはデータファイルで差し替えできます。",
     ticker: "上映中 / 満員御礼 / アンコール上映決定 / ロングラン上映中 / ",
   },
 } satisfies Record<Language, Record<string, string>>;
