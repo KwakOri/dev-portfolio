@@ -66,6 +66,18 @@ button {
   animation: scfPop 0.22s ease;
 }
 
+.project-repo-link {
+  border-color: var(--project-action-accent, #ffce00);
+  background: var(--project-action-accent, #ffce00);
+  color: #16130c;
+}
+
+.project-repo-link:hover,
+.project-repo-link:focus-visible {
+  filter: brightness(1.08);
+  transform: translate(-1px, -1px);
+}
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   width: 14px;

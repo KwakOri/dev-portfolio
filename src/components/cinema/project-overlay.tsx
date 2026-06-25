@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 import type { Language } from "@/constants/portfolio";
 import {
@@ -29,6 +29,10 @@ const qualitySignalIcons: Record<QualitySignalType, LucideIcon> = {
   maintainability: Wrench,
   performance: Gauge,
   testing: ShieldCheck,
+};
+
+type ProjectActionStyle = CSSProperties & {
+  "--project-action-accent"?: string;
 };
 
 const getImageFitClass = (
@@ -90,8 +94,8 @@ export function ProjectOverlay({
         className="scf-pop relative flex max-h-[92vh] w-full max-w-[1140px] flex-col overflow-hidden border-4 border-[#FFCE00] bg-[#14110A] shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="absolute right-4 top-4 z-20 flex items-start gap-2 sm:right-6 sm:top-6 lg:right-8 lg:top-8">
-          <div className="flex max-w-[calc(100vw-5.5rem)] flex-col items-end gap-2">
+        <div className="absolute right-4 top-4 z-20 flex max-w-[calc(100vw-2rem)] items-start justify-end gap-2 sm:right-6 sm:top-6 sm:max-w-[calc(100vw-3rem)] lg:right-8 lg:top-8 lg:max-w-[calc(100vw-4rem)]">
+          <div className="flex max-w-[calc(100vw-5.5rem)] flex-wrap justify-end gap-2 sm:flex-nowrap">
             {liveEnabled ? (
               <ProjectActionLink href={project.liveUrl} tone="live">
                 <ExternalLink
@@ -106,13 +110,14 @@ export function ProjectOverlay({
                 {copy.live} · {copy.linkSoon}
               </DisabledLink>
             )}
-            <div className="flex max-w-full flex-wrap justify-end gap-2">
+            <div className="flex max-w-full flex-wrap justify-end gap-2 sm:flex-nowrap">
               {repoLinks.length > 0 ? (
                 repoLinks.map((link) =>
                   link.url !== "#" ? (
                     <ProjectActionLink
                       href={link.url}
                       key={`${project.id}-${link.label}`}
+                      accent={project.accent}
                       tone="repo"
                     >
                       <GitBranch
@@ -601,10 +606,12 @@ function ProblemDetail({ label, value }: { label: string; value: string }) {
 }
 
 function ProjectActionLink({
+  accent,
   children,
   href,
   tone,
 }: {
+  accent?: string;
   children: ReactNode;
   href: string;
   tone: "live" | "repo";
@@ -612,13 +619,18 @@ function ProjectActionLink({
   const toneClass =
     tone === "live"
       ? "border-[#FFCE00] bg-[#FFCE00] text-[#16130C] shadow-[3px_3px_0_rgba(0,0,0,0.42)] hover:bg-[#ffd936]"
-      : "border-[#FFCE00] bg-[#14110A]/95 text-[#FFCE00] shadow-[3px_3px_0_rgba(0,0,0,0.32)] hover:bg-[#FFCE00] hover:text-[#16130C]";
+      : "project-repo-link shadow-[3px_3px_0_rgba(0,0,0,0.32)]";
+  const repoStyle: ProjectActionStyle | undefined =
+    tone === "repo"
+      ? { "--project-action-accent": accent ?? "#FFCE00" }
+      : undefined;
 
   return (
     <a
       className={`inline-flex min-h-10 items-center gap-2 whitespace-nowrap border-2 px-3.5 py-2 font-oswald text-[12px] font-bold tracking-[1px] transition ${toneClass}`}
       href={href}
       rel="noreferrer"
+      style={repoStyle}
       target="_blank"
     >
       {children}
