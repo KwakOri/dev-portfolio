@@ -1,0 +1,83 @@
+- main "TEMIS isometric architecture map" [ref=e2]:
+  - generic [ref=e3]:
+    - paragraph [ref=e4]: Project 01 · Architecture Map
+    - heading "Building the Creator Ops Flow" [level=1] [ref=e5]
+    - paragraph [ref=e6]: TEMIS는 일정표 제작 도구, 템플릿 상점, 주문 파일, 권한/정산 데이터를 하나의 운영 흐름으로 연결한 크리에이터 커머스 플랫폼입니다.
+    - generic [ref=e7]:
+      - generic [ref=e8]: Next.js
+      - generic [ref=e9]: TypeScript
+      - generic [ref=e10]: TanStack Query
+      - generic [ref=e11]: Supabase
+      - generic [ref=e12]: Cloudflare R2
+      - generic [ref=e13]: Nodemailer
+  - generic [ref=e14]:
+    - img
+    - article [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]: CREATOR STUDIO
+        - heading "일정표 편집기" [level=2] [ref=e19]
+        - paragraph [ref=e20]: 입력 폼, 프리뷰, 저장/복원 로직을 설정 기반 hook으로 연결합니다.
+    - generic [ref=e22]:
+      - heading "Editor State" [level=3] [ref=e23]
+      - paragraph [ref=e24]: 템플릿마다 다른 입력 필드는 설정으로 주입하고, 공통 편집 로직은 재사용합니다.
+    - article [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]: TEMPLATE SHOP
+        - heading "상점/구매 요청" [level=2] [ref=e29]
+        - paragraph [ref=e30]: 사용자는 템플릿을 탐색하고 접근 권한 또는 구매 요청을 보냅니다.
+        - generic [ref=e31]: ₩
+    - generic [ref=e32]:
+      - heading "Commerce Flow" [level=3] [ref=e33]
+      - paragraph [ref=e34]: React Query와 service layer로 목록, 상세, mutation, invalidate를 분리합니다.
+    - article [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]: ORDER DESK
+        - heading "커스텀 주문 운영" [level=2] [ref=e39]
+        - paragraph [ref=e40]: 구매 요청, 주문 상태, 관리자 작업을 API Route 계층에서 처리합니다.
+    - generic [ref=e42]:
+      - heading "Next.js API Routes" [level=3] [ref=e43]
+      - paragraph [ref=e44]: 인증, 권한, 구매 요청, 관리자 액션을 얇은 서버 계층으로 정리합니다.
+    - article [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]: FILE VAULT
+        - heading "Cloudflare R2" [level=2] [ref=e49]
+        - paragraph [ref=e50]: 주문 파일과 이미지를 검증하고, R2 key와 DB record를 연결합니다.
+        - generic [ref=e51]: R2
+    - generic [ref=e52]:
+      - heading "Upload Pipeline" [level=3] [ref=e53]
+      - paragraph [ref=e54]: 업로드, 삭제, zip 다운로드 흐름을 분리해 실패 추적과 운영 관리를 쉽게 만듭니다.
+    - article [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e57]: OPS CORE
+        - heading "Supabase 데이터 모델" [level=2] [ref=e59]
+        - paragraph [ref=e60]: 사용자, 템플릿, 구매 요청, 접근 권한, 판매/정산 데이터를 분리합니다.
+    - generic [ref=e62]:
+      - heading "Database Relations" [level=3] [ref=e63]
+      - paragraph [ref=e64]: 제작 도구보다 먼저 운영 데이터 관계를 고정해 권한과 정산 흐름을 안정화합니다.
+    - article [ref=e65]:
+      - generic [ref=e66]:
+        - generic [ref=e67]: EMAIL TOKENS
+        - heading "Nodemailer" [level=2] [ref=e69]
+        - paragraph [ref=e70]: 초대, 인증, 비밀번호 재설정 토큰 메일을 서비스 흐름에 연결합니다.
+        - generic [ref=e71]: "@"
+    - article [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]: ADMIN OPS
+        - heading "관리자/정산 대시보드" [level=2] [ref=e76]
+        - paragraph [ref=e77]: 템플릿, 주문, 파일, 접근 권한, 정산 상태를 한 화면 흐름으로 관리합니다.
+    - generic [ref=e79]:
+      - heading "Operational Loop" [level=3] [ref=e80]
+      - paragraph [ref=e81]: 제작 → 판매 → 파일 전달 → 권한 부여 → 정산 확인까지 하나의 제품 경험으로 닫힙니다.
+    - generic [ref=e82]: UI
+    - generic [ref=e83]: API
+    - generic [ref=e84]: DB
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - strong [ref=e87]: Architecture Focus
+        - generic [ref=e88]: 박스형 시스템 구조 대신, TEMIS의 실제 운영 여정을 따라 흐름을 보여주는 시각화입니다.
+      - generic [ref=e89]:
+        - strong [ref=e90]: Key Decision
+        - generic [ref=e91]: 편집기 UI 상태, 서버 상태, 운영 데이터를 분리해 변경 영향 범위를 줄였습니다.
+      - generic [ref=e92]:
+        - strong [ref=e93]: Portfolio Message
+        - generic [ref=e94]: 프론트엔드 화면에서 멈추지 않고 API, DB, 파일 저장, 운영 대시보드까지 연결했습니다.

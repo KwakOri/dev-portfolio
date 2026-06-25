@@ -1,3 +1,4 @@
+import { Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { LocalizedProject, ProjectStyle } from "./types";
 import { posterFrameVariants } from "./variants";
@@ -37,9 +38,14 @@ export function PosterArtwork({
 
       {withStatus ? (
         <div
-          className="absolute right-3.5 top-3.5 bg-[var(--project-status)] px-2.5 py-[5px] font-oswald text-xs font-bold tracking-[1px] text-white"
+          className="absolute right-3.5 top-3.5 inline-flex items-center gap-1.5 bg-[var(--project-status)] px-2.5 py-[5px] font-oswald text-xs font-bold tracking-[1px] text-white"
         >
-          ● {project.statusLabel}
+          <Circle
+            aria-hidden="true"
+            className="h-2.5 w-2.5 fill-current"
+            strokeWidth={3}
+          />
+          {project.statusLabel}
         </div>
       ) : null}
 
@@ -64,7 +70,7 @@ export function PosterArtwork({
 
       {withCaption ? (
         <div className="absolute bottom-0 left-0 right-0 bg-[#16130C] px-[18px] py-4 text-left">
-          <div className="font-anton text-3xl uppercase leading-[0.95] text-[#FFCE00]">
+          <div className="font-anton text-3xl leading-[0.95] text-[#FFCE00]">
             {project.title}
           </div>
           {surface === "hero" ? (

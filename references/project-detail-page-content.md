@@ -26,8 +26,8 @@
 - id: `temis`
 - title: TEMIS
 - subtitle: Creator Tools & Commerce
-- status: 진행중
-- period: 2025.12 - 2026.05 (코드 기록 기준)
+- status: 운영 중
+- period: 2025.07 - 운영 중
 - role: 풀스택 구현 / 프론트엔드 중심
 - implementationScope: Frontend + Backend + DB
 - tagline: 크리에이터의 일정표 제작, 템플릿 판매, 운영 관리를 한 흐름으로 묶은 웹 서비스.
@@ -80,8 +80,8 @@
 - id: `vshot-v2`
 - title: VSHOT
 - subtitle: WebRTC Photobooth
-- status: 진행중
-- period: 2025.12 - 진행중
+- status: 완료
+- period: 2026.01 - 2026.04
 - role: 풀스택 구현 / 실시간 미디어 처리
 - implementationScope: Frontend + Backend + DB
 - tagline: 실시간 영상통화와 고해상도 원본 캡처를 분리한 웹 포토부스.
@@ -135,8 +135,8 @@
 - id: `lucent`
 - title: LUCENT
 - subtitle: Commerce Platform V2
-- status: 진행중
-- period: 2026.03 - 진행중
+- status: 운영 중
+- period: 2026.03 - 운영 중
 - role: 풀스택 구현 / 커머스 v2 전환
 - implementationScope: Frontend + Backend + DB
 - tagline: 디지털·실물 상품 쇼핑몰을 v2 커머스 모델로 점진 전환한 프로젝트.
@@ -183,24 +183,25 @@
 
 ---
 
-## ZUKU
+## 231EDU
 
 ### Hero
-- id: `zuku`
-- title: ZUKU
+- id: `231edu`
+- title: 231EDU
 - subtitle: Academy Ops Platform
-- status: 완료
-- period: 2025.08 - 2026.02 (코드 기록 기준)
+- status: 운영 중
+- period: 2025.08 - 운영 중
 - role: 풀스택 구현 / 학원 운영 자동화
 - implementationScope: Frontend + Backend + DB
 - tagline: 학원 학생, 수업, 시간표, 리포트 운영을 한곳에서 관리하는 웹 운영 시스템.
 
 ### Synopsis
-학원 운영 업무는 학생 정보, 반 편성, 강의실 시간표, 시험 채점, 리포트 발송이 흩어져 있으면 반복 확인과 입력 비용이 커집니다. ZUKU는 학생/수업/시간표 데이터를 한 흐름 안에서 관리하고, OMR 채점과 주간 리포트 알림톡까지 연결하는 운영 시스템입니다. 저는 Next.js 화면, React Query hook, client/server service, API Route, Supabase migration을 연결했습니다.
+학원 운영 업무는 학생 정보, 반 편성, 강의실 시간표, 시험 채점, 리포트 발송이 흩어져 있으면 반복 확인과 입력 비용이 커집니다. 231EDU는 학생/수업/시간표 데이터를 한 흐름 안에서 관리하고, OMR 채점과 주간 리포트 알림톡까지 연결하는 운영 시스템입니다. 저는 Next.js 화면, React Query hook/service, NestJS API server, Python OMR/exam server, Supabase migration을 연결했습니다.
 
 ### Contribution
 - Frontend: 로그인/회원가입/초대 검증, 학생 관리, 반 관리, 반 편성, 강의실 시간표, 통합 시간표, 강사 시간표, 중등 기록, OMR 템플릿/채점, 주간 리포트 구현
-- Backend: 인증/초대, 학생, 반, 과목, 강사, 반 편성, 시간표, 예외 일정, 시험 기간, OMR, 주간 리포트, 알림톡 API Route 구현
+- Backend: NestJS API server로 인증/초대, 학생, 반, 과목, 강사, 반 편성, 시간표, 예외 일정, 시험 기간, 주간 리포트, 알림톡 API 구현
+- OMR/Exam: Python OMR/exam server로 이미지 업로드, 템플릿 좌표 분석, 마킹 판정, 채점 결과 생성 구현
 - Database: 학생, 수업, 반 편성, OMR template, weekly_reports, weekly_report_logs, exam periods 관련 Supabase migration 구성
 - Infrastructure: Supabase, 알림톡/문자, 이메일/엑셀 처리 연동
 
@@ -227,12 +228,13 @@
 - 운영 도메인에서는 화면보다 데이터 관계 안정화가 먼저라는 점을 배웠습니다.
 
 ### Stack
-- Next.js: 운영자 화면과 API Route 구성
+- Next.js: 운영자 화면과 서버 상태 흐름 구성
+- NestJS: 인증, 학생, 수업, 시간표, 리포트, 알림톡 API 분리
+- Python OMR Server: OMR 이미지 처리와 채점 분석 분리
 - Supabase PostgreSQL: 학생, 수업, 편성, 리포트 데이터 관리
 - TanStack Query: 서버 상태 캐싱과 mutation 관리
 - Tailwind CSS / cva: 운영 UI와 variant 구성
 - JWT / bcrypt: 초대 기반 가입과 로그인 처리
-- OMR image processing: 템플릿 기반 채점
 - xlsx / nodemailer / Alimtalk API: 엑셀 처리, 이메일, 알림톡 발송
 
 ---
@@ -244,7 +246,7 @@
 - title: SSUDAM
 - subtitle: Mental Care & Support Finder
 - status: 완료
-- period: 2024.11 (Git 기록 기준)
+- period: 2024.09 - 2024.12
 - role: 프론트엔드 구현 / 해커톤 서비스
 - implementationScope: Frontend only
 - tagline: AI 상담, 지원사업 정보, 주변 시설 탐색을 모바일 화면 안에 묶은 해커톤 서비스.
@@ -297,8 +299,8 @@
 - id: `flea-market`
 - title: FLEA MARKET
 - subtitle: Settlement System
-- status: 진행중
-- period: 2026.06 - 진행중
+- status: 진행 중
+- period: 2026.05 - 진행 중
 - role: 풀스택 구현 / 정산 도메인 설계
 - implementationScope: Frontend + Backend + DB
 - tagline: 엑셀 기반 플리마켓 정산 흐름을 웹 운영 시스템으로 이식한 프로젝트.

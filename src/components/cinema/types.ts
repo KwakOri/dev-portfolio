@@ -4,6 +4,18 @@ import type { portfolioCopy } from "@/constants/portfolio";
 
 export type PortfolioCopy = (typeof portfolioCopy)[Language];
 export type ContributionKey = "fe" | "be" | "db" | "infra";
+export type ProjectVisualFit = "contain" | "cover";
+export type ProjectVisualAsset = {
+  src: string;
+  alt?: string;
+  fit?: ProjectVisualFit;
+};
+export type QualitySignalType =
+  | "accessibility"
+  | "performance"
+  | "testing"
+  | "error-state"
+  | "maintainability";
 
 export type ProjectDetailLocale = {
   synopsis: string;
@@ -19,6 +31,8 @@ export type ProjectDetailLocale = {
   problems: {
     title: string;
     desc: string;
+    situation?: string;
+    solution?: string;
   }[];
   outcome: string;
   learned: string;
@@ -27,13 +41,67 @@ export type ProjectDetailLocale = {
     reason: string;
   }[];
   stills: string[];
+  heroSummary?: {
+    problem: string;
+    role: string;
+    decision: string;
+    result: string;
+  };
+  proofMetrics?: {
+    label: string;
+    value: string;
+    note?: string;
+  }[];
+  qualitySignals?: {
+    type: QualitySignalType;
+    title: string;
+    desc: string;
+  }[];
+  talkingPoints?: string[];
+  privacyNotes?: string[];
 };
 
 export type ProjectDetail = {
   id: string;
+  assets?: {
+    posterSrc?: string;
+    architectureHtmlSrc?: string;
+    architectureWidth?: number;
+    architectureHeight?: number;
+    architectureAlt?: string;
+    stills?: ProjectVisualAsset[];
+  };
   scope: string;
   locale: Partial<Record<Language, ProjectDetailLocale>>;
 };
+
+export type DeveloperProfileLocale = {
+  kicker: string;
+  tagline: string;
+  lead: string;
+  sub: string;
+  projectsCta: string;
+  resumeCta: string;
+  availability: string;
+  mainRoleLabel: string;
+  backstageLabel: string;
+  genreLabel: string;
+  stackLabel: string;
+  roleMain: string;
+  backstage: string[];
+  genre: string[];
+};
+
+export type DeveloperProfile = {
+  imageSrc: string;
+  imageAlt: string;
+  headline: string[];
+  stackLines: string[];
+  locale: Record<Language, DeveloperProfileLocale>;
+};
+
+export type LocalizedDeveloperProfile = Omit<DeveloperProfile, "locale"> &
+  DeveloperProfileLocale;
 
 export type LocalizedProject = Project & {
   eng: string;
@@ -46,6 +114,7 @@ export type LocalizedProject = Project & {
   dimmed: boolean;
   cardOpacity: number;
   posterFilter: string;
+  cardTags: string[];
   scope: string;
   synopsis: string;
   contribution: {
@@ -62,6 +131,8 @@ export type LocalizedProject = Project & {
   problems: {
     title: string;
     desc: string;
+    situation?: string;
+    solution?: string;
   }[];
   outcome: string;
   learned: string;
@@ -72,7 +143,33 @@ export type LocalizedProject = Project & {
   detailStills: {
     tag: string;
     name: string;
+    src?: string;
+    alt?: string;
+    fit?: ProjectVisualFit;
   }[];
+  posterSrc?: string;
+  architectureHtmlSrc?: string;
+  architectureWidth?: number;
+  architectureHeight?: number;
+  architectureAlt?: string;
+  heroSummary: {
+    problem: string;
+    role: string;
+    decision: string;
+    result: string;
+  };
+  proofMetrics: {
+    label: string;
+    value: string;
+    note?: string;
+  }[];
+  qualitySignals: {
+    type: QualitySignalType;
+    title: string;
+    desc: string;
+  }[];
+  talkingPoints: string[];
+  privacyNotes: string[];
   stackDisplay: {
     billing: Billing;
     billingLabel: string;

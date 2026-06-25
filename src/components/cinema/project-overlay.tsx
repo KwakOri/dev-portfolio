@@ -1,10 +1,48 @@
 import type { ReactNode } from "react";
-import { ctaButtonVariants, stillButtonVariants } from "./variants";
-import type { LocalizedProject, PortfolioCopy } from "./types";
+import type { LucideIcon } from "lucide-react";
+import type { Language } from "@/constants/portfolio";
+import {
+  Accessibility,
+  Bug,
+  Circle,
+  ExternalLink,
+  GitBranch,
+  Gauge,
+  PencilLine,
+  Play,
+  ShieldCheck,
+  Star,
+  Wrench,
+  X,
+} from "lucide-react";
+import {
+  ctaButtonVariants,
+  detailPanelVariants,
+  stillButtonVariants,
+} from "./variants";
+import { ArchitectureLayer } from "./architecture-layer";
+import type {
+  LocalizedProject,
+  PortfolioCopy,
+  QualitySignalType,
+} from "./types";
+
+const qualitySignalIcons: Record<QualitySignalType, LucideIcon> = {
+  accessibility: Accessibility,
+  "error-state": Bug,
+  maintainability: Wrench,
+  performance: Gauge,
+  testing: ShieldCheck,
+};
+
+const getImageFitClass = (
+  fit?: LocalizedProject["detailStills"][number]["fit"],
+) => (fit === "contain" ? "object-contain" : "object-cover");
 
 export function ProjectOverlay({
   copy,
   currentShot,
+  language,
   onClose,
   onShotChange,
   project,
@@ -12,6 +50,7 @@ export function ProjectOverlay({
 }: {
   copy: PortfolioCopy;
   currentShot?: string;
+  language: Language;
   onClose: () => void;
   onShotChange: (index: number) => void;
   project: LocalizedProject;
@@ -20,6 +59,24 @@ export function ProjectOverlay({
   const liveEnabled = project.liveUrl !== "#";
   const repoEnabled = project.repoUrl !== "#";
   const selectedStill = project.detailStills[shotIndex] ?? project.detailStills[0];
+  const summaryItems = [
+    {
+      label: copy.summaryProblemLabel,
+      value: project.heroSummary.problem,
+    },
+    {
+      label: copy.summaryRoleLabel,
+      value: project.heroSummary.role,
+    },
+    {
+      label: copy.summaryDecisionLabel,
+      value: project.heroSummary.decision,
+    },
+    {
+      label: copy.summaryResultLabel,
+      value: project.heroSummary.result,
+    },
+  ];
 
   return (
     <div
@@ -35,14 +92,14 @@ export function ProjectOverlay({
       >
         <button
           aria-label={copy.close}
-          className="absolute right-4 top-4 z-20 h-[42px] w-[42px] border-0 bg-[#FFCE00] font-anton text-[22px] leading-none text-[#16130C] shadow-[3px_3px_0_rgba(0,0,0,0.4)]"
+          className="absolute right-4 top-4 z-20 flex h-[42px] w-[42px] items-center justify-center border-0 bg-[#FFCE00] text-[#16130C] shadow-[3px_3px_0_rgba(0,0,0,0.4)]"
           onClick={onClose}
           type="button"
         >
-          ✕
+          <X aria-hidden="true" className="h-6 w-6" strokeWidth={3} />
         </button>
 
-        <div className="max-h-[92vh] overflow-y-auto">
+        <div className="scf-overlay-scroll max-h-[92vh] overflow-y-auto">
           <div className="relative overflow-hidden border-b-[3px] border-[#FFCE00] bg-[#17140E] px-5 py-10 sm:px-12 sm:pb-[34px] sm:pt-[46px]">
             <div className="absolute inset-0 bg-[repeating-linear-gradient(135deg,#1d1810_0_17px,#17140E_17px_34px)]" />
             <div className="absolute inset-0 bg-[radial-gradient(90%_120%_at_100%_0%,rgba(255,180,0,0.16),transparent_55%)]" />
@@ -62,7 +119,12 @@ export function ProjectOverlay({
                   className="inline-flex items-center gap-1.5 px-[11px] py-[5px] font-oswald text-xs font-bold tracking-[1px] text-white"
                   style={{ backgroundColor: project.statusColor }}
                 >
-                  ● {project.statusLabel}
+                  <Circle
+                    aria-hidden="true"
+                    className="h-2.5 w-2.5 fill-current"
+                    strokeWidth={3}
+                  />
+                  {project.statusLabel}
                 </span>
               </div>
 
@@ -73,7 +135,7 @@ export function ProjectOverlay({
                 {project.eng}
               </div>
               <h3
-                className="m-0 mb-4 font-anton text-[clamp(46px,6.5vw,84px)] uppercase leading-[0.84] text-[#FFCE00]"
+                className="m-0 mb-4 font-anton text-[clamp(46px,6.5vw,84px)] leading-[0.84] text-[#FFCE00]"
                 id={`project-title-${project.id}`}
               >
                 {project.title}
@@ -94,14 +156,83 @@ export function ProjectOverlay({
                   value={project.scope}
                 />
               </div>
+
+              <div className="mt-5">
+                <div className="mb-2.5 font-oswald text-[11px] font-bold tracking-[2px] text-[#f3e9d2]/45">
+                  {copy.summaryLabel}
+                </div>
+                <div className="grid gap-2.5 sm:grid-cols-2">
+                  {summaryItems.map((item) => (
+                    <div
+                      className={detailPanelVariants({ tone: "summary" })}
+                      key={item.label}
+                    >
+                      <div
+                        className="mb-1 font-oswald text-[9px] font-bold tracking-[2px]"
+                        style={{ color: project.accent }}
+                      >
+                        {item.label}
+                      </div>
+                      <div className="text-[12.5px] leading-[1.55] text-[#f3e9d2]/85">
+                        {item.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="px-5 py-10 text-[#f3e9d2] sm:px-12 sm:pb-12">
+            {project.proofMetrics.length > 0 ? (
+              <>
+                <SectionTitle accent={project.accent}>{copy.proofLabel}</SectionTitle>
+                <div className="mb-9 grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(180px,1fr))]">
+                  {project.proofMetrics.map((metric) => (
+                    <div
+                      className={detailPanelVariants({ tone: "metric" })}
+                      key={`${project.id}-${metric.label}`}
+                    >
+                      <div
+                        className="mb-1 font-anton text-[28px] leading-none"
+                        style={{ color: project.accent }}
+                      >
+                        {metric.value}
+                      </div>
+                      <div className="mb-1 font-oswald text-[11px] font-bold tracking-[1px] text-[#FFCE00]">
+                        {metric.label}
+                      </div>
+                      {metric.note ? (
+                        <div className="text-[12px] leading-[1.55] text-[#d8cdb4]">
+                          {metric.note}
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : null}
+
             <SectionTitle accent={project.accent}>{copy.synopsisLabel}</SectionTitle>
             <p className="m-0 mb-9 max-w-[760px] text-[15px] leading-[1.8] text-[#e6dcc4]">
               {project.synopsis}
             </p>
+
+            {project.architectureHtmlSrc ? (
+              <>
+                <SectionTitle accent={project.accent}>
+                  {copy.architectureLabel}
+                </SectionTitle>
+                <ArchitectureLayer
+                  alt={project.architectureAlt ?? `${project.title} architecture layer`}
+                  height={project.architectureHeight}
+                  language={language}
+                  projectId={project.id}
+                  src={project.architectureHtmlSrc}
+                  width={project.architectureWidth}
+                />
+              </>
+            ) : null}
 
             <SectionTitle accent={project.accent}>
               {copy.contributionLabel}
@@ -131,9 +262,12 @@ export function ProjectOverlay({
                         className="flex gap-2 text-[13px] leading-[1.5] text-[#d8cdb4]"
                         key={item}
                       >
-                        <span className="shrink-0" style={{ color: project.accent }}>
-                          ▸
-                        </span>
+                        <Play
+                          aria-hidden="true"
+                          className="mt-1 h-2.5 w-2.5 shrink-0 fill-current"
+                          strokeWidth={3}
+                          style={{ color: project.accent }}
+                        />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -178,22 +312,99 @@ export function ProjectOverlay({
                   <div className="mb-[5px] text-sm font-bold text-[#FFCE00]">
                     {problem.title}
                   </div>
-                  <div className="text-[13px] leading-[1.65] text-[#d8cdb4]">
-                    {problem.desc}
-                  </div>
+                  {problem.situation || problem.solution ? (
+                    <div className="grid gap-2.5 text-[13px] leading-[1.65] text-[#d8cdb4] sm:grid-cols-2">
+                      {problem.situation ? (
+                        <ProblemDetail
+                          label={copy.problemSituationLabel}
+                          value={problem.situation}
+                        />
+                      ) : null}
+                      {problem.solution ? (
+                        <ProblemDetail
+                          label={copy.problemSolutionLabel}
+                          value={problem.solution}
+                        />
+                      ) : null}
+                    </div>
+                  ) : (
+                    <div className="text-[13px] leading-[1.65] text-[#d8cdb4]">
+                      {problem.desc}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
 
+            {project.qualitySignals.length > 0 ? (
+              <>
+                <SectionTitle accent={project.accent}>
+                  {copy.qualityLabel}
+                </SectionTitle>
+                <div className="mb-9 grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))]">
+                  {project.qualitySignals.map((signal) => {
+                    const Icon = qualitySignalIcons[signal.type];
+
+                    return (
+                      <div
+                        className={detailPanelVariants({ tone: "quality" })}
+                        key={`${project.id}-${signal.type}-${signal.title}`}
+                      >
+                        <div className="mb-2 flex items-center gap-2">
+                          <span
+                            className="flex h-7 w-7 shrink-0 items-center justify-center border"
+                            style={{
+                              borderColor: project.accent,
+                              color: project.accent,
+                            }}
+                          >
+                            <Icon
+                              aria-hidden="true"
+                              className="h-4 w-4"
+                              strokeWidth={2.6}
+                            />
+                          </span>
+                          <div className="font-oswald text-[13px] font-bold tracking-[1px] text-[#FFCE00]">
+                            {signal.title}
+                          </div>
+                        </div>
+                        <div className="text-[12.5px] leading-[1.6] text-[#d8cdb4]">
+                          {signal.desc}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            ) : null}
+
             <SectionTitle accent={project.accent}>{copy.shotsLabel}</SectionTitle>
             <div className="relative mb-2.5 aspect-video overflow-hidden border-2 border-[#f3e9d2]/20 bg-[#17140E]">
-              <div className="absolute inset-0 bg-[repeating-linear-gradient(135deg,#211c12_0_18px,#17140E_18px_36px)]" />
+              {selectedStill?.src ? (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element -- Stills are prepared project screenshots. */}
+                  <img
+                    alt={selectedStill.alt ?? selectedStill.name}
+                    className={`absolute inset-0 h-full w-full ${getImageFitClass(selectedStill.fit)}`}
+                    src={selectedStill.src}
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(8,6,3,0.44),transparent_34%,rgba(8,6,3,0.72))]" />
+                </>
+              ) : (
+                <div className="absolute inset-0 bg-[repeating-linear-gradient(135deg,#211c12_0_18px,#17140E_18px_36px)]" />
+              )}
               <div className="absolute left-4 top-3.5 font-oswald text-[11px] font-bold tracking-[2px] text-[#f3e9d2]/40">
                 STILL · {selectedStill?.tag ?? "01"}
               </div>
-              <div className="absolute inset-0 flex items-center justify-center px-6 text-center text-[15px] font-semibold tracking-[1px] text-[#f3e9d2]/55">
-                {currentShot ?? selectedStill?.name}
-              </div>
+              {selectedStill?.src ? (
+                <div className="absolute bottom-4 left-4 right-4 text-[15px] font-semibold tracking-[0.4px] text-[#f3e9d2] [text-shadow:0_2px_8px_rgba(0,0,0,0.75)]">
+                  {selectedStill.name}
+                </div>
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center px-6 text-center text-[15px] font-semibold tracking-[1px] text-[#f3e9d2]/55">
+                  {currentShot ?? selectedStill?.name}
+                </div>
+              )}
             </div>
             <div className="mb-9 flex gap-2.5">
               {project.detailStills.map((shot, index) => (
@@ -205,8 +416,20 @@ export function ProjectOverlay({
                   onClick={() => onShotChange(index)}
                   type="button"
                 >
-                  <div className="absolute inset-0 bg-[repeating-linear-gradient(135deg,#211c12_0_10px,#17140E_10px_20px)]" />
-                  <div className="absolute inset-0 flex items-center justify-center font-oswald text-xs font-bold text-[#f3e9d2]/60">
+                  {shot.src ? (
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element -- Stills are prepared project screenshots. */}
+                      <img
+                        alt=""
+                        className={`absolute inset-0 h-full w-full ${getImageFitClass(shot.fit)}`}
+                        src={shot.src}
+                      />
+                      <div className="absolute inset-0 bg-[#080603]/45" />
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 bg-[repeating-linear-gradient(135deg,#211c12_0_10px,#17140E_10px_20px)]" />
+                  )}
+                  <div className="absolute inset-0 flex items-center justify-center font-oswald text-xs font-bold text-[#f3e9d2]/80">
                     {shot.tag}
                   </div>
                 </button>
@@ -217,7 +440,14 @@ export function ProjectOverlay({
             <div className="mb-9 grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
               <div className="bg-[#FFCE00] px-5 py-[18px] text-[#16130C]">
                 <div className="mb-2 font-oswald text-[11px] font-bold tracking-[2px] opacity-70">
-                  ★ {copy.outcomeLabel}
+                  <span className="inline-flex items-center gap-1.5">
+                    <Star
+                      aria-hidden="true"
+                      className="h-3 w-3 fill-current"
+                      strokeWidth={3}
+                    />
+                    {copy.outcomeLabel}
+                  </span>
                 </div>
                 <div className="text-sm font-medium leading-[1.65]">
                   {project.outcome}
@@ -228,7 +458,14 @@ export function ProjectOverlay({
                   className="mb-2 font-oswald text-[11px] font-bold tracking-[2px]"
                   style={{ color: project.accent }}
                 >
-                  ✎ {copy.learnedLabel}
+                  <span className="inline-flex items-center gap-1.5">
+                    <PencilLine
+                      aria-hidden="true"
+                      className="h-3 w-3"
+                      strokeWidth={3}
+                    />
+                    {copy.learnedLabel}
+                  </span>
                 </div>
                 <div className="text-sm leading-[1.65] text-[#e6dcc4]">
                   {project.learned}
@@ -261,11 +498,16 @@ export function ProjectOverlay({
                   rel="noreferrer"
                   target="_blank"
                 >
-                  ▸ {copy.live}
+                  <ExternalLink
+                    aria-hidden="true"
+                    className="h-4 w-4"
+                    strokeWidth={3}
+                  />
+                  {copy.live}
                 </a>
               ) : (
-                <DisabledLink>
-                  ▸ {copy.live} · {copy.linkSoon}
+                <DisabledLink icon="external">
+                  {copy.live} · {copy.linkSoon}
                 </DisabledLink>
               )}
               {repoEnabled ? (
@@ -278,11 +520,16 @@ export function ProjectOverlay({
                   rel="noreferrer"
                   target="_blank"
                 >
-                  ◆ {copy.repo}
+                  <GitBranch
+                    aria-hidden="true"
+                    className="h-4 w-4"
+                    strokeWidth={3}
+                  />
+                  {copy.repo}
                 </a>
               ) : (
-                <DisabledLink>
-                  ◆ {copy.repo} · {copy.linkSoon}
+                <DisabledLink icon="repo">
+                  {copy.repo} · {copy.linkSoon}
                 </DisabledLink>
               )}
             </div>
@@ -337,9 +584,29 @@ function MetaBox({
   );
 }
 
-function DisabledLink({ children }: { children: ReactNode }) {
+function ProblemDetail({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="mb-1 font-oswald text-[10px] font-bold tracking-[1.5px] text-[#f3e9d2]/45">
+        {label}
+      </div>
+      <div>{value}</div>
+    </div>
+  );
+}
+
+function DisabledLink({
+  children,
+  icon,
+}: {
+  children: ReactNode;
+  icon: "external" | "repo";
+}) {
+  const Icon = icon === "external" ? ExternalLink : GitBranch;
+
   return (
     <span className="flex cursor-not-allowed items-center gap-2 border-2 border-dashed border-[#f3e9d2]/30 bg-transparent px-5 py-[11px] font-oswald text-sm font-bold tracking-[1px] text-[#f3e9d2]/40">
+      <Icon aria-hidden="true" className="h-4 w-4" strokeWidth={3} />
       {children}
     </span>
   );

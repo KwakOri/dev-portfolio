@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TEMIS Architecture Map</title>
+    <style>
+      :root {
+        --ink: #201712;
+        --muted: #755f4d;
+        --orange: #ff7a1a;
+        --orange-deep: #d95b05;
+        --orange-soft: #ffd18b;
+        --mint: #18b985;
+        --teal: #0a8872;
+        --cream: #fff8ef;
+        --paper: #fff3e7;
+        --road: #15b885;
+        --road-dark: #0b735f;
+        --side: #e76723;
+        --shadow: rgba(53, 28, 12, 0.22);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #14100d;
+        color: var(--ink);
+        font-family:
+          "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI", system-ui,
+          sans-serif;
+      }
+
+      .poster {
+        position: relative;
+        width: 1200px;
+        height: 1800px;
+        margin: 0 auto;
+        overflow: hidden;
+        background: linear-gradient(180deg, #fff9f3 0%, #fffdf9 48%, #fff0e2 100%);
+      }
+
+      .hero {
+        position: relative;
+        height: 238px;
+        padding: 44px 72px;
+        background:
+          radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.25), transparent 24%),
+          linear-gradient(135deg, #ff8a1d 0%, #ff6b00 58%, #e75500 100%);
+        color: #fffdf8;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 14px;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(32, 23, 18, 0.25) 0 14px,
+          transparent 14px 28px
+        );
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 950;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 52px;
+        line-height: 1.06;
+        letter-spacing: -0.01em;
+      }
+
+      .hero p {
+        width: 820px;
+        margin: 18px 0 0;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.55;
+        color: rgba(255, 253, 248, 0.9);
+      }
+
+      .stack-strip {
+        position: absolute;
+        right: 62px;
+        bottom: 34px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+        width: 304px;
+      }
+
+      .stack-strip span {
+        padding: 8px 11px;
+        border: 2px solid rgba(255, 255, 255, 0.78);
+        border-radius: 999px;
+        background: rgba(32, 23, 18, 0.16);
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .map {
+        position: relative;
+        height: 1562px;
+        background-image:
+          radial-gradient(rgba(255, 122, 26, 0.16) 2px, transparent 2px),
+          radial-gradient(rgba(24, 185, 133, 0.16) 2px, transparent 2px);
+        background-position:
+          40px 40px,
+          90px 120px;
+        background-size:
+          92px 92px,
+          116px 116px;
+      }
+
+      .flow-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .island {
+        position: absolute;
+        z-index: 3;
+        width: 320px;
+        min-height: 178px;
+        filter: drop-shadow(0 26px 20px var(--shadow));
+      }
+
+      .iso-top {
+        position: relative;
+        height: 184px;
+        padding: 28px 30px;
+        border: 4px solid var(--ink);
+        border-radius: 30px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffe8cf 100%);
+        transform: skewY(-10deg);
+        overflow: hidden;
+      }
+
+      .iso-top::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(32, 23, 18, 0.1) 1px, transparent 1px);
+        background-size: 12px 12px;
+        opacity: 0.7;
+      }
+
+      .iso-top > * {
+        position: relative;
+        z-index: 1;
+        transform: skewY(10deg);
+      }
+
+      .island::after {
+        content: "";
+        position: absolute;
+        left: 22px;
+        right: -18px;
+        bottom: -35px;
+        height: 54px;
+        border: 4px solid var(--ink);
+        border-top: 0;
+        border-radius: 0 0 30px 30px;
+        background: linear-gradient(90deg, var(--side), #8b3d1a);
+        transform: skewX(-34deg);
+        z-index: -1;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: #fff8ef;
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+      }
+
+      .tag i {
+        display: block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--orange);
+      }
+
+      .island h2 {
+        margin: 13px 0 5px;
+        max-width: 180px;
+        font-size: 24px;
+        line-height: 1.12;
+        word-break: keep-all;
+      }
+
+      .island p {
+        margin: 0;
+        max-width: 190px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 850;
+        line-height: 1.38;
+        word-break: keep-all;
+      }
+
+      .mini-ui {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        border: 3px solid var(--ink);
+        background: #fffaf5;
+      }
+
+      .editor-screen {
+        right: 26px;
+        top: 28px;
+        width: 92px;
+        height: 70px;
+        border-radius: 14px;
+      }
+
+      .editor-screen::before,
+      .editor-screen::after {
+        content: "";
+        position: absolute;
+        left: 13px;
+        right: 13px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--orange);
+      }
+
+      .editor-screen::before {
+        top: 17px;
+      }
+
+      .editor-screen::after {
+        top: 36px;
+        width: 38px;
+      }
+
+      .shop-card {
+        right: 24px;
+        top: 30px;
+        width: 84px;
+        height: 84px;
+        border-radius: 20px;
+        background:
+          linear-gradient(135deg, rgba(255, 122, 26, 0.9), rgba(255, 209, 139, 0.82)),
+          #fff;
+      }
+
+      .shop-card::before {
+        content: "₩";
+        color: #fff;
+        font-size: 46px;
+        font-weight: 950;
+      }
+
+      .desk-grid {
+        right: 20px;
+        top: 25px;
+        width: 104px;
+        height: 84px;
+        border-radius: 17px;
+        background:
+          linear-gradient(#fffaf5 0 0) padding-box,
+          linear-gradient(135deg, var(--orange), var(--orange-soft)) border-box;
+      }
+
+      .desk-grid::before {
+        content: "";
+        position: absolute;
+        inset: 17px 14px;
+        background:
+          linear-gradient(var(--ink) 0 0) 0 0 / 100% 3px,
+          linear-gradient(var(--ink) 0 0) 0 50% / 100% 3px,
+          linear-gradient(var(--ink) 0 0) 0 100% / 100% 3px,
+          linear-gradient(90deg, transparent 0 44%, var(--ink) 44% 48%, transparent 48%);
+        background-repeat: no-repeat;
+      }
+
+      .vault {
+        right: 28px;
+        top: 28px;
+        width: 82px;
+        height: 82px;
+        border-radius: 22px;
+        background: #ffe1bd;
+      }
+
+      .vault::before {
+        content: "R2";
+        color: var(--ink);
+        font-size: 30px;
+        font-weight: 950;
+      }
+
+      .db-stack {
+        right: 18px;
+        top: 28px;
+        width: 108px;
+        height: 92px;
+        border-radius: 22px;
+        background: #fffaf5;
+      }
+
+      .db-stack::before,
+      .db-stack::after {
+        content: "";
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        height: 18px;
+        border: 3px solid var(--ink);
+        border-radius: 50%;
+        background: var(--mint);
+      }
+
+      .db-stack::before {
+        top: 20px;
+        box-shadow:
+          0 17px 0 var(--mint),
+          0 34px 0 var(--mint);
+      }
+
+      .mail-badge {
+        right: 27px;
+        top: 34px;
+        width: 90px;
+        height: 72px;
+        border-radius: 18px;
+      }
+
+      .mail-badge::before {
+        content: "@";
+        color: var(--orange);
+        font-size: 46px;
+        font-weight: 950;
+      }
+
+      .admin-board {
+        right: 19px;
+        top: 25px;
+        width: 114px;
+        height: 92px;
+        border-radius: 18px;
+      }
+
+      .admin-board::before {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        background:
+          radial-gradient(circle, var(--orange) 0 6px, transparent 7px) 0 0 / 34px 34px,
+          linear-gradient(var(--ink) 0 0) 0 100% / 100% 4px;
+      }
+
+      .creator {
+        left: 124px;
+        top: 70px;
+      }
+
+      .shop {
+        right: 120px;
+        top: 260px;
+      }
+
+      .orders {
+        left: 140px;
+        top: 490px;
+      }
+
+      .files {
+        right: 146px;
+        top: 720px;
+      }
+
+      .data {
+        left: 118px;
+        top: 965px;
+      }
+
+      .email {
+        right: 168px;
+        top: 1060px;
+      }
+
+      .admin {
+        left: 404px;
+        top: 1288px;
+      }
+
+      .caption {
+        position: absolute;
+        z-index: 4;
+        display: none;
+        width: 248px;
+        color: var(--ink);
+      }
+
+      .caption h3 {
+        margin: 0 0 4px;
+        font-size: 19px;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .caption p {
+        margin: 0;
+        color: #514135;
+        font-size: 15px;
+        font-weight: 750;
+        line-height: 1.35;
+      }
+
+      .cap-creator {
+        left: 484px;
+        top: 95px;
+      }
+
+      .cap-shop {
+        left: 720px;
+        top: 430px;
+      }
+
+      .cap-orders {
+        left: 482px;
+        top: 600px;
+      }
+
+      .cap-files {
+        left: 740px;
+        top: 862px;
+      }
+
+      .cap-data {
+        left: 442px;
+        top: 1070px;
+      }
+
+      .cap-admin {
+        left: 710px;
+        top: 1392px;
+      }
+
+      .icon-bubble {
+        position: absolute;
+        z-index: 5;
+        display: grid;
+        place-items: center;
+        width: 58px;
+        height: 58px;
+        border: 4px solid #fffdf8;
+        border-radius: 50%;
+        background: var(--mint);
+        color: #fff;
+        box-shadow: 0 12px 26px rgba(10, 136, 114, 0.22);
+        font-size: 24px;
+        font-weight: 950;
+      }
+
+      .bubble-1 {
+        left: 488px;
+        top: 250px;
+      }
+
+      .bubble-2 {
+        right: 354px;
+        top: 626px;
+      }
+
+      .bubble-3 {
+        left: 376px;
+        top: 1166px;
+      }
+
+      .legend {
+        position: absolute;
+        left: 72px;
+        right: 72px;
+        bottom: 42px;
+        z-index: 6;
+        display: none;
+        grid-template-columns: 1.1fr 1fr 1fr;
+        gap: 18px;
+      }
+
+      .legend-card {
+        min-height: 116px;
+        padding: 22px 24px;
+        border: 4px solid var(--ink);
+        border-radius: 26px;
+        background: #fffaf5;
+        box-shadow: 9px 9px 0 rgba(32, 23, 18, 0.9);
+      }
+
+      .legend-card strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--orange-deep);
+        font-size: 17px;
+        font-weight: 950;
+      }
+
+      .legend-card span {
+        display: block;
+        color: #514135;
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="poster" aria-label="TEMIS isometric architecture map">
+      <header class="hero">
+        <p class="eyebrow">Project 01 · Architecture Map</p>
+        <h1>Building the Creator Ops Flow</h1>
+        <p>
+          TEMIS는 일정표 제작 도구, 템플릿 상점, 주문 파일, 권한/정산 데이터를
+          하나의 운영 흐름으로 연결한 크리에이터 커머스 플랫폼입니다.
+        </p>
+        <div class="stack-strip">
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>TanStack Query</span>
+          <span>Supabase</span>
+          <span>Cloudflare R2</span>
+          <span>Nodemailer</span>
+        </div>
+      </header>
+
+      <section class="map">
+        <svg class="flow-svg" viewBox="0 0 1200 1562" aria-hidden="true">
+          <defs>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#1f130c" flood-opacity="0.18" />
+            </filter>
+            <marker id="arrowHead" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+              <path d="M 1 1 L 11 6 L 1 11 z" fill="#0a8872"></path>
+            </marker>
+            <marker id="dashArrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+              <path d="M 1 1 L 11 6 L 1 11 z" fill="#ff7a1a"></path>
+            </marker>
+          </defs>
+
+          <path
+            d="M 310 210 C 610 238, 765 250, 820 378 C 900 564, 296 488, 272 674 C 238 940, 820 807, 836 1032 C 852 1280, 530 1184, 540 1400"
+            fill="none"
+            stroke="#18b985"
+            stroke-width="72"
+            stroke-linecap="round"
+            filter="url(#softShadow)"
+          />
+          <path
+            d="M 310 210 C 610 238, 765 250, 820 378 C 900 564, 296 488, 272 674 C 238 940, 820 807, 836 1032 C 852 1280, 530 1184, 540 1400"
+            fill="none"
+            stroke="#0b735f"
+            stroke-width="4"
+            stroke-dasharray="18 18"
+            stroke-linecap="round"
+            marker-end="url(#arrowHead)"
+          />
+
+          <path
+            d="M 292 232 C 500 330, 658 354, 776 420"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="5"
+            stroke-dasharray="14 16"
+            opacity="0.84"
+          />
+
+          <path
+            d="M 742 706 C 694 786, 624 860, 482 972"
+            fill="none"
+            stroke="#ff7a1a"
+            stroke-width="6"
+            stroke-dasharray="14 14"
+            marker-end="url(#dashArrow)"
+          />
+          <path
+            d="M 772 1098 C 716 1194, 626 1264, 586 1342"
+            fill="none"
+            stroke="#ff7a1a"
+            stroke-width="6"
+            stroke-dasharray="14 14"
+            marker-end="url(#dashArrow)"
+          />
+        </svg>
+
+        <article class="island creator">
+          <div class="iso-top">
+            <span class="tag"><i></i>CREATOR STUDIO</span>
+            <h2>일정표 편집기</h2>
+            <p>입력 폼, 프리뷰, 저장/복원 로직을 설정 기반 hook으로 연결.</p>
+            <div class="mini-ui editor-screen"></div>
+          </div>
+        </article>
+
+        <div class="caption cap-creator">
+          <h3>Editor State</h3>
+          <p>템플릿마다 다른 입력 필드는 설정으로 주입하고, 공통 편집 로직은 재사용합니다.</p>
+        </div>
+
+        <article class="island shop">
+          <div class="iso-top">
+            <span class="tag"><i></i>TEMPLATE SHOP</span>
+            <h2>상점/구매 요청</h2>
+            <p>템플릿 탐색, 구매 요청, 접근 권한 확인이 이어지는 상점 흐름.</p>
+            <div class="mini-ui shop-card"></div>
+          </div>
+        </article>
+
+        <div class="caption cap-shop">
+          <h3>Commerce Flow</h3>
+          <p>React Query와 service layer로 목록, 상세, mutation, invalidate를 분리합니다.</p>
+        </div>
+
+        <article class="island orders">
+          <div class="iso-top">
+            <span class="tag"><i></i>ORDER DESK</span>
+            <h2>커스텀 주문 운영</h2>
+            <p>구매 요청, 주문 상태, 관리자 작업을 API Route에서 처리.</p>
+            <div class="mini-ui desk-grid"></div>
+          </div>
+        </article>
+
+        <div class="caption cap-orders">
+          <h3>Next.js API Routes</h3>
+          <p>인증, 권한, 구매 요청, 관리자 액션을 얇은 서버 계층으로 정리합니다.</p>
+        </div>
+
+        <article class="island files">
+          <div class="iso-top">
+            <span class="tag"><i></i>FILE VAULT</span>
+            <h2>Cloudflare R2</h2>
+            <p>주문 파일과 이미지를 검증하고 R2 key와 DB record를 연결.</p>
+            <div class="mini-ui vault"></div>
+          </div>
+        </article>
+
+        <div class="caption cap-files">
+          <h3>Upload Pipeline</h3>
+          <p>업로드, 삭제, zip 다운로드 흐름을 분리해 실패 추적과 운영 관리를 쉽게 만듭니다.</p>
+        </div>
+
+        <article class="island data">
+          <div class="iso-top">
+            <span class="tag"><i></i>OPS CORE</span>
+            <h2>Supabase DB</h2>
+            <p>사용자, 템플릿, 구매 요청, 접근 권한, 판매/정산 데이터를 분리.</p>
+            <div class="mini-ui db-stack"></div>
+          </div>
+        </article>
+
+        <div class="caption cap-data">
+          <h3>Database Relations</h3>
+          <p>제작 도구보다 먼저 운영 데이터 관계를 고정해 권한과 정산 흐름을 안정화합니다.</p>
+        </div>
+
+        <article class="island email">
+          <div class="iso-top">
+            <span class="tag"><i></i>EMAIL TOKENS</span>
+            <h2>Nodemailer</h2>
+            <p>초대, 인증, 비밀번호 재설정 토큰 메일을 서비스 흐름에 연결.</p>
+            <div class="mini-ui mail-badge"></div>
+          </div>
+        </article>
+
+        <article class="island admin">
+          <div class="iso-top">
+            <span class="tag"><i></i>ADMIN OPS</span>
+            <h2>관리자/정산 대시보드</h2>
+            <p>템플릿, 주문, 파일, 접근 권한, 정산 상태를 한 화면에서 관리.</p>
+            <div class="mini-ui admin-board"></div>
+          </div>
+        </article>
+
+        <div class="caption cap-admin">
+          <h3>Operational Loop</h3>
+          <p>제작 → 판매 → 파일 전달 → 권한 부여 → 정산 확인까지 하나의 제품 경험으로 닫힙니다.</p>
+        </div>
+
+        <div class="icon-bubble bubble-1">UI</div>
+        <div class="icon-bubble bubble-2">API</div>
+        <div class="icon-bubble bubble-3">DB</div>
+
+        <div class="legend">
+          <div class="legend-card">
+            <strong>Architecture Focus</strong>
+            <span>박스형 시스템 구조 대신, TEMIS의 실제 운영 여정을 따라 흐름을 보여주는 시각화입니다.</span>
+          </div>
+          <div class="legend-card">
+            <strong>Key Decision</strong>
+            <span>편집기 UI 상태, 서버 상태, 운영 데이터를 분리해 변경 영향 범위를 줄였습니다.</span>
+          </div>
+          <div class="legend-card">
+            <strong>Portfolio Message</strong>
+            <span>프론트엔드 화면에서 멈추지 않고 API, DB, 파일 저장, 운영 대시보드까지 연결했습니다.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,446 @@
+- generic [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "CINÉ·FOLIO" [ref=e5] [cursor=pointer]:
+          - /url: "#top"
+        - generic [ref=e6]: EST.2026
+      - generic [ref=e7]:
+        - link "홈" [ref=e8] [cursor=pointer]:
+          - /url: "#top"
+        - link "상영작" [ref=e9] [cursor=pointer]:
+          - /url: "#gallery"
+        - link "소개" [ref=e10] [cursor=pointer]:
+          - /url: "#about"
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - button "KO" [ref=e13]
+          - button "EN" [ref=e14]
+          - button "JA" [ref=e15]
+        - button "상영작 보기" [ref=e16]:
+          - text: 상영작 보기
+          - img [ref=e17]
+    - generic [ref=e19]:
+      - generic: PORTFOLIO
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - img [ref=e23]
+            - text: OPENING CREDITS · DEVELOPER PROFILE
+          - heading "FRONTEND DEVELOPER" [level=1] [ref=e25]:
+            - text: FRONTEND
+            - text: DEVELOPER
+          - generic [ref=e28]: FRONTEND-LED · API · DB · OPS
+          - paragraph [ref=e29]: 사용자 화면을 빠르게 구현하는 데서 멈추지 않고, 그 화면이 기대는 API·데이터 구조·운영 흐름까지 함께 설계합니다.
+          - paragraph [ref=e30]: Next.js와 React를 중심으로 커머스, 운영 도구, 실시간 서비스의 프론트엔드와 데이터 흐름을 연결해왔습니다.
+          - generic [ref=e31]:
+            - link "상영작 보기" [ref=e32] [cursor=pointer]:
+              - /url: "#gallery"
+              - text: 상영작 보기
+              - img [ref=e33]
+            - link "이력서 받기" [ref=e35] [cursor=pointer]:
+              - /url: "#about"
+        - generic [ref=e37]:
+          - img "Developer badge" [ref=e38]:
+            - img [ref=e39]
+          - generic [ref=e44]:
+            - img "Developer profile portrait" [ref=e46]
+            - generic: PROFILE · 00
+            - generic:
+              - img
+              - text: 섭외 가능
+            - generic:
+              - generic: DEV
+              - generic: PROFILE
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - generic [ref=e51]: 주연 · MAIN ROLE
+              - generic [ref=e52]: Frontend Developer
+            - generic [ref=e53]:
+              - generic [ref=e54]: 백스테이지 · BACKSTAGE
+              - generic [ref=e55]:
+                - generic [ref=e56]:
+                  - img [ref=e57]
+                  - generic [ref=e59]: 백엔드 API
+                - generic [ref=e60]:
+                  - img [ref=e61]
+                  - generic [ref=e63]: 데이터베이스 스키마
+                - generic [ref=e64]:
+                  - img [ref=e65]
+                  - generic [ref=e67]: 어드민 운영
+            - generic [ref=e68]:
+              - generic [ref=e69]: 장르 · GENRE
+              - generic [ref=e70]:
+                - generic [ref=e71]: 커머스
+                - generic [ref=e72]: 운영 도구
+                - generic [ref=e73]: 실시간 UX
+            - generic [ref=e74]:
+              - generic [ref=e75]: 스택 · STACK
+              - generic [ref=e76]:
+                - generic [ref=e77]: Next.js / React / TypeScript
+                - generic [ref=e78]: Supabase / NestJS / PostgreSQL
+    - generic [ref=e80]: 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 /
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]: — 전체 상영작
+          - heading "상영 시간표" [level=2] [ref=e86]
+        - generic [ref=e87]: 포스터를 누르면 작품 정보가 열립니다.
+      - generic [ref=e88]:
+        - button "TEMIS 관람" [active] [ref=e89] [cursor=pointer]:
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e95]: SCREEN 01
+              - generic [ref=e96]: "01"
+            - generic [ref=e97]:
+              - generic [ref=e98]:
+                - generic [ref=e99]: TEMIS
+                - generic [ref=e100]: Creator Tools & Commerce
+                - generic [ref=e101]:
+                  - generic [ref=e102]: Frontend
+                  - generic [ref=e103]: Backend
+                  - generic [ref=e104]: DB
+              - generic [ref=e105]:
+                - generic [ref=e106]:
+                  - img [ref=e107]
+                  - text: 상영중
+                - generic [ref=e109]: 2025.12 - 2026.05
+                - generic [ref=e110]:
+                  - text: 관람
+                  - img [ref=e111]
+        - button "VSHOT 관람" [ref=e113] [cursor=pointer]:
+          - generic [ref=e114]:
+            - generic [ref=e115]:
+              - generic [ref=e119]: SCREEN 02
+              - generic [ref=e120]: "02"
+            - generic [ref=e121]:
+              - generic [ref=e122]:
+                - generic [ref=e123]: VSHOT
+                - generic [ref=e124]: WebRTC Photobooth
+                - generic [ref=e125]:
+                  - generic [ref=e126]: Frontend
+                  - generic [ref=e127]: Backend
+                  - generic [ref=e128]: DB
+              - generic [ref=e129]:
+                - generic [ref=e130]:
+                  - img [ref=e131]
+                  - text: 상영중
+                - generic [ref=e133]: 2025.12 - 진행중
+                - generic [ref=e134]:
+                  - text: 관람
+                  - img [ref=e135]
+        - button "LUCENT 관람" [ref=e137] [cursor=pointer]:
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - generic [ref=e143]: SCREEN 03
+              - generic [ref=e144]: "03"
+            - generic [ref=e145]:
+              - generic [ref=e146]:
+                - generic [ref=e147]: LUCENT
+                - generic [ref=e148]: Commerce Platform V2
+                - generic [ref=e149]:
+                  - generic [ref=e150]: Frontend
+                  - generic [ref=e151]: Backend
+                  - generic [ref=e152]: DB
+              - generic [ref=e153]:
+                - generic [ref=e154]:
+                  - img [ref=e155]
+                  - text: 상영중
+                - generic [ref=e157]: 2026.03 - 진행중
+                - generic [ref=e158]:
+                  - text: 관람
+                  - img [ref=e159]
+        - button "231EDU 관람" [ref=e161] [cursor=pointer]:
+          - generic [ref=e162]:
+            - generic [ref=e163]:
+              - generic [ref=e167]: SCREEN 04
+              - generic [ref=e168]: "04"
+              - generic [ref=e169]: 상영 종료
+            - generic [ref=e170]:
+              - generic [ref=e171]:
+                - generic [ref=e172]: 231EDU
+                - generic [ref=e173]: Academy Ops Platform
+                - generic [ref=e174]:
+                  - generic [ref=e175]: Frontend
+                  - generic [ref=e176]: Backend
+                  - generic [ref=e177]: DB
+              - generic [ref=e178]:
+                - generic [ref=e179]:
+                  - img [ref=e180]
+                  - text: 상영 종료
+                - generic [ref=e182]: 2025.08 - 2026.02
+                - generic [ref=e183]:
+                  - text: 관람
+                  - img [ref=e184]
+        - button "SSUDAM 관람" [ref=e186] [cursor=pointer]:
+          - generic [ref=e187]:
+            - generic [ref=e188]:
+              - generic [ref=e192]: SCREEN 05
+              - generic [ref=e193]: "05"
+              - generic [ref=e194]: 상영 종료
+            - generic [ref=e195]:
+              - generic [ref=e196]:
+                - generic [ref=e197]: SSUDAM
+                - generic [ref=e198]: Mental Care & Support Finder
+                - generic [ref=e200]: Frontend only
+              - generic [ref=e201]:
+                - generic [ref=e202]:
+                  - img [ref=e203]
+                  - text: 상영 종료
+                - generic [ref=e205]: "2024.11"
+                - generic [ref=e206]:
+                  - text: 관람
+                  - img [ref=e207]
+        - button "FLEA MARKET 관람" [ref=e209] [cursor=pointer]:
+          - generic [ref=e210]:
+            - generic [ref=e211]:
+              - generic [ref=e215]: SCREEN 06
+              - generic [ref=e216]: "06"
+            - generic [ref=e217]:
+              - generic [ref=e218]:
+                - generic [ref=e219]: FLEA MARKET
+                - generic [ref=e220]: Settlement System
+                - generic [ref=e221]:
+                  - generic [ref=e222]: Frontend
+                  - generic [ref=e223]: Backend
+                  - generic [ref=e224]: DB
+              - generic [ref=e225]:
+                - generic [ref=e226]:
+                  - img [ref=e227]
+                  - text: 상영중
+                - generic [ref=e229]: 2026.06 - 진행중
+                - generic [ref=e230]:
+                  - text: 관람
+                  - img [ref=e231]
+    - generic [ref=e234]:
+      - generic [ref=e235]: CINÉ·FOLIO
+      - generic [ref=e236]:
+        - text: 포스터와 스틸컷은 데이터 파일에서 교체할 수 있습니다.
+        - text: © 2026 · ALL SCREENINGS RESERVED
+    - dialog "TEMIS" [ref=e247]:
+      - generic [ref=e248]:
+        - button "닫기" [ref=e249]:
+          - img [ref=e250]
+        - generic [ref=e253]:
+          - generic [ref=e254]:
+            - generic: "01"
+            - generic [ref=e257]:
+              - generic [ref=e258]:
+                - generic [ref=e259]: REEL · 01
+                - generic [ref=e260]:
+                  - img [ref=e261]
+                  - text: 상영중
+              - generic [ref=e263]: Creator Tools & Commerce
+              - heading "TEMIS" [level=3] [ref=e264]
+              - paragraph [ref=e265]: “크리에이터의 일정표 제작, 템플릿 판매, 운영 관리를 한 흐름으로 묶은 웹 서비스.”
+              - generic [ref=e266]:
+                - generic [ref=e267]:
+                  - generic [ref=e268]: 상영 기간
+                  - generic [ref=e269]: 2025.12 - 2026.05
+                - generic [ref=e270]:
+                  - generic [ref=e271]: 역할
+                  - generic [ref=e272]: 풀스택 구현 / 프론트엔드 중심
+                - generic [ref=e273]:
+                  - generic [ref=e274]: 상영 포맷
+                  - generic [ref=e275]: Frontend + Backend + DB
+              - generic [ref=e276]:
+                - generic [ref=e277]: 예고편 요약
+                - generic [ref=e278]:
+                  - generic [ref=e279]:
+                    - generic [ref=e280]: 문제
+                    - generic [ref=e281]: 일정표 제작, 템플릿 판매, 구매 요청, 파일 전달, 권한/정산 확인이 분산되어 있었습니다.
+                  - generic [ref=e282]:
+                    - generic [ref=e283]: 내 역할
+                    - generic [ref=e284]: Next.js 화면, API Route, Supabase schema, React Query hook, R2 업로드, 이메일 토큰 흐름을 연결했습니다.
+                  - generic [ref=e285]:
+                    - generic [ref=e286]: 핵심 결정
+                    - generic [ref=e287]: 템플릿별 편집 로직은 설정 주입형 hook으로 통합하고, 운영 데이터는 관리자 화면과 DB schema로 분리했습니다.
+                  - generic [ref=e288]:
+                    - generic [ref=e289]: 결과
+                    - generic [ref=e290]: 제작 도구와 커머스/운영 흐름을 하나의 서비스 경험으로 묶었습니다.
+          - generic [ref=e291]:
+            - generic [ref=e292]: — 흥행 지표
+            - generic [ref=e293]:
+              - generic [ref=e294]:
+                - generic [ref=e295]: FE + API + DB
+                - generic [ref=e296]: 구현 범위
+                - generic [ref=e297]: 화면, API Route, Supabase migration, 파일 저장까지 연결
+              - generic [ref=e298]:
+                - generic [ref=e299]: 4개
+                - generic [ref=e300]: 핵심 흐름
+                - generic [ref=e301]: 편집기, 상점, 관리자, 권한/정산 흐름
+              - generic [ref=e302]:
+                - generic [ref=e303]: 권한 · 파일 · 정산
+                - generic [ref=e304]: 운영 축
+                - generic [ref=e305]: 템플릿 접근 권한과 판매 데이터를 분리
+            - generic [ref=e306]: — 시놉시스
+            - paragraph [ref=e307]: 크리에이터가 반복적으로 만드는 일정표와 썸네일 템플릿을 제작, 판매, 관리까지 연결한 프로젝트입니다. 사용자는 템플릿을 탐색하고 구매 요청을 보낼 수 있고, 운영자는 템플릿, 주문, 파일, 권한, 정산 흐름을 관리자 화면에서 처리할 수 있습니다.
+            - generic [ref=e308]: — 참여 파트
+            - generic [ref=e309]:
+              - generic [ref=e310]:
+                - generic [ref=e311]:
+                  - generic [ref=e312]: 프론트엔드
+                  - generic [ref=e313]: 직접 구현
+                - generic [ref=e314]:
+                  - generic [ref=e315]:
+                    - img [ref=e316]
+                    - generic [ref=e318]: 랜딩, 인증, 일정표 편집기, 템플릿 상점, 커스텀 주문, 마이페이지, 관리자 대시보드 구현
+                  - generic [ref=e319]:
+                    - img [ref=e320]
+                    - generic [ref=e322]: React Query hook과 service layer로 조회/변경 흐름 분리
+                  - generic [ref=e323]:
+                    - img [ref=e324]
+                    - generic [ref=e326]: 템플릿 입력 구조와 프리뷰, 저장/복원 UI 구성
+              - generic [ref=e327]:
+                - generic [ref=e328]:
+                  - generic [ref=e329]: 백엔드
+                  - generic [ref=e330]: 직접 구현
+                - generic [ref=e331]:
+                  - generic [ref=e332]:
+                    - img [ref=e333]
+                    - generic [ref=e335]: Next.js API Route 기반 인증, 템플릿, 구매 요청, 커스텀 주문, 파일 업로드 API 구현
+                  - generic [ref=e336]:
+                    - img [ref=e337]
+                    - generic [ref=e339]: Nodemailer 기반 이메일 토큰 인증과 비밀번호 재설정 흐름 연결
+              - generic [ref=e340]:
+                - generic [ref=e341]:
+                  - generic [ref=e342]: 데이터베이스
+                  - generic [ref=e343]: 직접 구현
+                - generic [ref=e344]:
+                  - generic [ref=e345]:
+                    - img [ref=e346]
+                    - generic [ref=e348]: 사용자, 템플릿, 팀, 구매 요청, 판매 통계, 정산/로열티 Supabase migration 구성
+                  - generic [ref=e349]:
+                    - img [ref=e350]
+                    - generic [ref=e352]: 템플릿 접근 권한과 작가 판매 데이터를 분리
+              - generic [ref=e353]:
+                - generic [ref=e354]:
+                  - generic [ref=e355]: 인프라
+                  - generic [ref=e356]: 직접 구현
+                - generic [ref=e358]:
+                  - img [ref=e359]
+                  - generic [ref=e361]: Cloudflare R2 업로드, 파일 조회/삭제, zip 다운로드 흐름 연결
+            - generic [ref=e362]: — 주요 장면
+            - generic [ref=e363]:
+              - generic [ref=e364]:
+                - generic [ref=e365]: S#01
+                - generic [ref=e366]:
+                  - generic [ref=e367]: 설정 기반 템플릿 편집기
+                  - generic [ref=e368]: 템플릿마다 다른 입력값을 설정으로 주입하고, 일정/휴방/프로필/테마 입력부터 프리뷰와 이미지 저장까지 한 흐름으로 연결했습니다.
+              - generic [ref=e369]:
+                - generic [ref=e370]: S#02
+                - generic [ref=e371]:
+                  - generic [ref=e372]: 템플릿 상점/접근 권한 요청
+                  - generic [ref=e373]: 사용자가 템플릿을 탐색하고 구매 또는 접근 권한을 요청하면, React Query hook과 service layer를 통해 요청 상태와 접근 권한을 관리합니다.
+              - generic [ref=e374]:
+                - generic [ref=e375]: S#03
+                - generic [ref=e376]:
+                  - generic [ref=e377]: 커스텀 주문/파일 전달 운영
+                  - generic [ref=e378]: 주문 파일 업로드, 미리보기, 예상 마감일, 파일 조회/삭제를 R2와 DB record에 연결해 운영자가 주문 자료를 추적할 수 있게 했습니다.
+              - generic [ref=e379]:
+                - generic [ref=e380]: S#04
+                - generic [ref=e381]:
+                  - generic [ref=e382]: 관리자 정산/로열티 대시보드
+                  - generic [ref=e383]: 템플릿, 사용자, 구매 요청, 작가 판매, 로열티 정산 상태를 탭 구조로 나누어 관리자가 운영 흐름을 한 화면에서 처리하도록 구성했습니다.
+            - generic [ref=e384]: — 비하인드
+            - generic [ref=e385]:
+              - generic [ref=e386]:
+                - generic [ref=e387]: 커스텀 주문 파일 R2 직접 업로드
+                - generic [ref=e388]:
+                  - generic [ref=e389]:
+                    - generic [ref=e390]: 문제 상황
+                    - generic [ref=e391]: 커스텀 주문 첨부 파일이 커지면서 API 서버가 업로드 본문을 직접 받아 처리하면 요청 시간, 용량 제한, 실패 지점 추적이 모두 서버에 집중됐습니다.
+                  - generic [ref=e392]:
+                    - generic [ref=e393]: 해결 방안
+                    - generic [ref=e394]: presign API가 업로드 URL을 발급하고, 클라이언트가 R2에 직접 업로드한 뒤 complete API에서 R2 object key와 DB file record를 확정하도록 흐름을 나눴습니다.
+              - generic [ref=e395]:
+                - generic [ref=e396]: 작가별 로열티 정산 추적
+                - generic [ref=e397]:
+                  - generic [ref=e398]:
+                    - generic [ref=e399]: 문제 상황
+                    - generic [ref=e400]: 템플릿 판매 건수만 집계하면 어떤 작가에게 어떤 판매분을 기준으로 정산해야 하는지 관리자 화면에서 검증하기 어려웠습니다.
+                  - generic [ref=e401]:
+                    - generic [ref=e402]: 해결 방안
+                    - generic [ref=e403]: 판매 기록, 작가, 템플릿, 정산 상태를 분리한 schema와 관리자 화면을 추가해 판매 집계와 로열티 정산 근거를 별도 단위로 추적했습니다.
+              - generic [ref=e404]:
+                - generic [ref=e405]: 템플릿 편집기 워크플로우 고도화
+                - generic [ref=e406]:
+                  - generic [ref=e407]:
+                    - generic [ref=e408]: 문제 상황
+                    - generic [ref=e409]: 템플릿마다 입력 구조와 편집 상태 처리 방식이 달라지면서 신규 템플릿을 추가할 때 editor, property, preview 로직이 반복 생성됐습니다.
+                  - generic [ref=e410]:
+                    - generic [ref=e411]: 해결 방안
+                    - generic [ref=e412]: 입력 속성, 편집 상태, runtime resolver를 기능 단위로 분리하고 템플릿 설정을 주입하는 구조로 정리해 신규 템플릿 추가 시 수정 범위를 줄였습니다.
+            - generic [ref=e413]: — 상영 전 검수
+            - generic [ref=e414]:
+              - generic [ref=e415]:
+                - generic [ref=e416]:
+                  - img [ref=e418]
+                  - generic [ref=e427]: 업로드 책임 분리
+                - generic [ref=e428]: presign, 업로드 완료 기록, DB record 연결을 분리해 파일 저장 실패 지점을 추적 가능하게 했습니다.
+              - generic [ref=e429]:
+                - generic [ref=e430]:
+                  - img [ref=e432]
+                  - generic [ref=e435]: 정산 근거 분리
+                - generic [ref=e436]: 판매 집계와 작가별 로열티 데이터를 나눠 관리자 화면에서 정산 근거를 확인할 수 있게 했습니다.
+              - generic [ref=e437]:
+                - generic [ref=e438]:
+                  - img [ref=e440]
+                  - generic [ref=e442]: 편집기 구조화
+                - generic [ref=e443]: 템플릿 입력, 속성, 런타임 해석 흐름을 분리해 신규 템플릿 확장 비용을 낮췄습니다.
+            - generic [ref=e444]: — 스틸컷
+            - generic [ref=e445]:
+              - img "TEMIS 일정표 템플릿 편집기 화면" [ref=e446]
+              - generic [ref=e448]: STILL · 01
+              - generic [ref=e449]: "일정표 편집기: 템플릿 입력 폼과 실시간 미리보기"
+            - generic [ref=e450]:
+              - 'button "스틸컷 1: 일정표 편집기: 템플릿 입력 폼과 실시간 미리보기" [pressed] [ref=e451] [cursor=pointer]':
+                - generic [ref=e453]: "01"
+              - 'button "스틸컷 2: 템플릿 상점: 목록, 상세, 구매 요청 화면" [ref=e454] [cursor=pointer]':
+                - generic [ref=e456]: "02"
+              - 'button "스틸컷 3: 관리자 대시보드: 주문/구매 요청/템플릿 관리 탭" [ref=e457] [cursor=pointer]':
+                - generic [ref=e459]: "03"
+              - 'button "스틸컷 4: 정산/권한 관리: 로열티, 사용자 템플릿 권한 관리 화면" [ref=e460] [cursor=pointer]':
+                - generic [ref=e462]: "04"
+            - generic [ref=e463]: — 흥행 및 회고
+            - generic [ref=e464]:
+              - generic [ref=e465]:
+                - generic [ref=e467]:
+                  - img [ref=e468]
+                  - text: 성과
+                - generic [ref=e470]: 반복 템플릿 제작과 운영 관리를 한 서비스 흐름으로 묶었습니다. 중복 hook 제거와 업로드 흐름 분리로 유지보수 비용을 줄였습니다.
+              - generic [ref=e471]:
+                - generic [ref=e473]:
+                  - img [ref=e474]
+                  - text: 배운 점
+                - generic [ref=e477]: 제작 도구와 커머스가 결합될 때 데이터 권한과 운영 흐름을 먼저 고정해야 한다는 점을 배웠습니다.
+            - generic [ref=e478]: — 출연 및 제작
+            - generic [ref=e479]:
+              - generic [ref=e480]:
+                - generic [ref=e481]: Next.js
+                - generic [ref=e482]: App Router 화면과 API Route를 함께 구성
+              - generic [ref=e483]:
+                - generic [ref=e484]: React / TypeScript
+                - generic [ref=e485]: 복잡한 편집 UI와 관리자 화면 구현
+              - generic [ref=e486]:
+                - generic [ref=e487]: Supabase
+                - generic [ref=e488]: 운영 데이터와 migration 관리
+              - generic [ref=e489]:
+                - generic [ref=e490]: TanStack Query
+                - generic [ref=e491]: 서버 상태와 mutation/invalidate 관리
+              - generic [ref=e492]:
+                - generic [ref=e493]: Cloudflare R2
+                - generic [ref=e494]: 주문 파일과 이미지 저장
+              - generic [ref=e495]:
+                - generic [ref=e496]: Nodemailer
+                - generic [ref=e497]: 이메일 인증과 토큰 메일 발송
+            - generic [ref=e498]:
+              - generic [ref=e499]:
+                - img [ref=e500]
+                - text: 상영관 입장 · 준비중
+              - generic [ref=e504]:
+                - img [ref=e505]
+                - text: 필름 원본 · 준비중
+  - button "Open Next.js Dev Tools" [ref=e242] [cursor=pointer]:
+    - img [ref=e243]
+  - alert [ref=e246]

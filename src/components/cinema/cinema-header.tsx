@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { supportedLanguages, type Language } from "@/constants/portfolio";
 import { cn } from "@/lib/utils";
 import type { LocalizedProject, PortfolioCopy } from "./types";
@@ -22,6 +23,7 @@ export function CinemaHeader({
         <a
           className="skew-x-[-6deg] bg-[#16130C] px-[13px] pb-[5px] pt-[7px] font-anton text-[22px] leading-none tracking-[1px] text-[#FFCE00]"
           href="#top"
+          style={{ color: "#FFCE00" }}
         >
           CINÉ·FOLIO
         </a>
@@ -64,7 +66,7 @@ export function CinemaHeader({
           type="button"
         >
           {copy.cta}
-          <span className="text-[15px]">→</span>
+          <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={3} />
         </button>
       </div>
     </nav>

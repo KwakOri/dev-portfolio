@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TEMIS Architecture Poster</title>
+    <style>
+      :root {
+        --ink: #211a14;
+        --muted: #8f7866;
+        --paper: #fff2e8;
+        --paper-2: #ffe6d2;
+        --panel: rgba(255, 248, 239, 0.92);
+        --panel-strong: #fff8ef;
+        --line: #3a2b21;
+        --orange: #ff7a1a;
+        --orange-2: #ffb447;
+        --orange-3: #ffdd9c;
+        --green: #21a67a;
+        --blue: #3c7cff;
+        --shadow: 0 24px 80px rgba(74, 42, 18, 0.23);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        background: #130f0c;
+        font-family:
+          "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI", system-ui,
+          sans-serif;
+        color: var(--ink);
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+      }
+
+      .poster {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, rgba(255, 122, 26, 0.16), transparent 36%),
+          linear-gradient(225deg, rgba(255, 206, 0, 0.22), transparent 34%),
+          radial-gradient(circle at 54% 48%, #fff6ec 0 32%, #f6ddcc 72%),
+          #f2ded3;
+        isolation: isolate;
+      }
+
+      .poster::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(rgba(33, 26, 20, 0.09) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(33, 26, 20, 0.04) 1px, transparent 1px),
+          linear-gradient(rgba(33, 26, 20, 0.04) 1px, transparent 1px);
+        background-size: 18px 18px, 120px 120px, 120px 120px;
+        mask-image: linear-gradient(to bottom, #000 0 82%, transparent 100%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .poster::after {
+        content: "";
+        position: absolute;
+        inset: 34px;
+        border: 2px solid rgba(33, 26, 20, 0.16);
+        border-radius: 34px;
+        pointer-events: none;
+        z-index: 4;
+      }
+
+      .grain {
+        position: absolute;
+        inset: 0;
+        opacity: 0.16;
+        background-image:
+          repeating-linear-gradient(
+            0deg,
+            transparent 0 2px,
+            rgba(255, 255, 255, 0.18) 2px 3px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent 0 5px,
+            rgba(0, 0, 0, 0.08) 5px 6px
+          );
+        mix-blend-mode: soft-light;
+        z-index: 1;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1332px 1fr;
+        gap: 28px;
+        width: 100%;
+        height: 100%;
+        padding: 50px 56px 44px;
+      }
+
+      .main {
+        position: relative;
+        min-width: 0;
+      }
+
+      .header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 22px;
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 13px;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: var(--orange-3);
+        box-shadow: 5px 5px 0 var(--line);
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 0.05em;
+      }
+
+      .dot {
+        width: 11px;
+        height: 11px;
+        border: 2px solid var(--line);
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      h1 {
+        margin: 18px 0 4px;
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        font-size: 122px;
+        line-height: 0.85;
+        letter-spacing: 0.012em;
+      }
+
+      .subtitle {
+        margin: 0;
+        max-width: 800px;
+        font-size: 25px;
+        font-weight: 800;
+        line-height: 1.35;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+        width: 438px;
+        padding-top: 10px;
+      }
+
+      .pill {
+        padding: 9px 14px;
+        border: 2px solid rgba(33, 26, 20, 0.9);
+        border-radius: 999px;
+        background: rgba(255, 248, 239, 0.76);
+        font-size: 16px;
+        font-weight: 900;
+        box-shadow: 4px 4px 0 rgba(33, 26, 20, 0.88);
+      }
+
+      .architecture {
+        position: relative;
+        height: 688px;
+        border: 3px solid var(--line);
+        border-radius: 32px;
+        background: rgba(255, 248, 239, 0.72);
+        box-shadow: var(--shadow), 9px 9px 0 rgba(33, 26, 20, 0.94);
+        overflow: hidden;
+      }
+
+      .architecture::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255, 122, 26, 0.11), transparent 42%),
+          radial-gradient(circle at 70% 18%, rgba(255, 180, 71, 0.23), transparent 28%);
+        pointer-events: none;
+      }
+
+      .flow-lines {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .lane-title {
+        position: absolute;
+        top: 26px;
+        padding: 8px 12px;
+        border-radius: 12px;
+        background: #211a14;
+        color: #fff5e9;
+        font-size: 14px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      .lane-title.users {
+        left: 34px;
+      }
+
+      .lane-title.product {
+        left: 396px;
+      }
+
+      .lane-title.services {
+        right: 328px;
+      }
+
+      .lane-title.data {
+        right: 34px;
+      }
+
+      .node {
+        position: absolute;
+        z-index: 2;
+        border: 3px solid var(--line);
+        border-radius: 24px;
+        background: var(--panel);
+        box-shadow: 7px 7px 0 rgba(33, 26, 20, 0.88);
+      }
+
+      .node h2,
+      .node h3,
+      .node p {
+        margin: 0;
+      }
+
+      .node h2 {
+        font-size: 25px;
+        line-height: 1;
+      }
+
+      .node h3 {
+        font-size: 20px;
+      }
+
+      .node p {
+        color: var(--muted);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.38;
+      }
+
+      .users-box {
+        left: 34px;
+        top: 82px;
+        width: 284px;
+        height: 446px;
+        padding: 24px;
+        background: #fff9f2;
+      }
+
+      .role {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        gap: 13px;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 2px dashed rgba(33, 26, 20, 0.18);
+      }
+
+      .role:last-child {
+        border-bottom: 0;
+      }
+
+      .role-icon {
+        display: grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border: 2px solid var(--line);
+        border-radius: 15px;
+        background: var(--orange-2);
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .role strong {
+        display: block;
+        font-size: 17px;
+        font-weight: 950;
+      }
+
+      .role span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .app-box {
+        left: 386px;
+        top: 82px;
+        width: 462px;
+        height: 278px;
+        padding: 26px;
+        background: linear-gradient(180deg, #fffaf5, #ffe6ce);
+      }
+
+      .badge {
+        display: inline-block;
+        margin-bottom: 13px;
+        padding: 7px 10px;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--orange);
+        font-size: 14px;
+        font-weight: 950;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .feature-chip {
+        min-height: 48px;
+        padding: 12px 13px;
+        border: 2px solid rgba(33, 26, 20, 0.85);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.74);
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .query-box {
+        left: 386px;
+        top: 400px;
+        width: 462px;
+        height: 112px;
+        padding: 22px 24px;
+        background: #211a14;
+        color: #fff7ef;
+      }
+
+      .query-box p {
+        color: rgba(255, 247, 239, 0.72);
+      }
+
+      .api-box {
+        left: 926px;
+        top: 82px;
+        width: 372px;
+        height: 222px;
+        padding: 22px;
+        background: #fff9f2;
+      }
+
+      .api-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 13px;
+      }
+
+      .api-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 8px 9px;
+        border: 2px solid rgba(33, 26, 20, 0.82);
+        border-radius: 14px;
+        background: #fff;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .api-item span {
+        color: var(--orange);
+        font-size: 10px;
+      }
+
+      .data-box {
+        right: auto;
+        left: 926px;
+        top: 334px;
+        width: 180px;
+        height: 214px;
+        padding: 18px;
+        background: #fffaf5;
+      }
+
+      .data-box .badge {
+        margin-bottom: 8px;
+        padding: 6px 8px;
+        font-size: 11px;
+      }
+
+      .data-box h2 {
+        font-size: 24px;
+      }
+
+      .data-box p {
+        font-size: 12px;
+        line-height: 1.25;
+      }
+
+      .stack-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        margin-top: 9px;
+      }
+
+      .mini-tag {
+        padding: 5px 4px;
+        border: 2px solid rgba(33, 26, 20, 0.82);
+        border-radius: 12px;
+        background: #ffe8d3;
+        font-size: 9px;
+        font-weight: 950;
+        text-align: center;
+      }
+
+      .external-box {
+        right: 34px;
+        top: 334px;
+        width: 180px;
+        height: 214px;
+        padding: 18px;
+        background: #fffaf5;
+      }
+
+      .external-row {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 8px;
+        align-items: center;
+        margin-top: 12px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .external-row i {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        background: var(--orange-2);
+        font-style: normal;
+      }
+
+      .decision {
+        position: absolute;
+        left: 34px;
+        right: 34px;
+        bottom: 28px;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+
+      .decision-card {
+        min-height: 88px;
+        padding: 16px 17px;
+        border: 2px solid rgba(33, 26, 20, 0.88);
+        border-radius: 18px;
+        background: #fffaf5;
+      }
+
+      .decision-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--orange);
+        font-size: 14px;
+        font-weight: 950;
+      }
+
+      .decision-card span {
+        display: block;
+        color: #4a3528;
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.35;
+      }
+
+      .side {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        gap: 18px;
+        min-width: 0;
+      }
+
+      .side-panel {
+        position: relative;
+        min-height: 0;
+        padding: 24px;
+        border: 3px solid var(--line);
+        border-radius: 32px;
+        background: rgba(33, 26, 20, 0.96);
+        color: #fff5e9;
+        box-shadow: 9px 9px 0 var(--orange);
+        overflow: hidden;
+      }
+
+      .side-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255, 180, 71, 0.19) 1px, transparent 1px);
+        background-size: 14px 14px;
+        pointer-events: none;
+      }
+
+      .side-panel > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .side-kicker {
+        margin: 0 0 11px;
+        color: var(--orange-2);
+        font-size: 15px;
+        font-weight: 950;
+        letter-spacing: 0.1em;
+      }
+
+      .side-title {
+        margin: 0;
+        font-size: 31px;
+        line-height: 1.12;
+      }
+
+      .side-desc {
+        margin: 14px 0 0;
+        color: rgba(255, 245, 233, 0.78);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .proof {
+        min-height: 78px;
+        padding: 12px 10px;
+        border: 2px solid rgba(255, 245, 233, 0.18);
+        border-radius: 18px;
+        background: rgba(255, 245, 233, 0.08);
+      }
+
+      .proof b {
+        display: block;
+        color: var(--orange-2);
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      .proof span {
+        display: block;
+        margin-top: 7px;
+        color: rgba(255, 245, 233, 0.78);
+        font-size: 11px;
+        font-weight: 800;
+        line-height: 1.3;
+      }
+
+      .stills {
+        display: grid;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .still {
+        position: relative;
+        height: 132px;
+        overflow: hidden;
+        border: 3px solid #fff5e9;
+        border-radius: 24px;
+        background: #100c09;
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.28);
+      }
+
+      .still img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(1.04) contrast(1.02);
+      }
+
+      .still:nth-child(1) img {
+        object-position: 50% 20%;
+      }
+
+      .still:nth-child(2) img {
+        object-position: 50% 8%;
+      }
+
+      .still:nth-child(3) img {
+        object-position: 50% 25%;
+      }
+
+      .still-label {
+        position: absolute;
+        left: 16px;
+        bottom: 14px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(33, 26, 20, 0.86);
+        color: #fff5e9;
+        font-size: 13px;
+        font-weight: 950;
+      }
+
+      .footer-note {
+        margin-top: 0;
+        padding: 14px 16px;
+        border: 3px solid var(--line);
+        border-radius: 24px;
+        background: #ffce00;
+        box-shadow: 6px 6px 0 var(--line);
+        font-size: 15px;
+        font-weight: 950;
+        line-height: 1.35;
+      }
+
+      .footer-note span {
+        color: #b64d00;
+      }
+
+      .small-print {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 18px;
+        color: rgba(33, 26, 20, 0.65);
+        font-size: 14px;
+        font-weight: 900;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="poster" aria-label="TEMIS architecture visualization">
+      <div class="grain"></div>
+      <div class="content">
+        <main class="main">
+          <header class="header">
+            <div>
+              <div class="kicker"><span class="dot"></span> PROJECT 01 · ARCHITECTURE CUT</div>
+              <h1>TEMIS</h1>
+              <p class="subtitle">
+                크리에이터의 일정표 제작, 템플릿 판매, 주문 운영, 권한/정산 관리를
+                하나의 서비스 흐름으로 묶은 Creator Ops 플랫폼.
+              </p>
+            </div>
+            <div class="meta" aria-label="technology stack">
+              <span class="pill">Next.js App Router</span>
+              <span class="pill">TypeScript</span>
+              <span class="pill">TanStack Query</span>
+              <span class="pill">Supabase</span>
+              <span class="pill">Cloudflare R2</span>
+              <span class="pill">Nodemailer</span>
+            </div>
+          </header>
+
+          <section class="architecture">
+            <svg class="flow-lines" viewBox="0 0 1332 688" aria-hidden="true">
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#211a14"></path>
+                </marker>
+                <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#ff7a1a"></path>
+                </marker>
+              </defs>
+              <path d="M 318 250 C 355 250, 350 214, 386 214" fill="none" stroke="#211a14" stroke-width="5" marker-end="url(#arrow)"></path>
+              <path d="M 620 360 C 620 383, 620 383, 620 400" fill="none" stroke="#ff7a1a" stroke-width="6" marker-end="url(#arrow-orange)"></path>
+              <path d="M 848 456 C 888 456, 884 228, 926 228" fill="none" stroke="#211a14" stroke-width="5" marker-end="url(#arrow)"></path>
+              <path d="M 1112 304 C 1112 324, 1016 314, 1016 334" fill="none" stroke="#211a14" stroke-width="5" marker-end="url(#arrow)"></path>
+              <path d="M 1168 304 C 1168 324, 1208 314, 1208 334" fill="none" stroke="#211a14" stroke-width="5" marker-end="url(#arrow)"></path>
+              <path d="M 1016 512 C 1016 560, 760 562, 760 606" fill="none" stroke="#211a14" stroke-width="4" stroke-dasharray="12 10"></path>
+              <path d="M 1208 512 C 1208 586, 588 590, 588 606" fill="none" stroke="#ff7a1a" stroke-width="5" marker-end="url(#arrow-orange)"></path>
+            </svg>
+
+            <div class="lane-title users">USERS</div>
+            <div class="lane-title product">PRODUCT EXPERIENCE</div>
+            <div class="lane-title services">SERVER FLOW</div>
+            <div class="lane-title data">DATA / OPS</div>
+
+            <article class="node users-box">
+              <h2>사용자 역할</h2>
+              <div class="role">
+                <div class="role-icon">C</div>
+                <div><strong>Creator</strong><span>일정표 제작 · 템플릿 판매</span></div>
+              </div>
+              <div class="role">
+                <div class="role-icon">B</div>
+                <div><strong>Buyer</strong><span>템플릿 탐색 · 구매 요청</span></div>
+              </div>
+              <div class="role">
+                <div class="role-icon">O</div>
+                <div><strong>Operator</strong><span>주문 · 파일 · 정산 운영</span></div>
+              </div>
+            </article>
+
+            <article class="node app-box">
+              <span class="badge">CLIENT + APP ROUTER</span>
+              <h2>Next.js Product Surface</h2>
+              <p>편집기 상태는 클라이언트 hook으로, 서버 상태는 React Query로 분리했습니다.</p>
+              <div class="feature-grid">
+                <div class="feature-chip">Timetable Editor</div>
+                <div class="feature-chip">Template Shop</div>
+                <div class="feature-chip">Custom Orders</div>
+                <div class="feature-chip">Admin Dashboard</div>
+              </div>
+            </article>
+
+            <article class="node query-box">
+              <h3>TanStack Query + Service Layer</h3>
+              <p>조회, 변경, invalidate 흐름을 화면 밖으로 빼서 운영 화면과 제작 도구를 같은 규칙으로 연결.</p>
+            </article>
+
+            <article class="node api-box">
+              <span class="badge">BFF / SERVER ACTIONS</span>
+              <h2>Next.js API Routes</h2>
+              <p>인증, 권한, 업로드, 구매 요청, 관리자 작업을 얇은 API 계층으로 정리.</p>
+              <div class="api-list">
+                <div class="api-item">Auth & Tokens <span>JWT</span></div>
+                <div class="api-item">Template Access <span>권한</span></div>
+                <div class="api-item">Purchase Requests <span>운영</span></div>
+                <div class="api-item">Upload Pipeline <span>R2</span></div>
+                <div class="api-item">Admin Ops <span>정산</span></div>
+              </div>
+            </article>
+
+            <article class="node data-box">
+              <span class="badge">POSTGRES MODEL</span>
+              <h2>Supabase</h2>
+              <p>운영 데이터와 권한 관계를 migration 중심으로 관리.</p>
+              <div class="stack-list">
+                <span class="mini-tag">users</span>
+                <span class="mini-tag">templates</span>
+                <span class="mini-tag">teams</span>
+                <span class="mini-tag">purchase</span>
+                <span class="mini-tag">access</span>
+                <span class="mini-tag">royalty</span>
+              </div>
+            </article>
+
+            <article class="node external-box">
+              <h2>External Services</h2>
+              <div class="external-row"><i>R2</i><span>주문 파일 · 이미지 저장</span></div>
+              <div class="external-row"><i>@</i><span>인증 · 초대 · 재설정 메일</span></div>
+            </article>
+
+            <div class="decision">
+              <div class="decision-card">
+                <strong>Key Decision 01</strong>
+                <span>템플릿별 입력 필드는 설정으로 주입하고, 저장/프리뷰 로직은 공통 hook으로 통합.</span>
+              </div>
+              <div class="decision-card">
+                <strong>Key Decision 02</strong>
+                <span>구매 요청, 접근 권한, 작가 판매/정산 데이터를 분리해 관리자 운영 흐름으로 연결.</span>
+              </div>
+              <div class="decision-card">
+                <strong>Key Decision 03</strong>
+                <span>파일 검증, R2 key 생성, DB record 연결, 삭제 유틸을 분리해 업로드 실패를 추적 가능하게 구성.</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="small-print">
+            <span>CREATOR TOOLS · COMMERCE · ADMIN OPS</span>
+            <span>FULL-STACK IMPLEMENTATION / FRONTEND-LED</span>
+          </div>
+        </main>
+
+        <aside class="side">
+          <section class="side-panel">
+            <p class="side-kicker">PORTFOLIO EVIDENCE</p>
+            <h2 class="side-title">제작 도구와 운영 시스템이 만나는 구조</h2>
+            <p class="side-desc">
+              TEMIS의 강점은 편집 화면만이 아니라 판매, 구매 요청, 파일 전달, 권한/정산을
+              하나의 운영 루프로 연결했다는 점입니다.
+            </p>
+
+            <div class="proof-grid">
+              <div class="proof"><b>FE + API + DB</b><span>화면부터 migration까지 연결</span></div>
+              <div class="proof"><b>4 flows</b><span>편집기 · 상점 · 관리자 · 정산</span></div>
+              <div class="proof"><b>Ops</b><span>권한 · 파일 · 판매 데이터 분리</span></div>
+            </div>
+
+            <div class="stills" aria-label="TEMIS screenshots">
+              <figure class="still">
+                <img src="../temis/temis_01.png" alt="TEMIS timetable editor screenshot" />
+                <figcaption class="still-label">01 · Timetable Editor</figcaption>
+              </figure>
+              <figure class="still">
+                <img src="../temis/temis_03.png" alt="TEMIS template shop screenshot" />
+                <figcaption class="still-label">02 · Template Shop</figcaption>
+              </figure>
+              <figure class="still">
+                <img src="../temis/temis_04.png" alt="TEMIS admin dashboard screenshot" />
+                <figcaption class="still-label">03 · Admin / Settlement</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <div class="footer-note">
+            <span>Architecture focus:</span>
+            UI 상태, 서버 상태, 운영 데이터를 분리해 크리에이터 제작 경험과 관리자 운영 경험을 같은 제품 안에서 연결.
+          </div>
+        </aside>
+      </div>
+    </section>
+  </body>
+</html>

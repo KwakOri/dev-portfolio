@@ -1,0 +1,55 @@
+- main "TEMIS isometric architecture map" [ref=e2]:
+  - generic [ref=e3]:
+    - paragraph [ref=e4]: Project 01 · Architecture Map
+    - heading "Building the Creator Ops Flow" [level=1] [ref=e5]
+    - paragraph [ref=e6]: TEMIS는 일정표 제작 도구, 템플릿 상점, 주문 파일, 권한/정산 데이터를 하나의 운영 흐름으로 연결한 크리에이터 커머스 플랫폼입니다.
+    - generic [ref=e7]:
+      - generic [ref=e8]: Next.js
+      - generic [ref=e9]: TypeScript
+      - generic [ref=e10]: TanStack Query
+      - generic [ref=e11]: Supabase
+      - generic [ref=e12]: Cloudflare R2
+      - generic [ref=e13]: Nodemailer
+  - generic [ref=e14]:
+    - img
+    - article [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]: CREATOR STUDIO
+        - heading "일정표 편집기" [level=2] [ref=e19]
+        - paragraph [ref=e20]: 입력 폼, 프리뷰, 저장/복원 로직을 설정 기반 hook으로 연결.
+    - article [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]: TEMPLATE SHOP
+        - heading "상점/구매 요청" [level=2] [ref=e26]
+        - paragraph [ref=e27]: 템플릿 탐색, 구매 요청, 접근 권한 확인이 이어지는 상점 흐름.
+        - generic [ref=e28]: ₩
+    - article [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]: ORDER DESK
+        - heading "커스텀 주문 운영" [level=2] [ref=e33]
+        - paragraph [ref=e34]: 구매 요청, 주문 상태, 관리자 작업을 API Route에서 처리.
+    - article [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]: FILE VAULT
+        - heading "Cloudflare R2" [level=2] [ref=e40]
+        - paragraph [ref=e41]: 주문 파일과 이미지를 검증하고 R2 key와 DB record를 연결.
+        - generic [ref=e42]: R2
+    - article [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]: OPS CORE
+        - heading "Supabase DB" [level=2] [ref=e47]
+        - paragraph [ref=e48]: 사용자, 템플릿, 구매 요청, 접근 권한, 판매/정산 데이터를 분리.
+    - article [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]: EMAIL TOKENS
+        - heading "Nodemailer" [level=2] [ref=e54]
+        - paragraph [ref=e55]: 초대, 인증, 비밀번호 재설정 토큰 메일을 서비스 흐름에 연결.
+        - generic [ref=e56]: "@"
+    - article [ref=e57]:
+      - generic [ref=e58]:
+        - generic [ref=e59]: ADMIN OPS
+        - heading "관리자/정산 대시보드" [level=2] [ref=e61]
+        - paragraph [ref=e62]: 템플릿, 주문, 파일, 접근 권한, 정산 상태를 한 화면에서 관리.
+    - generic [ref=e64]: UI
+    - generic [ref=e65]: API
+    - generic [ref=e66]: DB

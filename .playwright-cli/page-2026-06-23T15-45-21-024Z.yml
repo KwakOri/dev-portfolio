@@ -1,0 +1,110 @@
+- iframe [ref=e2]:
+  - generic [ref=f1e4]:
+    - navigation [ref=f1e5]:
+      - generic [ref=f1e6]:
+        - generic [ref=f1e7]: CINÉ·FOLIO
+        - generic [ref=f1e8]: SYSTEM ARCHITECTURE
+      - generic [ref=f1e9]:
+        - generic [ref=f1e10]: REEL 05 · TEMIS 제작 · 커머스
+        - link "← 상영작으로" [ref=f1e11] [cursor=pointer]:
+          - /url: "#/Cinema Portfolio"
+    - generic [ref=f1e13]:
+      - generic [ref=f1e14]:
+        - generic [ref=f1e15]:
+          - generic [ref=f1e17]: TEMIS
+          - generic [ref=f1e18]: architecture
+        - generic [ref=f1e20]: 제작 도구 · 템플릿 상점 · 관리자 · NEXT.JS API ROUTE + SUPABASE / R2
+      - generic [ref=f1e21]:
+        - generic: TM
+      - generic [ref=f1e23]: TEMIS · 풀스택 운영 시스템
+      - img
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: USER · ADMIN
+        - generic [ref=f1e26]: 사용자 · 관리자
+        - generic [ref=f1e27]: 제작 · 구매 · 운영
+      - generic [ref=f1e28]:
+        - generic [ref=f1e29]: ENTRY
+        - generic [ref=f1e30]: 인증
+      - generic [ref=f1e31]: — 운영 주체 · CLIENT ENTRY —
+      - generic [ref=f1e32]:
+        - generic [ref=f1e33]: FRONTEND
+        - generic [ref=f1e34]: Next.js UI
+        - generic [ref=f1e35]: 편집기 · 상점 · 관리자
+      - generic [ref=f1e36]:
+        - generic [ref=f1e37]: STATE
+        - generic [ref=f1e38]: Query · Editor Hooks
+        - generic [ref=f1e39]: 설정 기반 편집기 주입
+      - generic [ref=f1e40]:
+        - generic [ref=f1e41]: CLIENT
+        - generic [ref=f1e42]: Client Services
+        - generic [ref=f1e43]: API 호출 계층
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]: BACKEND · BFF
+        - generic [ref=f1e46]:
+          - text: Next.js
+          - text: API Routes
+        - generic [ref=f1e47]: 권한 · 템플릿 · 주문 · 업로드 · 메일
+      - generic [ref=f1e48]:
+        - generic [ref=f1e49]: DATABASE
+        - generic [ref=f1e50]:
+          - text: Supabase
+          - text: PostgreSQL
+        - generic [ref=f1e51]:
+          - text: users · templates · teams
+          - text: purchase · portfolio · royalty
+      - generic [ref=f1e52]:
+        - generic [ref=f1e53]: STORAGE
+        - generic [ref=f1e54]: Cloudflare R2
+        - generic [ref=f1e55]: 주문 파일 · 포트폴리오
+      - generic [ref=f1e56]:
+        - generic [ref=f1e57]: MAIL
+        - generic [ref=f1e58]: Nodemailer
+        - generic [ref=f1e59]: 인증 · 초대 · 재설정
+      - generic [ref=f1e60]:
+        - generic [ref=f1e61]: TOOLING
+        - generic [ref=f1e62]: Image · Screenshot
+        - generic [ref=f1e63]: 결과물 이미지 · 다운로드
+      - generic [ref=f1e64]: API
+      - generic [ref=f1e65]: UPLOAD
+      - generic [ref=f1e66]: MAIL
+      - generic [ref=f1e67]: — CROSS-CUTTING · 공통 기능 —
+      - generic [ref=f1e69]:
+        - generic [ref=f1e70]: AUTH
+        - generic [ref=f1e71]: 권한 · 접근 제어
+      - generic [ref=f1e72]:
+        - generic [ref=f1e73]: EDITOR
+        - generic [ref=f1e74]: 설정 기반 hook 주입
+      - generic [ref=f1e75]:
+        - generic [ref=f1e76]: DEPLOY
+        - generic [ref=f1e77]: 배포 확인 필요
+    - generic [ref=f1e79]:
+      - generic [ref=f1e80]:
+        - generic [ref=f1e81]: FLOW LEGEND
+        - generic [ref=f1e84]: API 호출 · Request
+        - generic [ref=f1e87]: 파일 업로드 · R2
+        - generic [ref=f1e90]: 메일 발송 · Mail
+        - generic [ref=f1e93]: 구조 연결 · Structure
+      - generic [ref=f1e94]:
+        - generic [ref=f1e95]: KEY FLOWS
+        - generic [ref=f1e96]: 핵심 데이터 흐름 3선
+      - generic [ref=f1e97]:
+        - generic [ref=f1e98]:
+          - generic [ref=f1e99]:
+            - generic [ref=f1e100]: "01"
+            - generic [ref=f1e101]: 템플릿 편집
+          - generic [ref=f1e102]: UI 입력 → editor hook → preview/render → 저장 API → Supabase
+        - generic [ref=f1e103]:
+          - generic [ref=f1e104]:
+            - generic [ref=f1e105]: "02"
+            - generic [ref=f1e106]: 구매 요청
+          - generic [ref=f1e107]: 상점 화면 → React Query mutation → API Route → 구매 요청·권한 데이터 저장
+        - generic [ref=f1e108]:
+          - generic [ref=f1e109]:
+            - generic [ref=f1e110]: "03"
+            - generic [ref=f1e111]: 파일 업로드
+          - generic [ref=f1e112]: 업로드 요청 → API Route 검증 → R2 저장 → Supabase record 연결
+    - contentinfo [ref=f1e113]:
+      - generic [ref=f1e114]: TEMIS · SYSTEM ARCHITECTURE
+      - generic [ref=f1e115]:
+        - text: Next.js API Route + Supabase/PostgreSQL + Cloudflare R2 + Nodemailer
+        - text: ※ 사용자 정보 · 작가/고객 데이터 · 운영 DB · 메일/스토리지 키는 비공개 처리

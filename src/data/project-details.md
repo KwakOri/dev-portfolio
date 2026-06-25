@@ -6,7 +6,7 @@
 - 기간, 팀 규모, 공개 링크, 저장소 링크는 원본 메모에 명시되지 않아 코드/문서 기록 기준으로 보수적으로 작성했습니다. 실제 공개 전 확인이 필요합니다.
 - 고객명, 내부 운영 데이터, Supabase 프로젝트 ref, 토큰, 계정 정보는 제외했습니다.
 - `temis`는 별도 Nest/Express 서버가 아니라 Next.js API Route와 Supabase를 이용한 풀스택 구현으로 표기했습니다.
-- `zuku`는 Next.js API Route와 Supabase를 이용한 풀스택 구현으로 표기했습니다.
+- `231EDU`는 Next.js frontend, NestJS API server, Python OMR/exam server, Supabase PostgreSQL로 분리된 풀스택 구현으로 표기했습니다.
 - `ssudam`은 프론트엔드 구현과 외부 API 연동/MSW 목업으로 표기했고, 직접 구현한 백엔드/DB는 제외했습니다.
 - `flea_market`은 Next.js, NestJS, Supabase/PostgreSQL 기반 풀스택 구현으로 표기했습니다.
 
@@ -17,8 +17,8 @@
 ## 1. 기본 정보
 - 프로젝트명: TEMIS
 - 짧은 부제: 크리에이터 일정표 제작과 템플릿 판매를 연결한 운영 플랫폼
-- 상태: 진행중
-- 기간: 2025.12 - 2026.05 (코드/마이그레이션 기록 기준, 실제 기간 확인 필요)
+- 상태: 운영 중
+- 기간: 2025.07 - 운영 중
 - 팀 규모: 확인 필요
 - 내 역할: 프론트엔드 중심 풀스택 구현
 - 구현 범위:
@@ -141,7 +141,7 @@
 - title: TEMIS
 - subtitle: Creator Tools & Commerce
 - role: 풀스택 구현 / 프론트엔드 중심
-- period: 2025.12 - 2026.05 (코드 기록 기준)
+- period: 2025.07 - 운영 중
 - implementationScope: Frontend + Backend + DB
 - tagline: 크리에이터의 일정표 제작, 템플릿 판매, 운영 관리를 한 흐름으로 묶은 웹 서비스.
 - description: Next.js App Router에서 일정표/썸네일 편집, 템플릿 상점, 커스텀 주문, 관리자 운영 화면을 구현했습니다. Supabase 스키마와 API Route, React Query hook, R2 업로드, Nodemailer 기반 이메일 토큰 흐름을 연결했습니다.
@@ -160,8 +160,8 @@
 ## 1. 기본 정보
 - 프로젝트명: VShot v2
 - 짧은 부제: WebRTC 기반 실시간 포토부스와 고해상도 합성 시스템
-- 상태: 진행중
-- 기간: 2025.12 - 진행중 (문서 기록 기준, 실제 기간 확인 필요)
+- 상태: 완료
+- 기간: 2026.01 - 2026.04
 - 팀 규모: 확인 필요
 - 내 역할: 풀스택 구현 / 실시간 미디어 처리
 - 구현 범위:
@@ -283,7 +283,7 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 - title: VSHOT
 - subtitle: WebRTC Photobooth
 - role: 풀스택 구현 / 실시간 미디어 처리
-- period: 2025.12 - 진행중
+- period: 2026.01 - 2026.04
 - implementationScope: Frontend + Backend + DB
 - tagline: 실시간 영상통화와 고해상도 원본 캡처를 분리한 웹 포토부스.
 - description: Host와 Guest가 WebRTC로 연결되고, 촬영 순간에는 각 클라이언트가 원본 이미지를 캡처해 서버에서 합성하도록 설계했습니다. Next.js 클라이언트, Express/WebSocket 시그널링 서버, Room/Session 관리, R2/Supabase 파일·프레임 관리, WebGL 영상 합성 최적화를 구현했습니다.
@@ -302,8 +302,8 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 ## 1. 기본 정보
 - 프로젝트명: LUCENT
 - 짧은 부제: 디지털·실물 상품 쇼핑몰의 v2 커머스 전환 프로젝트
-- 상태: 진행중
-- 기간: 2026.03 - 진행중 (v2 문서/마이그레이션 기록 기준, 실제 기간 확인 필요)
+- 상태: 운영 중
+- 기간: 2026.03 - 운영 중
 - 팀 규모: 확인 필요
 - 내 역할: 풀스택 구현 / 커머스 v2 전환
 - 구현 범위:
@@ -418,14 +418,14 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 - 사용자/팀/개발 경험 측면의 변화: 기존 운영 구조를 보존하면서 새 커머스 모델을 병행 구축해 전환 리스크를 낮췄다.
 - 성능 개선: 정량 지표는 없음. 대신 API 경계, query key, BFF route, backend service 계층을 정리해 변경 영향 범위를 줄였다.
 - 유지보수 개선: Page/UI -> React Query hook -> API service -> Next BFF -> NestJS API -> Supabase 흐름을 문서와 코드에 맞췄다.
-- 출시/운영 여부: 진행중. 실제 공개/운영 상태 확인 필요.
+- 출시/운영 여부: 운영 중. 실제 공개/운영 상세 범위는 확인 필요.
 - 배운 점: 운영 중인 커머스 리팩토링은 새 모델을 만드는 일보다 기존 데이터와 화면을 안전하게 공존시키는 설계가 더 중요하다.
 
 ## 10. 포트폴리오용 최종 요약
 - title: LUCENT
 - subtitle: Commerce Platform V2
 - role: 풀스택 구현 / 커머스 v2 전환
-- period: 2026.03 - 진행중
+- period: 2026.03 - 운영 중
 - implementationScope: Frontend + Backend + DB
 - tagline: 디지털·실물 상품 쇼핑몰을 v2 커머스 모델로 점진 전환한 프로젝트.
 - description: 기존 운영 테이블을 보존하면서 `public.v2_*` 커머스 모델을 병행 구축하고, 상품/variant, 캠페인·가격, 장바구니·체크아웃, 주문/이행/관리 화면을 단계적으로 전환했습니다.
@@ -439,18 +439,19 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 
 ---
 
-# ZUKU
+# 231EDU
 
 ## 1. 기본 정보
-- 프로젝트명: ZUKU
+- 프로젝트명: 231EDU
 - 짧은 부제: 학원 학생, 수업, 시간표, 리포트 운영을 통합 관리하는 웹 시스템
-- 상태: 완료 (코드 기록 기준)
-- 기간: 2025.08 - 2026.02 (Git 기록 기준, 실제 운영 기간 확인 필요)
+- 상태: 운영 중
+- 기간: 2025.08 - 운영 중
 - 팀 규모: 확인 필요
 - 내 역할: 풀스택 구현 / 학원 운영 자동화
 - 구현 범위:
   - Frontend + Backend + DB
-  - Backend는 별도 서버가 아니라 Next.js API Route 기반 BFF/서버 기능
+  - Backend는 NestJS API server로 분리
+  - OMR/채점 처리는 Python OMR/exam server로 분리
 - 공개 링크: 확인 필요
 - 저장소 링크: 확인 필요
 - 공개 가능 범위: 서비스명, 화면 구조, 기술 스택, 구현 기능 공개 가능. 학생 개인정보, 학원 내부 운영 데이터, 알림톡 템플릿/발송 키, Supabase 정보는 비공개.
@@ -459,23 +460,24 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 학원 운영자가 학생, 반 편성, 강의실 시간표, OMR 채점, 주간 리포트 발송을 한곳에서 관리할 수 있도록 만든 웹 운영 시스템.
 
 ## 3. 시놉시스
-학원 운영 업무는 학생 정보, 반 편성, 강의실 시간표, 시험 채점, 학부모 리포트 발송이 서로 떨어져 있으면 반복 입력과 확인 비용이 커진다. ZUKU는 수업 운영 데이터를 한 화면 흐름 안에서 관리하고, 시험/리포트/알림까지 이어지도록 만드는 것을 목표로 했다. 주요 사용자는 학원 관리자와 강사이며, 학생 개인 데이터와 내부 일정은 비공개 운영 정보로 다뤘다. 나는 Next.js 화면, React Query hook, client/server service, API Route, Supabase migration을 연결해 운영자가 반복 처리하는 업무를 기능 단위로 자동화했다.
+학원 운영 업무는 학생 정보, 반 편성, 강의실 시간표, 시험 채점, 학부모 리포트 발송이 서로 떨어져 있으면 반복 입력과 확인 비용이 커진다. 231EDU는 수업 운영 데이터를 한 화면 흐름 안에서 관리하고, 시험/리포트/알림까지 이어지도록 만드는 것을 목표로 했다. 주요 사용자는 학원 관리자와 강사이며, 학생 개인 데이터와 내부 일정은 비공개 운영 정보로 다뤘다. 나는 Next.js 화면, React Query hook/service, NestJS API server, Python OMR/exam server, Supabase migration을 연결해 운영자가 반복 처리하는 업무를 기능 단위로 자동화했다.
 
 ## 4. 내 기여
 
 ### Frontend
 - 구현한 주요 화면: 로그인/회원가입/초대 검증, 학생 관리, 반 관리, 반 편성, 강의실 시간표, 통합 시간표, 강사 시간표, 중등 기록, OMR 템플릿/채점, 주간 리포트
 - 상태 관리: TanStack Query로 학생/수업/시간표/리포트 서버 상태를 관리하고, 화면별 form/local state를 분리
-- API 연동: `src/services/client`, `src/queries`, `src/app/api/*` 경로를 통해 Next.js API Route와 Supabase 서버 로직 연동
+- API 연동: `src/services/client`, `src/queries` 계층을 통해 NestJS API server와 Python OMR/exam server 연동
 - 반응형/접근성: 운영자 화면 중심의 테이블, 그리드, 캔버스형 시간표 UI 구성
 - 성능 개선: 시간표와 편성 데이터 조회/갱신 흐름을 query hook으로 분리해 변경 범위를 줄임
 - UI/UX 판단: 학생/반/시간표처럼 서로 참조되는 데이터를 탭과 표, 일정 캔버스 중심으로 배치해 운영자가 확인할 정보를 한곳에서 볼 수 있게 구성
 
 ### Backend
-- 주요 API: 인증/초대, 학생, 반, 과목, 강사, 반 편성, 강의실 시간표, 통합 시간표, 예외 일정, 시험 기간, OMR 처리/채점, 주간 리포트, 알림톡 발송
+- 주요 API: NestJS API server에서 인증/초대, 학생, 반, 과목, 강사, 반 편성, 강의실 시간표, 통합 시간표, 예외 일정, 시험 기간, 주간 리포트, 알림톡 발송 처리
+- OMR/채점 API: Python OMR/exam server에서 OMR 이미지 업로드, 템플릿 좌표 분석, 마킹 판정, 채점 결과 생성 처리
 - 인증/인가: 로그인, 로그아웃, 현재 사용자, 회원가입, 초대 검증, 토큰 검증 흐름 구현
 - 비즈니스 로직: 학생-수업 등록, 반 구성, 강의실 이동/시간 변경, 주간 리포트 생성 및 발송, OMR 템플릿 기반 채점
-- 에러 처리: API Route 단위 입력 검증, 존재하지 않는 리소스/권한/발송 실패 처리
+- 에러 처리: NestJS DTO/service 단위 입력 검증, OMR 서버 처리 실패, 존재하지 않는 리소스/권한/발송 실패 처리
 - 특수 기능: Kakao 알림톡 프록시 API, 주간 리포트 발송 로그, OMR 이미지 처리, 엑셀 처리, 이메일/문자 발송 연동
 
 ### Database
@@ -493,8 +495,9 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 - 도메인/SSL: 확인 필요
 
 ## 5. 기술 스택
-- Frontend: Next.js, React, TypeScript - 운영자 화면과 서버 기능을 한 프로젝트에서 구성하기 위해 사용
-- Backend: Next.js API Route - Supabase와 외부 발송 API를 감싸는 BFF/서버 기능에 사용
+- Frontend: Next.js, React, TypeScript - 운영자 화면과 서버 상태 흐름을 구성하기 위해 사용
+- Backend: NestJS - 인증, 학생, 수업, 시간표, 리포트, 알림톡 API를 분리된 서버에서 처리하기 위해 사용
+- OMR/Exam Server: Python - OMR 이미지 처리와 채점 분석을 운영 API와 분리하기 위해 사용
 - Database: Supabase PostgreSQL - 학생, 수업, 편성, 리포트 데이터를 관계형으로 관리하기 위해 사용
 - Styling: Tailwind CSS, cva - 운영 화면의 반복 UI와 variant를 정리하기 위해 사용
 - State/Data fetching: TanStack Query - 서버 상태 캐싱, mutation, invalidate 흐름을 명확히 하기 위해 사용
@@ -505,7 +508,7 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 ## 6. 핵심 기능
 - 학생/반/편성 관리:
   - 사용자가 하는 일: 학생을 등록하고 수업, 반, 편성 정보를 관리한다.
-  - 내가 구현한 부분: 학생/반/편성 화면, API route, Supabase relation, React Query hook.
+  - 내가 구현한 부분: 학생/반/편성 화면, NestJS API, Supabase relation, React Query hook.
   - 기술적 포인트: 학생 등록과 반 편성 상태를 분리해 변경 이력을 다루기 쉬운 구조로 정리.
 - 강의실/통합 시간표:
   - 사용자가 하는 일: 강의실별 수업 배치와 시간 변경, 학생 이동을 확인한다.
@@ -513,7 +516,7 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
   - 기술적 포인트: 시간표 데이터 조회와 수정 mutation을 분리해 화면 갱신 범위를 통제.
 - OMR 템플릿 기반 채점:
   - 사용자가 하는 일: OMR 이미지를 업로드하고 답안 인식 결과를 확인한다.
-  - 내가 구현한 부분: OMR 템플릿, 업로더, 결과 화면, 처리/채점 API.
+  - 내가 구현한 부분: OMR 템플릿, 업로더, 결과 화면, Python OMR/exam server 처리/채점 API.
   - 기술적 포인트: 기본 템플릿 좌표와 밝기 기준을 사용해 마킹 여부를 판정.
 - 주간 리포트 알림톡:
   - 사용자가 하는 일: 학생별 주간 리포트를 생성하고 학부모에게 발송한다.
@@ -565,17 +568,17 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 - 배운 점: 운영 도메인에서는 화면보다 데이터 관계를 먼저 안정화해야 기능이 확장될 때 흔들리지 않는다.
 
 ## 10. 포트폴리오용 최종 요약
-- title: ZUKU
+- title: 231EDU
 - subtitle: Academy Ops Platform
 - role: 풀스택 구현 / 학원 운영 자동화
-- period: 2025.08 - 2026.02 (코드 기록 기준)
+- period: 2025.08 - 운영 중
 - implementationScope: Frontend + Backend + DB
 - tagline: 학원 학생, 수업, 시간표, 리포트 운영을 한곳에서 관리하는 웹 운영 시스템.
-- description: Next.js App Router와 Supabase를 기반으로 학생/반/강의실 시간표, OMR 채점, 주간 리포트, 알림톡 발송 흐름을 구현했습니다.
+- description: Next.js frontend, NestJS API server, Python OMR/exam server, Supabase PostgreSQL을 기반으로 학생/반/강의실 시간표, OMR 채점, 주간 리포트, 알림톡 발송 흐름을 구현했습니다.
 - highlights: 학생/수업 관리, 반 편성, 강의실/통합 시간표, OMR 채점, 주간 리포트 알림톡
-- stack: Next.js, React, TypeScript, Supabase, TanStack Query, Tailwind CSS, OMR, Alimtalk API, xlsx
+- stack: Next.js, React, TypeScript, NestJS, Python OMR Server, Supabase, TanStack Query, Tailwind CSS, Alimtalk API, xlsx
 - shots: 학생/수업 관리, 강의실/통합 시간표, OMR 자동 채점, 주간 리포트 알림톡
-- contributionSummary: 프론트 화면, API Route, Supabase migration, 외부 발송 연동까지 연결한 학원 운영 자동화 프로젝트
+- contributionSummary: 프론트 화면, NestJS API, Python OMR server, Supabase migration, 외부 발송 연동까지 연결한 학원 운영 자동화 프로젝트
 - problemSolving: 학생-반편성 관계 분리, OMR 템플릿 기반 인식, 주간 리포트 발송 로그/중복 방지
 - impact: 정량 성과는 없지만, 흩어진 학원 운영 업무를 하나의 관리 흐름으로 묶는 구조를 만들었다.
 - links: 공개 링크/저장소 링크 확인 필요
@@ -588,7 +591,7 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 - 프로젝트명: SSUDAM
 - 짧은 부제: AI 상담과 지원 정보 탐색을 결합한 모바일 해커톤 서비스
 - 상태: 완료
-- 기간: 2024.11 (Git 기록 기준)
+- 기간: 2024.09 - 2024.12
 - 팀 규모: 확인 필요
 - 내 역할: 프론트엔드 구현
 - 구현 범위:
@@ -706,7 +709,7 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 - title: SSUDAM
 - subtitle: Mental Care & Support Finder
 - role: 프론트엔드 구현 / 해커톤 서비스
-- period: 2024.11 (Git 기록 기준)
+- period: 2024.09 - 2024.12
 - implementationScope: Frontend only
 - tagline: AI 상담, 지원사업 정보, 주변 시설 탐색을 모바일 화면 안에 묶은 해커톤 서비스.
 - description: Next.js 기반 모바일 UI를 구현하고, 인증/상담/지원정보 API 연동을 axios service layer로 분리했습니다. React Query, Kakao Maps, Storybook, MSW를 활용해 핵심 화면과 컴포넌트를 빠르게 검증했습니다.
@@ -725,8 +728,8 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 ## 1. 기본 정보
 - 프로젝트명: FLEA MARKET
 - 짧은 부제: 엑셀 기반 플리마켓 정산을 웹 시스템으로 전환한 운영 도구
-- 상태: 진행중
-- 기간: 2026.06 - 진행중
+- 상태: 진행 중
+- 기간: 2026.05 - 진행 중
 - 팀 규모: 확인 필요
 - 내 역할: 풀스택 구현 / 정산 도메인 설계
 - 구현 범위:
@@ -852,7 +855,7 @@ Host와 Guest가 실시간으로 연결되고, 촬영 순간에는 각자의 원
 - title: FLEA MARKET
 - subtitle: Settlement System
 - role: 풀스택 구현 / 정산 도메인 설계
-- period: 2026.06 - 진행중
+- period: 2026.05 - 진행 중
 - implementationScope: Frontend + Backend + DB
 - tagline: 엑셀 기반 플리마켓 정산 흐름을 웹 운영 시스템으로 이식한 프로젝트.
 - description: 기존 엑셀 정산 파일을 분석해 영수증, 결제수단, 판매 라인, 참가자별 수수료, 정산 스냅샷 도메인으로 분리했습니다. Next.js 프론트, NestJS API, Supabase/PostgreSQL migration, Docker 개발 환경을 구성하고 정산 미리보기/확정/PDF 출력 흐름을 구현했습니다.

@@ -1,0 +1,221 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "CINÉ·FOLIO" [ref=e5] [cursor=pointer]:
+          - /url: "#top"
+        - generic [ref=e6]: EST.2026
+      - generic [ref=e7]:
+        - link "홈" [ref=e8] [cursor=pointer]:
+          - /url: "#top"
+        - link "상영작" [ref=e9] [cursor=pointer]:
+          - /url: "#gallery"
+        - link "소개" [ref=e10] [cursor=pointer]:
+          - /url: "#about"
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - button "KO" [ref=e13]
+          - button "EN" [ref=e14]
+          - button "JA" [ref=e15]
+        - button "상영작 보기" [ref=e16]:
+          - text: 상영작 보기
+          - img [ref=e17]
+    - generic [ref=e19]:
+      - generic: PORTFOLIO
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - img [ref=e23]
+            - text: OPENING CREDITS · DEVELOPER PROFILE
+          - heading "FRONTEND DEVELOPER" [level=1] [ref=e25]:
+            - text: FRONTEND
+            - text: DEVELOPER
+          - generic [ref=e28]: FRONTEND-LED · API · DB · OPS
+          - paragraph [ref=e29]: 사용자 화면을 빠르게 구현하는 데서 멈추지 않고, 그 화면이 기대는 API·데이터 구조·운영 흐름까지 함께 설계합니다.
+          - paragraph [ref=e30]: Next.js와 React를 중심으로 커머스, 운영 도구, 실시간 서비스의 프론트엔드와 데이터 흐름을 연결해왔습니다.
+          - generic [ref=e31]:
+            - link "상영작 보기" [ref=e32] [cursor=pointer]:
+              - /url: "#gallery"
+              - text: 상영작 보기
+              - img [ref=e33]
+            - link "이력서 받기" [ref=e35] [cursor=pointer]:
+              - /url: "#about"
+        - generic [ref=e37]:
+          - img "Developer badge" [ref=e38]:
+            - img [ref=e39]
+          - generic [ref=e44]:
+            - img "Developer profile portrait" [ref=e46]
+            - generic: PROFILE · 00
+            - generic:
+              - img
+              - text: 섭외 가능
+            - generic:
+              - generic: DEV
+              - generic: PROFILE
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - generic [ref=e51]: 주연 · MAIN ROLE
+              - generic [ref=e52]: Frontend Developer
+            - generic [ref=e53]:
+              - generic [ref=e54]: 백스테이지 · BACKSTAGE
+              - generic [ref=e55]:
+                - generic [ref=e56]:
+                  - img [ref=e57]
+                  - generic [ref=e59]: 백엔드 API
+                - generic [ref=e60]:
+                  - img [ref=e61]
+                  - generic [ref=e63]: 데이터베이스 스키마
+                - generic [ref=e64]:
+                  - img [ref=e65]
+                  - generic [ref=e67]: 어드민 운영
+            - generic [ref=e68]:
+              - generic [ref=e69]: 장르 · GENRE
+              - generic [ref=e70]:
+                - generic [ref=e71]: 커머스
+                - generic [ref=e72]: 운영 도구
+                - generic [ref=e73]: 실시간 UX
+            - generic [ref=e74]:
+              - generic [ref=e75]: 스택 · STACK
+              - generic [ref=e76]:
+                - generic [ref=e77]: Next.js / React / TypeScript
+                - generic [ref=e78]: Supabase / NestJS / PostgreSQL
+    - generic [ref=e80]: 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 /
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]: — 전체 상영작
+          - heading "상영 시간표" [level=2] [ref=e86]
+        - generic [ref=e87]: 포스터를 누르면 작품 정보가 열립니다.
+      - generic [ref=e88]:
+        - button "TEMIS 관람" [ref=e89] [cursor=pointer]:
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e95]: SCREEN 01
+              - generic [ref=e96]: "01"
+            - generic [ref=e97]:
+              - generic [ref=e98]:
+                - generic [ref=e99]: TEMIS
+                - generic [ref=e100]: Creator Tools & Commerce
+                - generic [ref=e101]:
+                  - generic [ref=e102]: Frontend
+                  - generic [ref=e103]: Backend
+                  - generic [ref=e104]: DB
+              - generic [ref=e105]:
+                - generic [ref=e106]:
+                  - img [ref=e107]
+                  - text: 상영중
+                - generic [ref=e109]: 2025.12 - 2026.05
+                - generic [ref=e110]:
+                  - text: 관람
+                  - img [ref=e111]
+        - button "VSHOT 관람" [ref=e113] [cursor=pointer]:
+          - generic [ref=e114]:
+            - generic [ref=e115]:
+              - generic [ref=e119]: SCREEN 02
+              - generic [ref=e120]: "02"
+            - generic [ref=e121]:
+              - generic [ref=e122]:
+                - generic [ref=e123]: VSHOT
+                - generic [ref=e124]: WebRTC Photobooth
+                - generic [ref=e125]:
+                  - generic [ref=e126]: Frontend
+                  - generic [ref=e127]: Backend
+                  - generic [ref=e128]: DB
+              - generic [ref=e129]:
+                - generic [ref=e130]:
+                  - img [ref=e131]
+                  - text: 상영중
+                - generic [ref=e133]: 2025.12 - 진행중
+                - generic [ref=e134]:
+                  - text: 관람
+                  - img [ref=e135]
+        - button "LUCENT 관람" [ref=e137] [cursor=pointer]:
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - generic [ref=e143]: SCREEN 03
+              - generic [ref=e144]: "03"
+            - generic [ref=e145]:
+              - generic [ref=e146]:
+                - generic [ref=e147]: LUCENT
+                - generic [ref=e148]: Commerce Platform V2
+                - generic [ref=e149]:
+                  - generic [ref=e150]: Frontend
+                  - generic [ref=e151]: Backend
+                  - generic [ref=e152]: DB
+              - generic [ref=e153]:
+                - generic [ref=e154]:
+                  - img [ref=e155]
+                  - text: 상영중
+                - generic [ref=e157]: 2026.03 - 진행중
+                - generic [ref=e158]:
+                  - text: 관람
+                  - img [ref=e159]
+        - button "231EDU 관람" [ref=e161] [cursor=pointer]:
+          - generic [ref=e162]:
+            - generic [ref=e163]:
+              - generic [ref=e167]: SCREEN 04
+              - generic [ref=e168]: "04"
+              - generic [ref=e169]: 상영 종료
+            - generic [ref=e170]:
+              - generic [ref=e171]:
+                - generic [ref=e172]: 231EDU
+                - generic [ref=e173]: Academy Ops Platform
+                - generic [ref=e174]:
+                  - generic [ref=e175]: Frontend
+                  - generic [ref=e176]: Backend
+                  - generic [ref=e177]: DB
+              - generic [ref=e178]:
+                - generic [ref=e179]:
+                  - img [ref=e180]
+                  - text: 상영 종료
+                - generic [ref=e182]: 2025.08 - 2026.02
+                - generic [ref=e183]:
+                  - text: 관람
+                  - img [ref=e184]
+        - button "SSUDAM 관람" [ref=e186] [cursor=pointer]:
+          - generic [ref=e187]:
+            - generic [ref=e188]:
+              - generic [ref=e192]: SCREEN 05
+              - generic [ref=e193]: "05"
+              - generic [ref=e194]: 상영 종료
+            - generic [ref=e195]:
+              - generic [ref=e196]:
+                - generic [ref=e197]: SSUDAM
+                - generic [ref=e198]: Mental Care & Support Finder
+                - generic [ref=e200]: Frontend only
+              - generic [ref=e201]:
+                - generic [ref=e202]:
+                  - img [ref=e203]
+                  - text: 상영 종료
+                - generic [ref=e205]: "2024.11"
+                - generic [ref=e206]:
+                  - text: 관람
+                  - img [ref=e207]
+        - button "FLEA MARKET 관람" [ref=e209] [cursor=pointer]:
+          - generic [ref=e210]:
+            - generic [ref=e211]:
+              - generic [ref=e215]: SCREEN 06
+              - generic [ref=e216]: "06"
+            - generic [ref=e217]:
+              - generic [ref=e218]:
+                - generic [ref=e219]: FLEA MARKET
+                - generic [ref=e220]: Settlement System
+                - generic [ref=e221]:
+                  - generic [ref=e222]: Frontend
+                  - generic [ref=e223]: Backend
+                  - generic [ref=e224]: DB
+              - generic [ref=e225]:
+                - generic [ref=e226]:
+                  - img [ref=e227]
+                  - text: 상영중
+                - generic [ref=e229]: 2026.06 - 진행중
+                - generic [ref=e230]:
+                  - text: 관람
+                  - img [ref=e231]
+    - generic [ref=e234]:
+      - generic [ref=e235]: CINÉ·FOLIO
+      - generic [ref=e236]:
+        - text: 포스터와 스틸컷은 데이터 파일에서 교체할 수 있습니다.
+        - text: © 2026 · ALL SCREENINGS RESERVED
+  - button "Open Next.js Dev Tools" [ref=e242] [cursor=pointer]:
+    - img [ref=e243]

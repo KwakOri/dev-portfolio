@@ -1,0 +1,128 @@
+- region "TEMIS architecture visualization" [ref=e2]:
+  - generic [ref=e4]:
+    - main [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]: PROJECT 01 · ARCHITECTURE CUT
+          - heading "TEMIS" [level=1] [ref=e10]
+          - paragraph [ref=e11]: 크리에이터의 일정표 제작, 템플릿 판매, 주문 운영, 권한/정산 관리를 하나의 서비스 흐름으로 묶은 Creator Ops 플랫폼.
+        - generic "technology stack" [ref=e12]:
+          - generic [ref=e13]: Next.js App Router
+          - generic [ref=e14]: TypeScript
+          - generic [ref=e15]: TanStack Query
+          - generic [ref=e16]: Supabase
+          - generic [ref=e17]: Cloudflare R2
+          - generic [ref=e18]: Nodemailer
+      - generic [ref=e19]:
+        - img [ref=e20]
+        - generic [ref=e27]: USERS
+        - generic [ref=e28]: PRODUCT EXPERIENCE
+        - generic [ref=e29]: SERVER FLOW
+        - generic [ref=e30]: DATA / OPS
+        - article [ref=e31]:
+          - heading "사용자 역할" [level=2] [ref=e32]
+          - generic [ref=e33]:
+            - generic [ref=e34]: C
+            - generic [ref=e35]:
+              - strong [ref=e36]: Creator
+              - text: 일정표 제작 · 템플릿 판매
+          - generic [ref=e37]:
+            - generic [ref=e38]: B
+            - generic [ref=e39]:
+              - strong [ref=e40]: Buyer
+              - text: 템플릿 탐색 · 구매 요청
+          - generic [ref=e41]:
+            - generic [ref=e42]: O
+            - generic [ref=e43]:
+              - strong [ref=e44]: Operator
+              - text: 주문 · 파일 · 정산 운영
+        - article [ref=e45]:
+          - generic [ref=e46]: CLIENT + APP ROUTER
+          - heading "Next.js Product Surface" [level=2] [ref=e47]
+          - paragraph [ref=e48]: 편집기 상태는 클라이언트 hook으로, 서버 상태는 React Query로 분리했습니다.
+          - generic [ref=e49]:
+            - generic [ref=e50]: Timetable Editor
+            - generic [ref=e51]: Template Shop
+            - generic [ref=e52]: Custom Orders
+            - generic [ref=e53]: Admin Dashboard
+        - article [ref=e54]:
+          - heading "TanStack Query + Service Layer" [level=3] [ref=e55]
+          - paragraph [ref=e56]: 조회, 변경, invalidate 흐름을 화면 밖으로 빼서 운영 화면과 제작 도구를 같은 규칙으로 연결.
+        - article [ref=e57]:
+          - generic [ref=e58]: BFF / SERVER ACTIONS
+          - heading "Next.js API Routes" [level=2] [ref=e59]
+          - paragraph [ref=e60]: 인증, 권한, 업로드, 구매 요청, 관리자 작업을 얇은 API 계층으로 정리.
+          - generic [ref=e61]:
+            - generic [ref=e62]:
+              - text: Auth & Tokens
+              - generic [ref=e63]: JWT
+            - generic [ref=e64]:
+              - text: Template Access
+              - generic [ref=e65]: 권한
+            - generic [ref=e66]:
+              - text: Purchase Requests
+              - generic [ref=e67]: 운영
+            - generic [ref=e68]:
+              - text: Upload Pipeline
+              - generic [ref=e69]: R2
+            - generic [ref=e70]:
+              - text: Admin Ops
+              - generic [ref=e71]: 정산
+        - article [ref=e72]:
+          - generic [ref=e73]: POSTGRES MODEL
+          - heading "Supabase" [level=2] [ref=e74]
+          - paragraph [ref=e75]: 운영 데이터와 권한 관계를 migration 중심으로 관리.
+          - generic [ref=e76]:
+            - generic [ref=e77]: users
+            - generic [ref=e78]: templates
+            - generic [ref=e79]: teams
+            - generic [ref=e80]: purchase
+            - generic [ref=e81]: access
+            - generic [ref=e82]: royalty
+        - article [ref=e83]:
+          - heading "External Services" [level=2] [ref=e84]
+          - generic [ref=e85]:
+            - generic [ref=e86]: R2
+            - generic [ref=e87]: 주문 파일 · 이미지 저장
+          - generic [ref=e88]:
+            - generic [ref=e89]: "@"
+            - generic [ref=e90]: 인증 · 초대 · 재설정 메일
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - strong [ref=e93]: Key Decision 01
+            - generic [ref=e94]: 템플릿별 입력 필드는 설정으로 주입하고, 저장/프리뷰 로직은 공통 hook으로 통합.
+          - generic [ref=e95]:
+            - strong [ref=e96]: Key Decision 02
+            - generic [ref=e97]: 구매 요청, 접근 권한, 작가 판매/정산 데이터를 분리해 관리자 운영 흐름으로 연결.
+          - generic [ref=e98]:
+            - strong [ref=e99]: Key Decision 03
+            - generic [ref=e100]: 파일 검증, R2 key 생성, DB record 연결, 삭제 유틸을 분리해 업로드 실패를 추적 가능하게 구성.
+      - generic [ref=e101]:
+        - generic [ref=e102]: CREATOR TOOLS · COMMERCE · ADMIN OPS
+        - generic [ref=e103]: FULL-STACK IMPLEMENTATION / FRONTEND-LED
+    - complementary [ref=e104]:
+      - generic [ref=e105]:
+        - paragraph [ref=e106]: PORTFOLIO EVIDENCE
+        - heading "제작 도구와 운영 시스템이 만나는 구조" [level=2] [ref=e107]
+        - paragraph [ref=e108]: TEMIS의 강점은 편집 화면만이 아니라 판매, 구매 요청, 파일 전달, 권한/정산을 하나의 운영 루프로 연결했다는 점입니다.
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - generic [ref=e111]: FE + API + DB
+            - generic [ref=e112]: 화면부터 migration까지 연결
+          - generic [ref=e113]:
+            - generic [ref=e114]: 4 flows
+            - generic [ref=e115]: 편집기 · 상점 · 관리자 · 정산
+          - generic [ref=e116]:
+            - generic [ref=e117]: Ops
+            - generic [ref=e118]: 권한 · 파일 · 판매 데이터 분리
+        - generic "TEMIS screenshots" [ref=e119]:
+          - figure "01 · Timetable Editor" [ref=e120]:
+            - img "TEMIS timetable editor screenshot" [ref=e121]
+            - generic [ref=e122]: 01 · Timetable Editor
+          - figure "02 · Template Shop" [ref=e123]:
+            - img "TEMIS template shop screenshot" [ref=e124]
+            - generic [ref=e125]: 02 · Template Shop
+          - figure "03 · Admin / Settlement" [ref=e126]:
+            - img "TEMIS admin dashboard screenshot" [ref=e127]
+            - generic [ref=e128]: 03 · Admin / Settlement
+      - generic [ref=e129]: "Architecture focus: UI 상태, 서버 상태, 운영 데이터를 분리해 크리에이터 제작 경험과 관리자 운영 경험을 같은 제품 안에서 연결."

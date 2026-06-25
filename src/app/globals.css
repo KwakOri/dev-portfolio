@@ -13,6 +13,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: #16130c #ffce00;
+  scrollbar-width: thin;
 }
 
 body {
@@ -62,6 +64,77 @@ button {
 
 .scf-pop {
   animation: scfPop 0.22s ease;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 14px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background:
+    linear-gradient(90deg, rgba(22, 19, 12, 0.1), transparent 34%),
+    #ffce00;
+  border-left: 3px solid #16130c;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  min-height: 72px;
+  background:
+    linear-gradient(180deg, #16130c, #3a2f18);
+  border: 3px solid #ffce00;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 206, 0, 0.24),
+    0 0 14px rgba(22, 19, 12, 0.28);
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(180deg, #2a2315, #ff8a00);
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+  background: #ffce00;
+}
+
+.scf-overlay-scroll {
+  overscroll-behavior: contain;
+  scrollbar-color: #ffce00 #100d08;
+  scrollbar-width: thin;
+}
+
+.scf-overlay-scroll::-webkit-scrollbar {
+  width: 14px;
+}
+
+.scf-overlay-scroll::-webkit-scrollbar-track {
+  background:
+    linear-gradient(90deg, rgba(255, 206, 0, 0.28), transparent 28%),
+    #100d08;
+  border-left: 3px solid #ffce00;
+}
+
+.scf-overlay-scroll::-webkit-scrollbar-thumb {
+  min-height: 72px;
+  background:
+    linear-gradient(180deg, #ffce00, #ff8a00);
+  border: 3px solid #100d08;
+  box-shadow:
+    inset 0 0 0 1px rgba(22, 19, 12, 0.55),
+    0 0 14px rgba(255, 138, 0, 0.4);
+}
+
+.scf-overlay-scroll::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(180deg, #ffe066, #ff9f1a);
+}
+
+.scf-overlay-scroll::-webkit-scrollbar-corner {
+  background: #100d08;
 }
 
 @keyframes scfTicker {

@@ -1,0 +1,209 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "CINÉ·FOLIO" [ref=e5] [cursor=pointer]:
+          - /url: "#top"
+        - generic [ref=e6]: EST.2026
+      - generic [ref=e7]:
+        - link "홈" [ref=e8] [cursor=pointer]:
+          - /url: "#top"
+        - link "상영작" [ref=e9] [cursor=pointer]:
+          - /url: "#gallery"
+        - link "소개" [ref=e10] [cursor=pointer]:
+          - /url: "#about"
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - button "KO" [ref=e13]
+          - button "EN" [ref=e14]
+          - button "JA" [ref=e15]
+        - button "상영작 보기" [ref=e16]:
+          - text: 상영작 보기
+          - img [ref=e17]
+    - generic [ref=e19]:
+      - generic: PORTFOLIO
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - img [ref=e23]
+            - text: OPENING CREDITS · DEVELOPER PROFILE
+          - heading "FRONTEND DEVELOPER" [level=1] [ref=e25]:
+            - text: FRONTEND
+            - text: DEVELOPER
+          - generic [ref=e28]: FRONTEND-LED · API · DB · OPS
+          - paragraph [ref=e29]: 사용자 화면을 빠르게 구현하는 데서 멈추지 않고, 그 화면이 기대는 API·데이터 구조·운영 흐름까지 함께 설계합니다.
+          - paragraph [ref=e30]: Next.js와 React를 중심으로 커머스, 운영 도구, 실시간 서비스의 프론트엔드와 데이터 흐름을 연결해왔습니다.
+          - generic [ref=e31]:
+            - link "상영작 보기" [ref=e32] [cursor=pointer]:
+              - /url: "#gallery"
+              - text: 상영작 보기
+              - img [ref=e33]
+            - link "이력서 받기" [ref=e35] [cursor=pointer]:
+              - /url: "#about"
+        - generic [ref=e37]:
+          - img "Developer badge" [ref=e38]:
+            - img [ref=e39]
+          - generic [ref=e44]:
+            - img "Developer profile portrait" [ref=e46]
+            - generic: PROFILE · 00
+            - generic:
+              - img
+              - text: 섭외 가능
+            - generic:
+              - generic: DEV
+              - generic: PROFILE
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - generic [ref=e51]: 주연 · MAIN ROLE
+              - generic [ref=e52]: Frontend Developer
+            - generic [ref=e53]:
+              - generic [ref=e54]: 백스테이지 · BACKSTAGE
+              - generic [ref=e55]:
+                - generic [ref=e56]:
+                  - img [ref=e57]
+                  - generic [ref=e59]: 백엔드 API
+                - generic [ref=e60]:
+                  - img [ref=e61]
+                  - generic [ref=e63]: 데이터베이스 스키마
+                - generic [ref=e64]:
+                  - img [ref=e65]
+                  - generic [ref=e67]: 어드민 운영
+            - generic [ref=e68]:
+              - generic [ref=e69]: 장르 · GENRE
+              - generic [ref=e70]:
+                - generic [ref=e71]: 커머스
+                - generic [ref=e72]: 운영 도구
+                - generic [ref=e73]: 실시간 UX
+            - generic [ref=e74]:
+              - generic [ref=e75]: 스택 · STACK
+              - generic [ref=e76]:
+                - generic [ref=e77]: Next.js / React / TypeScript
+                - generic [ref=e78]: Supabase / NestJS / PostgreSQL
+    - generic [ref=e80]: 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 / 지금 상영 중 / 전회 매진 / 앵콜 상영 결정 / 절찬 상영 중 /
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]: — 전체 상영작
+          - heading "상영 시간표" [level=2] [ref=e86]
+        - generic [ref=e87]: 포스터를 누르면 작품 정보가 열립니다.
+      - generic [ref=e88]:
+        - button "SSUDAM 자세히 보기" [ref=e89] [cursor=pointer]:
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e95]: SCREEN 01
+              - generic [ref=e96]: "01"
+              - generic [ref=e97]: 상영 종료
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - generic [ref=e100]: SSUDAM
+                - generic [ref=e101]: Mental Care & Support Finder
+                - generic [ref=e103]: Frontend only
+              - generic [ref=e104]:
+                - generic [ref=e105]:
+                  - img [ref=e106]
+                  - text: 상영 종료
+                - generic [ref=e108]: 프로젝트 기간 2024.09 - 2024.12
+        - button "TEMIS 자세히 보기" [ref=e109] [cursor=pointer]:
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - generic [ref=e115]: SCREEN 02
+              - generic [ref=e116]: "02"
+            - generic [ref=e117]:
+              - generic [ref=e118]:
+                - generic [ref=e119]: TEMIS
+                - generic [ref=e120]: Creator Tools & Commerce
+                - generic [ref=e121]:
+                  - generic [ref=e122]: Frontend
+                  - generic [ref=e123]: Backend
+                  - generic [ref=e124]: DB
+              - generic [ref=e125]:
+                - generic [ref=e126]:
+                  - img [ref=e127]
+                  - text: 상영중
+                - generic [ref=e129]: 프로젝트 기간 2025.07 - 운영 중
+        - button "231EDU 자세히 보기" [ref=e130] [cursor=pointer]:
+          - generic [ref=e131]:
+            - generic [ref=e132]:
+              - generic [ref=e136]: SCREEN 03
+              - generic [ref=e137]: "03"
+            - generic [ref=e138]:
+              - generic [ref=e139]:
+                - generic [ref=e140]: 231EDU
+                - generic [ref=e141]: Academy Ops Platform
+                - generic [ref=e142]:
+                  - generic [ref=e143]: Frontend
+                  - generic [ref=e144]: Backend
+                  - generic [ref=e145]: DB
+              - generic [ref=e146]:
+                - generic [ref=e147]:
+                  - img [ref=e148]
+                  - text: 상영중
+                - generic [ref=e150]: 프로젝트 기간 2025.08 - 운영 중
+        - button "LUCENT 자세히 보기" [ref=e151] [cursor=pointer]:
+          - generic [ref=e152]:
+            - generic [ref=e153]:
+              - generic [ref=e157]: SCREEN 04
+              - generic [ref=e158]: "04"
+            - generic [ref=e159]:
+              - generic [ref=e160]:
+                - generic [ref=e161]: LUCENT
+                - generic [ref=e162]: Commerce Platform V2
+                - generic [ref=e163]:
+                  - generic [ref=e164]: Frontend
+                  - generic [ref=e165]: Backend
+                  - generic [ref=e166]: DB
+              - generic [ref=e167]:
+                - generic [ref=e168]:
+                  - img [ref=e169]
+                  - text: 상영중
+                - generic [ref=e171]: 프로젝트 기간 2025.11 - 운영 중
+        - button "VSHOT 자세히 보기" [ref=e172] [cursor=pointer]:
+          - generic [ref=e173]:
+            - generic [ref=e174]:
+              - generic [ref=e178]: SCREEN 05
+              - generic [ref=e179]: "05"
+              - generic [ref=e180]: 상영 종료
+            - generic [ref=e181]:
+              - generic [ref=e182]:
+                - generic [ref=e183]: VSHOT
+                - generic [ref=e184]: WebRTC Photobooth
+                - generic [ref=e185]:
+                  - generic [ref=e186]: Frontend
+                  - generic [ref=e187]: Backend
+                  - generic [ref=e188]: DB
+              - generic [ref=e189]:
+                - generic [ref=e190]:
+                  - img [ref=e191]
+                  - text: 상영 종료
+                - generic [ref=e193]: 프로젝트 기간 2026.01 - 2026.04
+        - button "FLEA MARKET 자세히 보기" [ref=e194] [cursor=pointer]:
+          - generic [ref=e195]:
+            - generic [ref=e196]:
+              - generic [ref=e200]: SCREEN 06
+              - generic [ref=e201]: "06"
+            - generic [ref=e202]:
+              - generic [ref=e203]:
+                - generic [ref=e204]: FLEA MARKET
+                - generic [ref=e205]: Settlement System
+                - generic [ref=e206]:
+                  - generic [ref=e207]: Frontend
+                  - generic [ref=e208]: Backend
+                  - generic [ref=e209]: DB
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - img [ref=e212]
+                  - text: 상영중
+                - generic [ref=e214]: 프로젝트 기간 2026.05 - 진행 중
+    - generic [ref=e216]:
+      - generic [ref=e217]: CINÉ·FOLIO
+      - generic [ref=e218]:
+        - text: 포스터와 스틸컷은 데이터 파일에서 교체할 수 있습니다.
+        - text: © 2026 · ALL SCREENINGS RESERVED
+  - button "Open Next.js Dev Tools" [ref=e224] [cursor=pointer]:
+    - generic [ref=e227]:
+      - text: Compiling
+      - generic [ref=e228]:
+        - generic [ref=e229]: .
+        - generic [ref=e230]: .
+        - generic [ref=e231]: .
+  - alert [ref=e232]

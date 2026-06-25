@@ -66,7 +66,11 @@ export const posterFrameVariants = cva("relative overflow-hidden bg-[#17140E]", 
 });
 
 export const projectCardVariants = cva(
-  "block w-[262px] flex-none cursor-pointer border-[3px] border-[#16130C] bg-[#17140E] p-0 text-left shadow-[8px_8px_0_#16130C] transition-[transform,box-shadow] duration-150 hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[13px_13px_0_#16130C] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#16130C]",
+  "group block w-full cursor-pointer bg-transparent p-0 text-left focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#16130C]",
+);
+
+export const projectCardPanelVariants = cva(
+  "flex min-h-[172px] w-full flex-col overflow-hidden border-[3px] border-[#16130C] bg-[#16130C] [box-shadow:8px_8px_0_rgba(22,19,14,0.22)] transition-[translate,box-shadow] duration-200 ease-out will-change-[translate] group-hover:-translate-x-[3px] group-hover:-translate-y-[3px] group-hover:[box-shadow:13px_13px_0_#16130C] group-active:translate-x-0 group-active:translate-y-0 group-active:[box-shadow:8px_8px_0_rgba(22,19,14,0.22)] md:flex-row",
 );
 
 export const overlayMetaVariants = cva(
@@ -80,6 +84,22 @@ export const overlayMetaVariants = cva(
     },
     defaultVariants: {
       tone: "outline",
+    },
+  },
+);
+
+export const detailPanelVariants = cva(
+  "border-2 bg-white/[0.025] text-left",
+  {
+    variants: {
+      tone: {
+        summary: "border-[#f3e9d2]/18 px-3.5 py-3",
+        metric: "border-[#f3e9d2]/15 px-4 py-3.5",
+        quality: "border-[#f3e9d2]/15 px-4 py-4",
+      },
+    },
+    defaultVariants: {
+      tone: "summary",
     },
   },
 );
